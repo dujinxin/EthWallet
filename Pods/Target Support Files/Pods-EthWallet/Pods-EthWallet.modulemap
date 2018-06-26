@@ -1,0 +1,6 @@
+framework module Pods_EthWallet {
+  umbrella header "Pods-EthWallet-umbrella.h"
+
+  export *
+  module * { export * }
+}
