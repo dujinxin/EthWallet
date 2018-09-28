@@ -8,6 +8,7 @@
 
 import Foundation
 import web3swift
+import JXFMDBHelper
 
 private let userPath = NSHomeDirectory() + "/Documents/userAccound.json"
 
@@ -160,7 +161,7 @@ class WalletManager : NSObject{
 
 private let dbName = "WalletDB"
 
-class WalletDB: JXBaseDB {
+class WalletDB: BaseDB {
     
     static let shareInstance = WalletDB(name: dbName)
     

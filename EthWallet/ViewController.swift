@@ -50,7 +50,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         self.vm = Web3VM.init(keystoreBase64Str: WalletManager.manager.userEntity.keystore)
         
         DispatchQueue.global().async {
-            let balanceResult = self.vm?.web3?.eth.getBalance(address: ethereumAddress)
+            let balanceResult = self.vm?.web3.eth.getBalance(address: ethereumAddress)
             guard case .success(let balance)? = balanceResult else { return }
             print("balance = ",balance)
             DispatchQueue.main.async {

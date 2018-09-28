@@ -34,11 +34,11 @@ class TransferViewController: UITableViewController {
     var type : Type = .eth
     
     lazy var vm1: Web3VM = {
-        var vm = Web3VM.init(keystoreBase64Str: WalletManager.manager.userEntity.keystore)//自己的钱包
+        let vm = Web3VM.init(keystoreBase64Str: WalletManager.manager.userEntity.keystore)//自己的钱包
         return vm
     }()
     lazy var vm2: Web3VM = {
-        var vm = Web3VM.init(keystoreData: WalletManager.manager.getKeystoreData()!)      //测试钱包
+        let vm = Web3VM.init(keystoreData: WalletManager.manager.getKeystoreData()!)      //测试钱包
         return vm
     }()
     
@@ -64,7 +64,7 @@ class TransferViewController: UITableViewController {
         self.web3KitGetBalance()
         
         DispatchQueue.global().async {
-            guard case .success(let gasPriceRinkeby)? = self.vm1.web3?.eth.getGasPrice() else {return}
+            guard case .success(let gasPriceRinkeby) = self.vm1.web3.eth.getGasPrice() else {return}
             print("web3?.eth.getGasPrice() = ",gasPriceRinkeby)
             self.gasPrise = gasPriceRinkeby
         }
@@ -130,17 +130,17 @@ class TransferViewController: UITableViewController {
             let address = EthereumAddress(WalletManager.manager.userEntity.address)
             //let address = EthereumAddress(self.address1)
             DispatchQueue.global().async {
-                let balanceResult = self.vm1.web3?.eth.getBalance(address: address!)
-                guard case .success(let balance)? = balanceResult else { return }
+                let balanceResult = self.vm1.web3.eth.getBalance(address: address!)
+                guard case .success(let balance) = balanceResult else { return }
                 print("balance = ",balance)
             }
         } else {
             //let address = EthereumAddress(self.address1)
             let address = EthereumAddress(WalletManager.manager.userEntity.address)
             let contractAddress = EthereumAddress("0x34a9a46340d0b76e423ea75e5a62b6a81ff35bf6")! // BKX token on Ethereum mainnet
-            let contract = self.vm2.web3?.contract(Web3.Utils.erc20ABI, at: contractAddress, abiVersion: 2)! // utilize precompiled ERC20 ABI for your concenience
+            let contract = self.vm2.web3.contract(Web3.Utils.erc20ABI, at: contractAddress, abiVersion: 2)! // utilize precompiled ERC20 ABI for your concenience
             DispatchQueue.global().async {
-                guard let bkxBalanceResult = contract?.method("balanceOf", parameters: [address] as [AnyObject], options: Web3Options.defaultOptions())?.call(options: nil) else {return} // encode parameters for transaction
+                guard let bkxBalanceResult = contract.method("balanceOf", parameters: [address] as [AnyObject], options: Web3Options.defaultOptions())?.call(options: nil) else {return} // encode parameters for transaction
                 guard case .success(let bkxBalance) = bkxBalanceResult, let bal = bkxBalance["0"] as? BigUInt else {return} // bkxBalance is [String: Any], and parameters are enumerated as "0", "1", etc in order of being returned. If returned parameter has a name in ABI, it is also duplicated
                 print(bkxBalance)
                 print("BKX token balance = " + String(bal))
@@ -178,7 +178,7 @@ class TransferViewController: UITableViewController {
   
         DispatchQueue.global().async {
             //let intermediate = web3?.contract(Web3.Utils.coldWalletABI, at: EthereumAddress(address), abiVersion: 2)?.method(options: options)
-           guard let intermediate = self.vm2.web3?.eth.sendETH(from: EthereumAddress(self.address1)!, to: EthereumAddress(address)!, amount: number) else {return}
+            guard let intermediate = self.vm2.web3.eth.sendETH(from: EthereumAddress(self.address1)!, to: EthereumAddress(address)!, amount: number) else {return}
             
             //web3?.eth.sendETH(to: EthereumAddress("0x50d2cf603b4fa3107396fa49ac01469a3aaf0f79")!, amount: "0.001")
             //guard let intermediate = web3?.eth.sendETH(to: EthereumAddress("0x50d2cf603b4fa3107396fa49ac01469a3aaf0f79")!, amount: "0.001") else {return}
@@ -252,7 +252,7 @@ class TransferViewController: UITableViewController {
 //        print("privateKey = ",privateKey)
         
         DispatchQueue.global().async {
-            let convenienceTokenTransfer = self.vm2.web3?.eth.sendERC20tokensWithNaturalUnits(tokenAddress: EthereumAddress("0x34a9a46340d0b76e423ea75e5a62b6a81ff35bf6")!, from: EthereumAddress(self.address1)!, to: EthereumAddress(address)!, amount: "0.1", options: options)
+            let convenienceTokenTransfer = self.vm2.web3.eth.sendERC20tokensWithNaturalUnits(tokenAddress: EthereumAddress("0x34a9a46340d0b76e423ea75e5a62b6a81ff35bf6")!, from: EthereumAddress(self.address1)!, to: EthereumAddress(address)!, amount: "0.1", options: options)
             let gasEstimateResult2 = convenienceTokenTransfer!.estimateGas(options: nil)
             guard case .success(let gasEstimate2) = gasEstimateResult2 else {return}
             options.gasLimit = gasEstimate2

@@ -10,6 +10,10 @@ import UIKit
 
 class SettingViewController: UITableViewController {
 
+    lazy var vm: Web3VM = {
+        let vm = Web3VM.init(keystoreBase64Str: WalletManager.manager.userEntity.keystore)//自己的钱包
+        return vm
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,6 +27,10 @@ class SettingViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             self.performSegue(withIdentifier: "walletList", sender: nil)
+        } else {
+            
+           // self.vm.web3?.eth.getTransactionDetails(<#T##txhash: String##String#>)
+
         }
     }
     // MARK: - Table view data source

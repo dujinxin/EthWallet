@@ -1,30 +1,27 @@
 PODS:
-  - Alamofire (4.7.2)
-  - Alamofire-Synchronous (4.0.0):
-    - Alamofire (~> 4.0)
-  - BigInt (3.0.1):
+  - BigInt (3.1.0):
     - SipHash (~> 1.2)
   - CryptoSwift (0.10.0)
   - FMDB (2.7.2):
     - FMDB/standard (= 2.7.2)
   - FMDB/standard (2.7.2)
+  - JXFMDBHelper (0.1.1):
+    - FMDB (~> 2.7.2)
   - libsodium (1.0.12)
-  - PromiseKit (6.3.0):
-    - PromiseKit/CorePromise (= 6.3.0)
-    - PromiseKit/Foundation (= 6.3.0)
-    - PromiseKit/UIKit (= 6.3.0)
-  - PromiseKit/CorePromise (6.3.0)
-  - PromiseKit/Foundation (6.3.0):
+  - PromiseKit (6.3.4):
+    - PromiseKit/CorePromise (= 6.3.4)
+    - PromiseKit/Foundation (= 6.3.4)
+    - PromiseKit/UIKit (= 6.3.4)
+  - PromiseKit/CorePromise (6.3.4)
+  - PromiseKit/Foundation (6.3.4):
     - PromiseKit/CorePromise
-  - PromiseKit/UIKit (6.3.0):
+  - PromiseKit/UIKit (6.3.4):
     - PromiseKit/CorePromise
   - Result (3.0.0)
   - secp256k1_ios (0.1.3)
   - SipHash (1.2.2)
-  - web3swift (0.9.0):
-    - Alamofire (~> 4.7)
-    - Alamofire-Synchronous (~> 4.0)
-    - BigInt (~> 3.0.1)
+  - web3swift (1.0.0):
+    - BigInt (~> 3.1.0)
     - CryptoSwift (~> 0.10.0)
     - libsodium (~> 1.0.12)
     - PromiseKit (~> 6.3.0)
@@ -32,16 +29,15 @@ PODS:
     - secp256k1_ios (~> 0.1.3)
 
 DEPENDENCIES:
-  - FMDB
+  - JXFMDBHelper
   - web3swift (from `https://github.com/BANKEX/web3swift.git`)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
-    - Alamofire
-    - Alamofire-Synchronous
     - BigInt
     - CryptoSwift
     - FMDB
+    - JXFMDBHelper
     - libsodium
     - PromiseKit
     - Result
@@ -54,22 +50,21 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   web3swift:
-    :commit: 984cf79b871d2daf23bf6b6fe466c609ad2b15df
+    :commit: 4e55b79ed8f85b7ef8b10bcd23d91ebd98272edd
     :git: https://github.com/BANKEX/web3swift.git
 
 SPEC CHECKSUMS:
-  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
-  Alamofire-Synchronous: eedf1e6e961c3795a63c74990b3f7d9fbfac7e50
-  BigInt: 8e8a52161c745cd3ab78e3dc346a9fbee51e6cf6
+  BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
   CryptoSwift: 6c778d69282bed3b4e975ff97a79d074f20bb011
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
+  JXFMDBHelper: 4658372cf70534ccdc7162f5d376f7421480035a
   libsodium: 9a8faa5ef2fa0d2d57bd7f7d79bf8fb7c1a9f0ea
-  PromiseKit: cf84bbb1235a61473b326c5cf0b41f6828f87ba5
+  PromiseKit: e1425568123ec844a944c93f2bcb29d511d39cf5
   Result: 1b3e431f37cbcd3ad89c6aa9ab0ae55515fae3b6
   secp256k1_ios: ac9ef04e761f43c58012b28548afa91493761f17
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
-  web3swift: 3aec6f5285c79d2fd5d3a5be05a813329b909934
+  web3swift: f95dfd47c53b6c3afda834360a4e63965125e629
 
-PODFILE CHECKSUM: 62e5f389245c619e00f7c5bb1f6a7af709d30855
+PODFILE CHECKSUM: 1bffa64eb566d834247d996efe65078db42b20c7
 
 COCOAPODS: 1.5.0

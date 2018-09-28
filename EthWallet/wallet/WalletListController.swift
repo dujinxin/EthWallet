@@ -60,7 +60,7 @@ class WalletListController: UITableViewController {
         default:
             print("11")
         }
-        
+        //
     }
     @IBAction func walletAction(_ sender: Any) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)

@@ -22,9 +22,6 @@
 		3598765520DA2C5D0027F982 /* WalletListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598765420DA2C5D0027F982 /* WalletListController.swift */; };
 		3598765720DA37200027F982 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598765620DA37200027F982 /* SettingViewController.swift */; };
 		3598765920DA42930027F982 /* JXPlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598765820DA42920027F982 /* JXPlaceHolderTextView.swift */; };
-		3598765E20DA48060027F982 /* JXUserDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598765B20DA48050027F982 /* JXUserDB.swift */; };
-		3598765F20DA48060027F982 /* JXBaseDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598765C20DA48050027F982 /* JXBaseDB.swift */; };
-		3598766020DA48060027F982 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598765D20DA48050027F982 /* DBManager.swift */; };
 		3598766220DBA2250027F982 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598766120DBA2250027F982 /* String+Extension.swift */; };
 		3598766420DBD1770027F982 /* WalletDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598766320DBD1770027F982 /* WalletDetailController.swift */; };
 		3598766A20DC922C0027F982 /* ExportKSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598766920DC922C0027F982 /* ExportKSViewController.swift */; };
@@ -75,9 +72,6 @@
 		3598765420DA2C5D0027F982 /* WalletListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletListController.swift; sourceTree = "<group>"; };
 		3598765620DA37200027F982 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		3598765820DA42920027F982 /* JXPlaceHolderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPlaceHolderTextView.swift; sourceTree = "<group>"; };
-		3598765B20DA48050027F982 /* JXUserDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXUserDB.swift; sourceTree = "<group>"; };
-		3598765C20DA48050027F982 /* JXBaseDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXBaseDB.swift; sourceTree = "<group>"; };
-		3598765D20DA48050027F982 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		3598766120DBA2250027F982 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		3598766320DBD1770027F982 /* WalletDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDetailController.swift; sourceTree = "<group>"; };
 		3598766920DC922C0027F982 /* ExportKSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportKSViewController.swift; sourceTree = "<group>"; };
@@ -115,16 +109,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3598765A20DA48050027F982 /* DBManager */ = {
-			isa = PBXGroup;
-			children = (
-				3598765B20DA48050027F982 /* JXUserDB.swift */,
-				3598765C20DA48050027F982 /* JXBaseDB.swift */,
-				3598765D20DA48050027F982 /* DBManager.swift */,
-			);
-			path = DBManager;
-			sourceTree = "<group>";
-		};
 		3598766520DC91510027F982 /* import */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +175,7 @@
 		3598768120E0D5D00027F982 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				3598767F20E0D5BC0027F982 /* Web3VM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -217,7 +202,6 @@
 			isa = PBXGroup;
 			children = (
 				3598768120E0D5D00027F982 /* ViewModel */,
-				3598767F20E0D5BC0027F982 /* Web3VM.swift */,
 				3598767C20DE42790027F982 /* Model */,
 				3598767520DE3A560027F982 /* property */,
 				3598766820DC91B60027F982 /* setting */,
@@ -228,7 +212,6 @@
 				35CB0D9920BA5FB60092C5FC /* ViewController.swift */,
 				35249D5120C15139001C1140 /* WalletManager.swift */,
 				3598767320DE1F5F0027F982 /* EthUnit.swift */,
-				3598765A20DA48050027F982 /* DBManager */,
 				3598764B20DA25900027F982 /* JXHorizontalView.swift */,
 				3598764A20DA25900027F982 /* JXTopBarView.swift */,
 				3598765820DA42920027F982 /* JXPlaceHolderTextView.swift */,
@@ -370,11 +353,10 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-EthWallet/Pods-EthWallet-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Alamofire-Synchronous/Alamofire_Synchronous.framework",
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/JXFMDBHelper/JXFMDBHelper.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
@@ -384,11 +366,10 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire_Synchronous.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JXFMDBHelper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
@@ -408,8 +389,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3598765F20DA48060027F982 /* JXBaseDB.swift in Sources */,
-				3598765E20DA48060027F982 /* JXUserDB.swift in Sources */,
 				35249D5C20C2433D001C1140 /* TransferViewController.swift in Sources */,
 				3598767E20DE42980027F982 /* PropertyModel.swift in Sources */,
 				3598766220DBA2250027F982 /* String+Extension.swift in Sources */,
@@ -433,7 +412,6 @@
 				3598767220DCFED60027F982 /* ModifyPasswordController.swift in Sources */,
 				3598766C20DC92630027F982 /* ExportKSTextController.swift in Sources */,
 				3598767A20DE3E430027F982 /* AddPropertyCell.swift in Sources */,
-				3598766020DA48060027F982 /* DBManager.swift in Sources */,
 				3522819020BA96CD001A0CA8 /* CreateWalletController.swift in Sources */,
 				3598765920DA42930027F982 /* JXPlaceHolderTextView.swift in Sources */,
 				35249D5920C23670001C1140 /* PropertyViewCell.swift in Sources */,
