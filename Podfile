@@ -6,7 +6,7 @@ target 'EthWallet' do
   
     use_frameworks!
 
-    pod 'web3swift', :git => 'https://github.com/BANKEX/web3swift.git'
+    pod 'web3swift'
     pod 'JXFMDBHelper'
     
 end

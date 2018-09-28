@@ -3,6 +3,7 @@
 //  web3swift
 //
 //  Created by Alexander Vlasov on 07.01.2018.
+//  Copyright © 2018 Bankex Foundation. All rights reserved.
 //
 
 import Foundation
@@ -99,8 +100,11 @@ public struct EthereumAddress: Equatable {
                     self.type = .normal
                     return
                 }
+            } else {
+                self._address = data.toHexString().addHexPrefix()
+                self.type = .normal
+                return
             }
-            return nil
         case .contractDeployment:
             self._address = "0x"
             self.type = .contractDeployment
