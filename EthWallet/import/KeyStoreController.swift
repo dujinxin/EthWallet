@@ -76,6 +76,7 @@ class KeyStoreController: UIViewController {
         //let privateKey = try! keyStore.UNSAFE_getPrivateKeyData(password: password, account: address).toHexString()
         
         let dict = ["name":name,"isDefault":false,"address":address.address,"keystore":keystoreBase64Str] as [String : Any]
+        let _ = WalletDB.shareInstance.createTable(keys: Array(dict.keys))
         let isSuc = WalletDB.shareInstance.appendWallet(data: dict, key: address.address)
         if isSuc {
             print("添加成功")
