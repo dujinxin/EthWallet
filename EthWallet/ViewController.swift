@@ -81,12 +81,12 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         if WalletManager.manager.isWalletExist == true {
             self.createButton.isHidden = true
             self.importButton.isHidden = true
-            self.view.addSubview(self.tableView)
+            self.tableView.isHidden = false
             self.tableView.reloadData()
         } else {
             self.createButton.isHidden = false
             self.importButton.isHidden = false
-            self.tableView.removeFromSuperview()
+            self.tableView.isHidden = true
         }
     }
     override func didReceiveMemoryWarning() {
