@@ -12,6 +12,10 @@ import JXFMDBHelper
 
 private let userPath = NSHomeDirectory() + "/Documents/userAccound.json"
 
+enum WalletType {
+    case key
+}
+
 class WalletEntity: NSObject {
     
     @objc var isDefault : Bool = false           //
@@ -29,63 +33,48 @@ class WalletEntity: NSObject {
 
 class WalletManager : NSObject{
     
-    static let manager = WalletManager()
+    static let shared = WalletManager()
     
-    //登录接口获取
-    var walletEntity = WalletEntity()
-    //
+    //实体
+    var entity = WalletEntity()
+    //字典
     var walletDict = Dictionary<String, Any>()
-    
+    //钱包是否存在
     var isWalletExist: Bool {
         get {
-            return !self.walletEntity.address.isEmpty
+            return !self.entity.address.isEmpty
         }
     }
-    //    var web3 : web3? {
-    //        let w = Web3.new(URL(string: "http://192.168.0.129:8545")!)
-    //        return w
-    //    }
-    
-    
-    lazy var web3: web3? = {
-        let w = Web3.new(URL(string: "http://192.168.0.129:8545")!)
-        guard let keystoreData = WalletManager.manager.getKeystoreData() else {return nil}
-        guard let keystoreV3 = EthereumKeystoreV3.init(keystoreData) else {return nil}
-        
-        let keystoreManager = KeystoreManager.init([keystoreV3])
-        w?.addKeystoreManager(keystoreManager)
-        return w
-    }()
     
     override init() {
         super.init()
-        setUserInfo()
+        setupInfo()
     }
-    /// 用户数据初始化
-    func setUserInfo() {
-        print("用户地址：\(userPath)")
+    /// 数据初始化
+    func setupInfo() {
+        print("钱包地址：\(userPath)")
         if
             WalletDB.shareInstance.manager.isExist == true,
             let data = WalletDB.shareInstance.getDefaultWallet(),
             data.isEmpty == false {
             
             self.walletDict = data
-            self.walletEntity.setValuesForKeys(data)
+            self.entity.setValuesForKeys(data)
             //let _ = WalletDB.shareInstance.setDefaultWallet(key: self.userEntity.address!)
             print(data)
         }
     }
-    
-    func switchWallet(dict:Dictionary<String, Any>) -> Bool {
+    /// 切换默认钱包
+    func switchWallet(dict: Dictionary<String, Any>) -> Bool {
         
         guard let address = dict["address"] as? String else { return false }
-        self.walletEntity.setValuesForKeys(dict)
+        self.entity.setValuesForKeys(dict)
         self.walletDict = dict
         return WalletDB.shareInstance.setDefaultWallet(key: address)
     }
-    /// 删除用户信息
+    /// 删除钱包
     func removeAccound() {
-        self.walletEntity = WalletEntity()
+        self.entity = WalletEntity()
         
         let fileManager = FileManager.default
         try? fileManager.removeItem(atPath: userPath)
@@ -117,9 +106,6 @@ class WalletManager : NSObject{
             print("newAddress：\(newAddress)")
             return try? JSONSerialization.data(withJSONObject: dict, options: [])
         }
-        //self.walletDict = dict as! [String : Any]
-        
-        //        return data
     }
     func getNormalKeystoreData() -> Data?{
         let pathUrl = URL(fileURLWithPath: NSHomeDirectory() + "/Documents" + "/keystore"+"/key.json")
@@ -210,12 +196,12 @@ extension WalletDB {
     /// - Returns: 返回结果
     func updateWalletName(_ name: String) -> Bool{
         
-        let cs = "address = '\(WalletManager.manager.walletEntity.address)'"
+        let cs = "address = '\(WalletManager.shared.entity.address)'"
         let isSuccess = self.updateData(keyValues: ["name": name], condition: [cs])
         if isSuccess {
-            var dict = WalletManager.manager.walletDict
+            var dict = WalletManager.shared.walletDict
             dict["name"] = name
-            WalletManager.manager.walletEntity.name = name
+            WalletManager.shared.entity.name = name
         }
         return isSuccess
     }
@@ -226,12 +212,12 @@ extension WalletDB {
     func updateWalletNotice(_ notice: String) {
         
         
-        let cs = "address = '\(WalletManager.manager.walletEntity.address)'"
+        let cs = "address = '\(WalletManager.shared.entity.address)'"
         let isSuccess = self.updateData(keyValues: ["notice": notice], condition: [cs])
         if isSuccess {
-            var dict = WalletManager.manager.walletDict
+            var dict = WalletManager.shared.walletDict
             dict["notice"] = notice
-            WalletManager.manager.walletEntity.notice = notice
+            WalletManager.shared.entity.notice = notice
         }
     }
    

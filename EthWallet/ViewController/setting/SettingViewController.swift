@@ -22,7 +22,7 @@ class SettingViewController: JXTableViewController {
         ]
     ]
     lazy var vm: Web3VM = {
-        let vm = Web3VM.init(keystoreBase64Str: WalletManager.manager.walletEntity.keystore)//自己的钱包
+        let vm = Web3VM.init(keystoreBase64Str: WalletManager.shared.entity.keystore)//自己的钱包
         return vm
     }()
     override func viewDidLoad() {
@@ -74,7 +74,7 @@ class SettingViewController: JXTableViewController {
         
         cell.iconView.image = UIImage(named: dict["image"]!)
         if indexPath.section == 0 {
-            cell.titleView.text = WalletManager.manager.walletEntity.name
+            cell.titleView.text = WalletManager.shared.entity.name
         } else {
             cell.titleView.text = dict["title"]
         }

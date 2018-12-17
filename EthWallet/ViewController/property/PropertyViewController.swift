@@ -73,7 +73,7 @@ class PropertyViewController: BaseViewController,UITableViewDelegate,UITableView
             cell.addressLabel.text = propertyEntity.tokenAddress
             cell.nameLabel.text = propertyEntity.shortName
             cell.codeBlock = {
-                print(WalletManager.manager.walletEntity.address)
+                print(WalletManager.shared.entity.address)
             }
             cell.addBlock = {
                 let vc = AddPropertyController()

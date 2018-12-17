@@ -26,8 +26,8 @@ import BigInt
  */
 struct EthUnit {
     
-    typealias Wei = BigInt
-    typealias GWei = BigInt
+    typealias Wei = BigUInt
+    typealias GWei = BigUInt
     typealias Ether = Decimal
     
     static let weiUnit = pow(Decimal.init(10), 0)

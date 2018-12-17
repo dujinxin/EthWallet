@@ -63,6 +63,7 @@
 		35A0F34421C63ECF006B2F65 /* WalletAddressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A0F34321C63ECF006B2F65 /* WalletAddressController.swift */; };
 		35A0F34621C661C4006B2F65 /* CreateSuccessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A0F34521C661C4006B2F65 /* CreateSuccessController.swift */; };
 		35A0F34821C667D7006B2F65 /* Import.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35A0F34721C667D7006B2F65 /* Import.storyboard */; };
+		35A0F34C21C7B1FF006B2F65 /* JXKeyStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A0F34B21C7B1FF006B2F65 /* JXKeyStoreManager.swift */; };
 		35CB0D9820BA5FB60092C5FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CB0D9720BA5FB60092C5FC /* AppDelegate.swift */; };
 		35CB0D9A20BA5FB60092C5FC /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CB0D9920BA5FB60092C5FC /* WalletViewController.swift */; };
 		35CB0D9D20BA5FB60092C5FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35CB0D9B20BA5FB60092C5FC /* Main.storyboard */; };
@@ -141,6 +142,7 @@
 		35A0F34321C63ECF006B2F65 /* WalletAddressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAddressController.swift; sourceTree = "<group>"; };
 		35A0F34521C661C4006B2F65 /* CreateSuccessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSuccessController.swift; sourceTree = "<group>"; };
 		35A0F34721C667D7006B2F65 /* Import.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Import.storyboard; sourceTree = "<group>"; };
+		35A0F34B21C7B1FF006B2F65 /* JXKeyStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXKeyStoreManager.swift; sourceTree = "<group>"; };
 		35CB0D9420BA5FB60092C5FC /* EthWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EthWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35CB0D9720BA5FB60092C5FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35CB0D9920BA5FB60092C5FC /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				35249D5120C15139001C1140 /* WalletManager.swift */,
 				351DD44321C4B3DB007E94FA /* JXRequest.swift */,
 				3598767320DE1F5F0027F982 /* EthUnit.swift */,
+				35A0F34B21C7B1FF006B2F65 /* JXKeyStoreManager.swift */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -515,34 +518,32 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-EthWallet/Pods-EthWallet-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
-				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/JXFMDBHelper/JXFMDBHelper.framework",
 				"${BUILT_PRODUCTS_DIR}/JXFoundation/JXFoundation.framework",
 				"${BUILT_PRODUCTS_DIR}/JX_AFNetworking/JX_AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
-				"${BUILT_PRODUCTS_DIR}/scrypt/scrypt.framework",
-				"${BUILT_PRODUCTS_DIR}/secp256k1_ios/secp256k1_ios.framework",
-				"${BUILT_PRODUCTS_DIR}/web3swift/web3swift.framework",
+				"${BUILT_PRODUCTS_DIR}/keccak.c/keccak.framework",
+				"${BUILT_PRODUCTS_DIR}/scrypt.c/scrypt.framework",
+				"${BUILT_PRODUCTS_DIR}/secp256k1.c/secp256k1.framework",
+				"${BUILT_PRODUCTS_DIR}/web3swift.pod/web3swift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JXFMDBHelper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JXFoundation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JX_AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/keccak.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/scrypt.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/secp256k1_ios.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/secp256k1.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/web3swift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -578,6 +579,7 @@
 				3598764D20DA25900027F982 /* JXHorizontalView.swift in Sources */,
 				351DD43B21C4A275007E94FA /* JXWkWebViewController.swift in Sources */,
 				3598765720DA37200027F982 /* SettingViewController.swift in Sources */,
+				35A0F34C21C7B1FF006B2F65 /* JXKeyStoreManager.swift in Sources */,
 				351DD45721C520EB007E94FA /* ReceiptViewController.swift in Sources */,
 				3598766E20DC927E0027F982 /* ExportPKViewController.swift in Sources */,
 				351DD44021C4A325007E94FA /* JXNavigationBar.swift in Sources */,

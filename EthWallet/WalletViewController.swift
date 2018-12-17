@@ -71,7 +71,7 @@ class WalletViewController: JXTableViewController {
 //            }
         case "walletDetail":
             if let vc = segue.destination as? WalletDetailController {
-                vc.dict = WalletManager.manager.walletDict
+                vc.dict = WalletManager.shared.walletDict
             }
         case "property":
             if let vc = segue.destination as? PropertyViewController, let entity = sender as? PropertyEntity {
@@ -85,8 +85,8 @@ class WalletViewController: JXTableViewController {
         return false
     }
     func resetMainView() {
-        if WalletManager.manager.isWalletExist == true {
-            self.title = WalletManager.manager.walletEntity.name
+        if WalletManager.shared.isWalletExist == true {
+            self.title = WalletManager.shared.entity.name
             self.defaultBackView.isHidden = true
             self.tableView?.isHidden = false
             
@@ -123,8 +123,8 @@ class WalletViewController: JXTableViewController {
     func dataInit(index: Int, total: Int, completion: @escaping (()->())) {
         let entity = PropertyEntity()
         
-        self.vm = Web3VM.init(keystoreBase64Str: WalletManager.manager.walletEntity.keystore)
-        guard let walletAddress = EthereumAddress(WalletManager.manager.walletEntity.address) else { return }
+        self.vm = Web3VM.init(keystoreBase64Str: WalletManager.shared.entity.keystore)
+        let walletAddress = Address(WalletManager.shared.entity.address)
         
         let group = DispatchGroup()
         
@@ -132,26 +132,28 @@ class WalletViewController: JXTableViewController {
         //1
         if index == 0 { //eth
             DispatchQueue.global().async {
-                let balanceResult = self.vm.web3.eth.getBalance(address: walletAddress)
-                guard case .success(let balance) = balanceResult else { return }
-                print("balance = ",balance)
+                let balanceResult = try? self.vm.web3.eth.getBalance(address: walletAddress)
+                
+                print("balance = ",balanceResult ?? 0)
                 DispatchQueue.main.async {
                     entity.shortName = "ETH"
                     entity.wholeName = "Ethereum"
                     entity.tokenAddress = "0x0000000000000000000000000000000000000000"
                     entity.image = "eth"
-                    entity.coinNum = balance
+                    entity.coinNum = balanceResult ?? 0
                 }
                 group.leave()
                 print("\(index)-\(index)")
             }
         } else { // token
-            let contractAddress = EthereumAddress("0x8553de7f3ce4993adbf02b0d676e4be4c5333398")! // BKX token on Ethereum mainnet
-            let contract = self.vm.web3.contract(Web3.Utils.erc20ABI, at: contractAddress, abiVersion: 2)! // utilize precompiled ERC20 ABI for your concenience
+            let contractAddress = Address("0x8553de7f3ce4993adbf02b0d676e4be4c5333398") // BKX token on Ethereum mainnet
+
             DispatchQueue.global().async {
-                guard let bkxBalanceResult = contract.method("balanceOf", parameters: [walletAddress] as [AnyObject], options: Web3Options.defaultOptions())?.call(options: nil) else {return} // encode parameters for transaction
-                guard case .success(let bkxBalance) = bkxBalanceResult, let bal = bkxBalance["0"] as? BigUInt else {return} // bkxBalance is [String: Any], and parameters are enumerated as "0", "1", etc in order of being returned. If returned parameter has a name in ABI, it is also duplicated
-                print(bkxBalance)
+                guard
+                    let contract = try? self.vm.web3.contract(Web3.Utils.erc20ABI, at: contractAddress), // utilize precompiled ERC20 ABI for your concenience
+                    let bkxBalanceResult = try? contract.method("balanceOf", parameters: [walletAddress] as [AnyObject], options: Web3Options.default).call(options: nil) else { return } // encode parameters for transaction
+                guard let bal = bkxBalanceResult["0"] as? BigUInt else {return} // bkxBalance is [String: Any], and parameters are enumerated as "0", "1", etc in order of being returned. If returned parameter has a name in ABI, it is also duplicated
+                print(bkxBalanceResult)
                 print("BKX token balance = " + String(bal))
                 
                 DispatchQueue.main.async {
@@ -213,8 +215,8 @@ class WalletViewController: JXTableViewController {
             let s = String(format: "%0.2f", self.totalWorth)
             cell.totalNumberLabel.text = "总资产"
             cell.infoLabel.text = "≈￥\(s)"
-            cell.addressLabel.text = WalletManager.manager.walletEntity.address
-            cell.nameLabel.text = WalletManager.manager.walletEntity.name
+            cell.addressLabel.text = WalletManager.shared.entity.address
+            cell.nameLabel.text = WalletManager.shared.entity.name
             cell.settingBlock = {
                 let vc = SettingViewController()
                 self.navigationController?.pushViewController(vc, animated: true)
@@ -226,8 +228,8 @@ class WalletViewController: JXTableViewController {
                 self.performSegue(withIdentifier: "walletDetail", sender: false)
             }
             cell.codeBlock = {
-                print(WalletManager.manager.walletEntity.address)
-                self.performSegue(withIdentifier: "walletAddress", sender: WalletManager.manager.walletEntity.address)
+                print(WalletManager.shared.entity.address)
+                self.performSegue(withIdentifier: "walletAddress", sender: WalletManager.shared.entity.address)
             }
             cell.addBlock = {
                 let vc = AddPropertyController()

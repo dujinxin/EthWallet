@@ -53,7 +53,7 @@ class ReceiptViewController: BaseViewController {
         self.title = "收款"
         
         
-        //self.noticeLabel.text = WalletManager.manager.walletEntity.address
+        //self.noticeLabel.text = WalletManager.shared.entity.address
         
         self.noticeLabel.text = "请转入\(tokenName)"
         self.receiptStr = self.getReceiptStr(t: type, contractAddress: contractAddress, value: 0)
@@ -69,13 +69,13 @@ class ReceiptViewController: BaseViewController {
         super.updateViewConstraints()
         self.topConstraint.constant = kNavStatusHeight + 44
     }
-    func getReceiptStr(t: Type, contractAddress: String = "", value: BigInt = 0) -> String {
+    func getReceiptStr(t: Type, contractAddress: String = "", value: BigUInt = 0) -> String {
         var s = ""
         if t == .eth {
-            s = "ethereum:\(WalletManager.manager.walletEntity.address)?decimal=\(18)&value=\(value)"
+            s = "ethereum:\(WalletManager.shared.entity.address)?decimal=\(18)&value=\(value)"
             
         } else {
-            s  = "ethereum:\(WalletManager.manager.walletEntity.address)?contractAddress=\(contractAddress)&decimal=\(18)&value=\(value)"
+            s  = "ethereum:\(WalletManager.shared.entity.address)?contractAddress=\(contractAddress)&decimal=\(18)&value=\(value)"
         }
         print(s)
         return s

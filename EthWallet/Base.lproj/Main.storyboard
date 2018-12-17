@@ -853,7 +853,7 @@
                                 <rect key="frame" x="89.5" y="172" width="196" height="196"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="转账成功" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heA-uu-xX7">
-                                <rect key="frame" x="153" y="378" width="69" height="21"/>
+                                <rect key="frame" x="153" y="378" width="70" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1006,7 +1006,7 @@
                                         <rect key="frame" x="24" y="0.0" width="307.5" height="49"/>
                                         <color key="textColor" red="0.23137254900000001" green="0.26274509800000001" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                         <connections>
                                             <outlet property="delegate" destination="56y-FN-gNU" id="pHW-an-NVf"/>
                                         </connections>

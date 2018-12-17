@@ -38,10 +38,10 @@ class WalletAddressController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
-        self.title = WalletManager.manager.walletEntity.name
+        self.title = WalletManager.shared.entity.name
         
-        self.addressLabel.text = WalletManager.manager.walletEntity.address
-        self.codeImageView.image = self.code(WalletManager.manager.walletEntity.address)
+        self.addressLabel.text = WalletManager.shared.entity.address
+        self.codeImageView.image = self.code(WalletManager.shared.entity.address)
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,7 +57,7 @@ class WalletAddressController: BaseViewController {
     }
     @IBAction func copyAddress(_ sender: Any) {
         let pals = UIPasteboard.general
-        pals.string = WalletManager.manager.walletEntity.address
+        pals.string = WalletManager.shared.entity.address
         ViewManager.showNotice("复制成功")
         
         self.confirmButton.backgroundColor = UIColor.lightGray

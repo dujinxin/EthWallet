@@ -41,21 +41,33 @@ class TransferViewController: BaseViewController {
         let item = UIBarButtonItem.init(customView: leftButton)
         return item
     }()
-    
+    lazy var keyboard: JXKeyboardToolBar = {
+        let k = JXKeyboardToolBar(frame: CGRect(), views: [addressTextField,numberTextField,remarkTextField])
+        k.showBlock = { (height, rect) in
+            print(height,rect)
+        }
+        k.tintColor = JXMainTextColor
+        k.toolBar.barTintColor = JXViewBgColor
+        k.backgroundColor = JXViewBgColor
+        
+        return k
+    }()
     
     var gasPrise : BigUInt = 0
     var password : String?
     var type : Type = .eth
     
     lazy var vm: Web3VM = {
-        let vm = Web3VM.init(keystoreBase64Str: WalletManager.manager.walletEntity.keystore)//自己的钱包
+        let vm = Web3VM.init(keystoreBase64Str: WalletManager.shared.entity.keystore)//自己的钱包
         return vm
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
+        
         self.title = "转账"
+        self.view.backgroundColor = UIColor.white
+        self.view.addSubview(self.keyboard)
         
         self.customNavigationItem.rightBarButtonItem = self.rightBarButtonItem
         ///以太坊节点：192.168.0.129，rpcport：8545
@@ -65,7 +77,7 @@ class TransferViewController: BaseViewController {
         //钱包密钥：123456
         
         
-        //self.addressTextField.text = WalletManager.manager.walletEntity.address
+        //self.addressTextField.text = WalletManager.shared.entity.address
         //self.numberTextField.text = "0.000000000000001"
         
         
@@ -123,14 +135,16 @@ class TransferViewController: BaseViewController {
     override func requestData() {
         
         if self.type == .eth {
+            
+
             DispatchQueue.global().async {
-                guard case .success(let gasPriceRinkeby) = self.vm.web3.eth.getGasPrice() else {return}
+                guard let gasPriceRinkeby = try? self.vm.web3.eth.getGasPrice() else {return}
                 print("web3?.eth.getGasPrice() = ",gasPriceRinkeby)
                 self.gasPrise = gasPriceRinkeby
             }
         } else {
             DispatchQueue.global().async {
-                guard case .success(let gasPriceRinkeby) = self.vm.web3.eth.getGasPrice() else {return}
+                guard let gasPriceRinkeby = try? self.vm.web3.eth.getGasPrice() else {return}
                 print("web3?.eth.getGasPrice() = ",gasPriceRinkeby)
                 self.gasPrise = gasPriceRinkeby
             }
@@ -192,19 +206,19 @@ class TransferViewController: BaseViewController {
     func web3KitGetBalance() {
         
         if self.type == .eth {
-            let address = EthereumAddress(WalletManager.manager.walletEntity.address)
+            let address = Address(WalletManager.shared.entity.address)
             DispatchQueue.global().async {
-                let balanceResult = self.vm.web3.eth.getBalance(address: address!)
-                guard case .success(let balance) = balanceResult else { return }
+                let balanceResult = try? self.vm.web3.eth.getBalance(address: address)
+                guard let balance = balanceResult else { return }
                 print("balance = ",balance)
             }
         } else {
-            let address = EthereumAddress(WalletManager.manager.walletEntity.address)
-            let contractAddress = EthereumAddress("0x8553de7f3ce4993adbf02b0d676e4be4c5333398")! // BKX token on Ethereum mainnet
-            let contract = self.vm.web3.contract(Web3.Utils.erc20ABI, at: contractAddress, abiVersion: 2)! // utilize precompiled ERC20 ABI for your concenience
+            let address = Address(WalletManager.shared.entity.address)
+            let contractAddress = Address("0x8553de7f3ce4993adbf02b0d676e4be4c5333398") // BKX token on Ethereum mainnet
+            let contract = try? self.vm.web3.contract(Web3.Utils.erc20ABI, at: contractAddress) // utilize precompiled ERC20 ABI for your concenience
             DispatchQueue.global().async {
-                guard let bkxBalanceResult = contract.method("balanceOf", parameters: [address] as [AnyObject], options: Web3Options.defaultOptions())?.call(options: nil) else {return} // encode parameters for transaction
-                guard case .success(let bkxBalance) = bkxBalanceResult, let bal = bkxBalance["0"] as? BigUInt else {return} // bkxBalance is [String: Any], and parameters are enumerated as "0", "1", etc in order of being returned. If returned parameter has a name in ABI, it is also duplicated
+                guard let bkxBalanceResult = try? contract?.method("balanceOf", parameters: [address] as [AnyObject], options: Web3Options.default).call(options: nil) else {return} // encode parameters for transaction
+                guard let bkxBalance = bkxBalanceResult, let bal = bkxBalance["0"] as? BigUInt else {return} // bkxBalance is [String: Any], and parameters are enumerated as "0", "1", etc in order of being returned. If returned parameter has a name in ABI, it is also duplicated
                 print(bkxBalance)
                 print("BKX token balance = " + String(bal))
             }
@@ -254,8 +268,8 @@ class TransferViewController: BaseViewController {
         //guard let remark = self.remarkTextField.text else { return }
         //guard let gas = self.gasLabel.text else { return }
         
-        guard let walletAddress = EthereumAddress(WalletManager.manager.walletEntity.address) else { return }
-        guard let toAddress = EthereumAddress(address) else { return }
+        let walletAddress = Address(WalletManager.shared.entity.address)
+        let toAddress = Address(address)
         var options = Web3Options.init()
         
         options.gasPrice = self.gasPrise //getGasPrice() =  2000000000
@@ -274,20 +288,15 @@ class TransferViewController: BaseViewController {
         
         DispatchQueue.global().async {
             //let intermediate = web3?.contract(Web3.Utils.coldWalletABI, at: EthereumAddress(address), abiVersion: 2)?.method(options: options)
-            guard let intermediate = self.vm.web3.eth.sendETH(from: walletAddress, to: toAddress, amount: number) else {return}
+            
+            guard let intermediate = try? self.vm.web3.eth.sendETH(to: toAddress, amount: BigUInt.init(number) ?? 0, extraData: Data(), options: options) else {return}
             
             //web3?.eth.sendETH(to: EthereumAddress("0x50d2cf603b4fa3107396fa49ac01469a3aaf0f79")!, amount: "0.001")
             //guard let intermediate = web3?.eth.sendETH(to: EthereumAddress("0x50d2cf603b4fa3107396fa49ac01469a3aaf0f79")!, amount: "0.001") else {return}
             
-            let result = intermediate.send(password: psd, options: options)
-            
-            switch result {
-            case .success(let res):
-                print(res.hash)
-                return
-            case .failure(let error):
-                print(error)
-            }
+            guard let result = try? intermediate.send(password: psd, options: options) else { return }
+            print(result.transaction)
+            print(result.hash)
         }
     }
     func sendERC20Token(_ psd:String) {
@@ -309,13 +318,9 @@ class TransferViewController: BaseViewController {
         
         return
         
-        guard let walletAddress = EthereumAddress(WalletManager.manager.walletEntity.address) else { return }
-        guard let toAddress = EthereumAddress(address) else { return }
+        let walletAddress = Address(WalletManager.shared.entity.address)
+        let toAddress = Address(address)
         
-        //        var decimals = BigUInt(0)
-        //        let intDecimals = Int(decimals)
-        //        guard let value = Web3.Utils.parseToBigUInt("0.00001", decimals: intDecimals) else {return}
-        //
         var options = Web3Options.init()  //Web3Options.defaultOptions()
         options.gasPrice = self.gasPrise // BigUInt("5000000000", radix: 10)!
         let v = Int(self.gasSlider.value)
@@ -332,30 +337,31 @@ class TransferViewController: BaseViewController {
         options.value = BigUInt(0)
         print(ether,wei,gasLimit)
         
-        //        guard let keystoreData = WalletManager.manager.getKeystoreData() else {return}
+        //        guard let keystoreData = WalletManager.shared.getKeystoreData() else {return}
         //        guard let keystoreV3 = EthereumKeystoreV3.init(keystoreData) else {return}
         //        let privateKey = try! keystoreV3.UNSAFE_getPrivateKeyData(password: "123456", account: EthereumAddress("0xc166ca53567b84f5bdf3bd42b74106ebec574cfe")!).toHexString()
         //        print("privateKey = ",privateKey)
         
         DispatchQueue.global().async {
-            let convenienceTokenTransfer = self.vm.web3.eth.sendERC20tokensWithNaturalUnits(tokenAddress: EthereumAddress("0x34a9a46340d0b76e423ea75e5a62b6a81ff35bf6")!, from: walletAddress, to: toAddress, amount: number, options: options)
-            let gasEstimateResult2 = convenienceTokenTransfer!.estimateGas(options: nil)
-            guard case .success(let gasEstimate2) = gasEstimateResult2 else {return}
-            options.gasLimit = gasEstimate2
-            let convenienceTransferResult = convenienceTokenTransfer!.send(password: psd, options: options)
-            switch convenienceTransferResult {
-            case .success(let res):
-                print("Token transfer successful = ",convenienceTransferResult.value ?? 0)
-                print(res)
-            case .failure(let error):
-                print(error)
-            }
+//
+//            let convenienceTokenTransfer = self.vm.web3.eth.sendERC20tokensWithNaturalUnits(tokenAddress: Address("0x34a9a46340d0b76e423ea75e5a62b6a81ff35bf6"), from: walletAddress, to: toAddress, amount: number, options: options)
+//            let gasEstimateResult2 = convenienceTokenTransfer.estimateGas(options: nil)
+//            guard case .success(let gasEstimate2) = gasEstimateResult2 else {return}
+//            options.gasLimit = gasEstimate2
+//            let convenienceTransferResult = convenienceTokenTransfer!.send(password: psd, options: options)
+//            switch convenienceTransferResult {
+//            case .success(let res):
+//                print("Token transfer successful = ",convenienceTransferResult.value ?? 0)
+//                print(res)
+//            case .failure(let error):
+//                print(error)
+//            }
         }
         
         
         
         //        DispatchQueue.global().async {
-        //            guard let intermediate = WalletManager.manager.web3?.eth.sendETH(from: EthereumAddress(self.address1)!, to: EthereumAddress(address)!, amount: number) else {return}
+        //            guard let intermediate = WalletManager.shared.web3?.eth.sendETH(from: EthereumAddress(self.address1)!, to: EthereumAddress(address)!, amount: number) else {return}
         //
         //            let result = intermediate.send(password: psd, options: options)
         //
@@ -509,13 +515,12 @@ class TransferViewController: BaseViewController {
         print(address,number,remark,gas)
         
         
-        guard let walletAddress = EthereumAddress(WalletManager.manager.walletEntity.address) else { return }
-        guard let toAddress = EthereumAddress(address) else {
-            ViewManager.showNotice("收款人地址有误")
-            return
-        }
+        let walletAddress = Address(WalletManager.shared.entity.address)
+        let toAddress = Address(address)
+            //ViewManager.showNotice("收款人地址有误")
+          
         
-        var options = Web3Options.defaultOptions()
+        var options = Web3Options.default
         options.value = BigUInt(0)
         options.from = walletAddress
         options.gasPrice = self.gasPrise //getGasPrice() =  2000000000
@@ -533,27 +538,26 @@ class TransferViewController: BaseViewController {
             let data = remark.data(using: .utf8) ?? Data()
             
             DispatchQueue.global().async {
-                //let intermediate = web3?.contract(Web3.Utils.coldWalletABI, at: EthereumAddress(address), abiVersion: 2)?.method(options: options)
-                guard let intermediate = self.vm.web3.eth.sendETH(from: walletAddress, to: toAddress, amount: number, units: Web3.Utils.Units.eth, extraData: data, options: options) else { return }
-                //guard let intermediate = self.vm.web3.eth.sendETH(from: walletAddress, to: toAddress, amount: number) else {return}
                 
-                //web3?.eth.sendETH(to: EthereumAddress("0x50d2cf603b4fa3107396fa49ac01469a3aaf0f79")!, amount: "0.001")
-                //guard let intermediate = web3?.eth.sendETH(to: EthereumAddress("0x50d2cf603b4fa3107396fa49ac01469a3aaf0f79")!, amount: "0.001") else {return}
                 
-                let result = intermediate.send(password: psd, options: options)
-                
-                DispatchQueue.main.async {
-                    self.hideMBProgressHUD()
-                    switch result {
-                    case .success(let res):
-                        print("交易哈希：",res.hash)
+                guard let intermediate = try? self.vm.web3.eth.sendETH(to: toAddress, amount: EthUnit.etherToWei(ether: Decimal.init(string: number) ?? 0), extraData: data, options: options) else { return }
+               
+                do {
+                    let result = try intermediate.send(password: psd, options: options)
+                    
+                    DispatchQueue.main.async {
+                        self.hideMBProgressHUD()
+                        
+                        print("交易哈希：",result.hash)
                         self.performSegue(withIdentifier: "transferSuccess", sender: nil)
-                        return
-                    case .failure(let error):
-                        ViewManager.showNotice(error.localizedDescription)
-                        print(error)
                     }
+                } catch let error{
+                    ViewManager.showNotice(error.localizedDescription)
+                    print(error)
                 }
+                
+                
+                
             }
         } else {
             
@@ -573,14 +577,14 @@ class TransferViewController: BaseViewController {
             DispatchQueue.global().async {
                 guard
                     let entity = self.entity,
-                    let tokenAddress = EthereumAddress(entity.tokenAddress),
+                    let tokenAddress = try? Address(entity.tokenAddress),
                     //1
                     //let convenienceTokenTransfer = self.vm.web3.eth.sendERC20tokensWithKnownDecimals(tokenAddress: tokenAddress, from: walletAddress, to: toAddress, amount: etherBigInt)
                     //2
                     //let convenienceTokenTransfer = self.vm.web3.eth.sendERC20tokensWithNaturalUnits(tokenAddress: tokenAddress, from: walletAddress, to: toAddress, amount: number, options: options)
                     //3
-                    let testToken = self.vm.web3.contract(Web3.Utils.erc20ABI, at: tokenAddress, abiVersion: 2),
-                    let convenienceTokenTransfer = testToken.method("transfer", parameters: [toAddress, etherBigInt] as [AnyObject], extraData: data, options: options)
+                    let testToken = try? self.vm.web3.contract(Web3.Utils.erc20ABI, at: tokenAddress),
+                    let convenienceTokenTransfer = try? testToken.method("transfer", parameters: [toAddress, etherBigInt] as [AnyObject], extraData: data, options: options)
                     else {
                         DispatchQueue.main.async {
                             self.hideMBProgressHUD()
@@ -588,41 +592,23 @@ class TransferViewController: BaseViewController {
                         }
                         return
                 }
-                
-                let gasEstimateResult2 = convenienceTokenTransfer.estimateGas(options: nil)
-                switch gasEstimateResult2 {
-                case .success(let res):
-                    options.gasLimit = res
-                    print("estimateGas = ",res)
-                case .failure(let error):
+            
+                do {
+                    let gasEstimateResult2 = try convenienceTokenTransfer.estimateGas(options: nil)
+                    options.gasLimit = gasEstimateResult2
+                    print("estimateGas = ",gasEstimateResult2)
+                    
+                    let convenienceTransferResult = try convenienceTokenTransfer.send(password: psd, options: options)
+                    print("交易哈希：",convenienceTransferResult.hash)
+                    
+                    self.hideMBProgressHUD()
+                    self.performSegue(withIdentifier: "transferSuccess", sender: nil)
+                } catch let error {
                     DispatchQueue.main.async {
                         self.hideMBProgressHUD()
                         ViewManager.showNotice(error.localizedDescription)
                     }
                     print(error)
-                }
-                //                guard case .success(let gasEstimate2) = gasEstimateResult2 else {
-                //                    DispatchQueue.main.async {
-                //                        self.hideMBProgressHUD()
-                //                        ViewManager.showNotice("系统错误")
-                //                    }
-                //                    return
-                //                }
-                //                options.gasLimit = gasEstimate2
-                
-                let convenienceTransferResult = convenienceTokenTransfer.send(password: psd, options: options)
-                DispatchQueue.main.async {
-                    self.hideMBProgressHUD()
-                    
-                    switch convenienceTransferResult {
-                    case .success(let res):
-                        print("交易哈希：",res.hash)
-                        self.performSegue(withIdentifier: "transferSuccess", sender: nil)
-                        return
-                    case .failure(let error):
-                        ViewManager.showNotice(error.localizedDescription)
-                        print(error)
-                    }
                 }
             }
         }
@@ -630,58 +616,6 @@ class TransferViewController: BaseViewController {
     }
     @objc func closeStatus() {
         self.statusBottomView.dismiss()
-    }
-    func testMethod() {
-        
-        DispatchQueue.global().async {
-            guard case .success(let allAddresses)? = WalletManager.manager.web3?.wallet.getAccounts() else {return}
-            print("web3?.wallet.getAccounts() = ",allAddresses)
-        }
-        DispatchQueue.global().async {
-            guard case .success(let allAddresses)? = WalletManager.manager.web3?.wallet.getCoinbase() else {return}
-            print("web3?.wallet.getCoinbase() = ",allAddresses)
-        }
-        DispatchQueue.global().async {
-            guard case .success(let allAddresses)? = WalletManager.manager.web3?.eth.getAccounts() else {return}
-            print("web3?.eth.getAccounts() = ",allAddresses)
-        }
-        DispatchQueue.global().async {
-            guard case .success(let gasPriceRinkeby)? = WalletManager.manager.web3?.eth.getGasPrice() else {return}
-            print("web3?.eth.getGasPrice() = ",gasPriceRinkeby)
-        }
-        DispatchQueue.global().async {
-            guard let gasPriceRinkeby = WalletManager.manager.web3?.eth.getAccountsPromise() else {return}
-            
-            print("web3?.eth.getAccountsPromise() = ",gasPriceRinkeby)
-        }
-    }
-    
-    
-    func testSendETH() {
-        guard let keystoreData = WalletManager.manager.getKeystoreData() else {return}
-        //guard let keystoreV3 = BIP32Keystore.init(keystoreData) else {return}
-        guard let keystoreV3 = EthereumKeystoreV3.init(keystoreData) else {return}
-        let web3Rinkeby = Web3.new(URL(string: "http://192.168.0.129:8545")!)
-        let keystoreManager = KeystoreManager.init([keystoreV3])
-        web3Rinkeby?.addKeystoreManager(keystoreManager)
-        guard case .success(let gasPriceRinkeby)? = web3Rinkeby?.eth.getGasPrice() else {return}
-        let sendToAddress = EthereumAddress(WalletManager.manager.walletEntity.address)!
-        guard let intermediate = web3Rinkeby?.eth.sendETH(to: sendToAddress, amount: "0.001") else {return}
-        var options = Web3Options.defaultOptions()
-        if keystoreV3.addresses?.first != nil{
-            options.from = keystoreV3.addresses?.first
-        } else {
-            // options.from =
-        }
-        
-        options.gasPrice = gasPriceRinkeby
-        let result = intermediate.send(password: "123456", options: options)
-        switch result {
-        case .success(let res):
-            print(res)
-        case .failure(let error):
-            print(error)
-        }
     }
     
 }

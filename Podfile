@@ -6,7 +6,7 @@ target 'EthWallet' do
   
     use_frameworks!
 
-    pod 'web3swift'
+    pod 'web3swift.pod'
     pod 'JXFMDBHelper'
     pod 'JXFoundation'
     pod 'MBProgressHUD'

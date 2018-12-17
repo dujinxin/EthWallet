@@ -110,7 +110,7 @@ class WalletDetailController: JXTableViewController {
         
         cell.iconView.image = UIImage(named: dict["image"]!)
         if indexPath.section == 0 {
-            cell.titleView.text = WalletManager.manager.walletEntity.name
+            cell.titleView.text = WalletManager.shared.entity.name
         } else {
             cell.titleView.text = dict["title"]
         }
@@ -193,9 +193,9 @@ class WalletDetailController: JXTableViewController {
         } else if indexPath.row == 3 { //导出私钥
             guard let keystoreBase64Str = self.dict["keystore"] as? String else {return}
             self.vm = Web3VM.init(keystoreBase64Str: keystoreBase64Str)
-            let address = self.vm.keystore?.addresses![0]
+            let address = self.vm.keystore?.addresses[0]
             
-            if let privateKey = try? self.vm?.keystore?.UNSAFE_getPrivateKeyData(password: password, account: address!).toHexString() {
+            if let privateKey = try? self.vm?.keystore?.UNSAFE_getPrivateKeyData(password: password, account: address!).hex {
                 
                 let vc = ExportPKViewController()
                 vc.privateKeyStr = privateKey ?? ""

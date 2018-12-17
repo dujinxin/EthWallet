@@ -67,30 +67,5 @@ class AddPropertyController: JXTableViewController {
 //        tableView.deselectRow(at: indexPath, animated: true)
 //        let dict = dataArray[indexPath.row]
 //        self.performSegue(withIdentifier: "walletDetail", sender: dict)
-        
-        
-        guard
-            let keystoreData = Data.init(base64Encoded: WalletManager.manager.walletEntity.keystore, options: .ignoreUnknownCharacters),
-            let keystoreStr = String.init(data: keystoreData, encoding: .utf8) else {
-                return
-        }
-        guard let keystoreV3 = EthereumKeystoreV3.init(keystoreStr) else {return }
-        let keystoreManager = KeystoreManager.init([keystoreV3])
-        WalletManager.manager.web3?.addKeystoreManager(keystoreManager)
-        
-        guard let ethereumAddress = EthereumAddress(WalletManager.manager.walletEntity.address) else {
-            return
-        }
-        DispatchQueue.global().async {
-            let balanceResult = WalletManager.manager.web3?.eth.getBalance(address: ethereumAddress)
-            guard case .success(let balance)? = balanceResult else { return }
-            print("balance = ",balance)
-            DispatchQueue.main.async {
-                let ether = EthUnit.weiToEther(wei: EthUnit.Wei(balance))
-                print(ether)
-            }
-        }
-        
     }
-
 }

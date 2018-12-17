@@ -76,6 +76,3 @@ let JXOrderDetailBgColor = JXFfffffColor
 let JXSeparatorColor = UIColor.rgbColor(rgbValue: 0xd3dfef)
 
 
-
-
-		

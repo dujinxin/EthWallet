@@ -79,7 +79,8 @@ class PrivateKeyController: BaseViewController {
         guard let name = self.nameTextField.text else { return }
         guard let password = self.passwordTextField.text else { return }
         guard let privateKeyStr = self.textView.text else { return }
-        guard let keyStore1 = try? EthereumKeystoreV3.init(privateKey: Data.init(hex: privateKeyStr), password: password),
+        guard
+            let keyStore1 = try? EthereumKeystoreV3.init(privateKey: privateKeyStr.hex, password: password),
             let keyStore = keyStore1 else {
             print("keyStore无效")
             return
@@ -97,7 +98,7 @@ class PrivateKeyController: BaseViewController {
         guard let keystoreData1 = keystoreData else { return }
         let keystoreBase64Str = keystoreData1.base64EncodedString()
         
-        let address = keyStore.addresses![0]
+        let address = keyStore.addresses[0]
         //let privateKey = try! keyStore.UNSAFE_getPrivateKeyData(password: password, account: address).toHexString()
         
         let dict = ["name":name,"isDefault":false,"address":address.address,"keystore":keystoreBase64Str] as [String : Any]

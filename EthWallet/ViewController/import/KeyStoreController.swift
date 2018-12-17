@@ -117,7 +117,7 @@ class KeyStoreController: BaseViewController {
         guard let keystoreData = keystoreStr.data(using: .utf8) else { return }
         
         let keystoreBase64Str = keystoreData.base64EncodedString(options: .lineLength64Characters)
-        let address = keyStore.addresses![0]
+        let address = keyStore.addresses[0]
         //let privateKey = try! keyStore.UNSAFE_getPrivateKeyData(password: password, account: address).toHexString()
         
         let dict = ["name":name,"isDefault":false,"address":address.address,"keystore":keystoreBase64Str] as [String : Any]

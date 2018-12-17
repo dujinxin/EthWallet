@@ -54,8 +54,6 @@ class CreateWalletController : BaseViewController{
     
     @IBAction func createWallet(_ sender: Any) {
         
-        //        self.performSegue(withIdentifier: "createSuccess", sender: nil)
-        //        return
         
         guard let name = self.walletNameTextField.text else { return }
         guard let password = self.passwordTextField.text else { return }
@@ -75,7 +73,7 @@ class CreateWalletController : BaseViewController{
         guard let keystoreData1 = keystoreData else { return }
         let keystoreBase64Str = keystoreData1.base64EncodedString()
         
-        let address = keyStore.addresses![0]
+        let address = keyStore.addresses[0]
         
         let dict = ["name":name,"isDefault":false,"address":address.address ,"keystore":keystoreBase64Str] as [String : Any]
         
@@ -83,7 +81,7 @@ class CreateWalletController : BaseViewController{
         let isSuccess = WalletDB.shareInstance.insertData(data: dict)
         
         if isSuccess {
-            let _ = WalletManager.manager.switchWallet(dict: dict)
+            let _ = WalletManager.shared.switchWallet(dict: dict)
             //            if let block = backBlock {
             //                block()
             //            }
@@ -94,7 +92,44 @@ class CreateWalletController : BaseViewController{
             print("保存钱包失败")
         }
     }
-    
+    func createEthereumKeystoreV3(){
+        guard let name = self.walletNameTextField.text else { return }
+        guard let password = self.passwordTextField.text else { return }
+        guard let confirmPsd = self.confirmPsdTextField.text else { return }
+        guard password == confirmPsd else { return }
+        
+        let keyStore1 : EthereumKeystoreV3?
+        do {
+            keyStore1 = try EthereumKeystoreV3(password: password)
+        } catch let error {
+            print(error)
+            fatalError("keyStore创建失败")
+        }
+        
+        guard let keyStore = keyStore1 else { return }
+        guard let keystoreData = try? keyStore.serialize() else { return }
+        guard let keystoreData1 = keystoreData else { return }
+        let keystoreBase64Str = keystoreData1.base64EncodedString()
+        
+        let address = keyStore.addresses[0]
+        
+        let dict = ["name":name,"isDefault":false,"address":address.address ,"keystore":keystoreBase64Str] as [String : Any]
+        
+        let _ = WalletDB.shareInstance.createTable(keys: Array(dict.keys))
+        let isSuccess = WalletDB.shareInstance.insertData(data: dict)
+        
+        if isSuccess {
+            let _ = WalletManager.shared.switchWallet(dict: dict)
+            //            if let block = backBlock {
+            //                block()
+            //            }
+            self.performSegue(withIdentifier: "createSuccess", sender: nil)
+            
+            //self.navigationController?.popViewController(animated: true)
+        } else {
+            print("保存钱包失败")
+        }
+    }
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.

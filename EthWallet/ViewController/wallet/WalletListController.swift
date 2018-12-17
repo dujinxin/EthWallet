@@ -107,7 +107,7 @@ class WalletListController: JXTableViewController {
         guard
             let dict = dataArray[indexPath.row] as? Dictionary<String, Any>,
             WalletDB.shareInstance.createTable(keys: Array(dict.keys)) == true,
-            WalletManager.manager.switchWallet(dict: dict) == true else {
+            WalletManager.shared.switchWallet(dict: dict) == true else {
               return
         }
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationwalletChange"), object: nil)

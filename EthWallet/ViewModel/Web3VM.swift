@@ -11,15 +11,19 @@ import web3swift
 import JX_AFNetworking
 
 class Web3VM : BaseViewModel{
+    
+    //static let shared = Web3VM()
+    
     //https://mainnet.infura.io/0a8aa5d2db674577bf61aa4be1e38472
     //https://mainnet.infura.io/v3/e91a846b69f14dc1a87fbd19a52955ed
     
-    var web3 = Web3.InfuraMainnetWeb3() //主网
-    //var web3 = Web3.InfuraMainnetWeb3(accessToken: "0a8aa5d2db674577bf61aa4be1e38472") //主网测试token
-    //var web3 = Web3.InfuraMainnetWeb3(accessToken: "e91a846b69f14dc1a87fbd19a52955ed") //主网测试token
+    //var web3 = Web3.init(infura: .mainnet) //主网
+    var web3 = Web3.init(infura: .mainnet, accessToken: "0a8aa5d2db674577bf61aa4be1e38472") //主网测试token
+    //var web3 = Web3.init(infura: .mainnet, accessToken: "e91a846b69f14dc1a87fbd19a52955ed") //主网测试token
     
-    //var web3 = Web3.new(URL(string: "http://192.168.0.129:8545")!) //自己搭建的
+    //var web3 = Web3.new(URL(string: "http://192.168.0.129:8545")!)! //自己搭建的
     var keystore: EthereumKeystoreV3?
+    
     
     init(keystoreData:Data) {
         super.init()
@@ -56,25 +60,6 @@ class Web3VM : BaseViewModel{
     }
     
     
-    //    func convertKeystoreBy(_ keystoreData:String, removePrefix:String = "0x") -> String {
-    //        guard
-    //            let result = try? JSONSerialization.jsonObject(with: data, options: []),
-    //            var dict = result as? [String : Any],
-    //            let address = dict["address"] as? String
-    //            else {
-    //                fatalError("Not format keystoreData!")
-    //        }
-    //        if address.hasPrefix("0x"){
-    //            print("address：\(address)")
-    //            return data
-    //        } else {
-    //            let newAddress = "0x" + address
-    //            dict["address"] = newAddress
-    //            print("newAddress：\(newAddress)")
-    //            return try? JSONSerialization.data(withJSONObject: dict, options: [])
-    //        }
-    //    }
-    
     func getKeystoreData() -> Data?{
         let pathUrl = URL(fileURLWithPath: NSHomeDirectory() + "/Documents/keystore1.json")
         
@@ -102,9 +87,6 @@ class Web3VM : BaseViewModel{
             print("newAddress：\(newAddress)")
             return try? JSONSerialization.data(withJSONObject: dict, options: [])
         }
-        //self.userDict = dict as! [String : Any]
-        
-        //        return data
     }
     
     
