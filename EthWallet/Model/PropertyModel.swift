@@ -7,19 +7,27 @@
 //
 
 import UIKit
+import BigInt
 
 class PropertyModel: NSObject {
 
 }
 
-class PropertyEntity: PropertyModel {
+class PropertyEntity: BaseModel {
     
     @objc var shortName : String?
     @objc var wholeName : String?
-    @objc var address   : String?
+    @objc var tokenAddress   : String = ""
     @objc var isAdded   : Bool = false
     @objc var image     : String?
     
-    @objc var coinNum   : String?
+    var coinNum   : BigUInt = 0
+    @objc var prise     : Double = 0
+    @objc var CNY       : String = "0"
     
+}
+class CoinEntity: BaseModel {
+    var name : String?
+    var coinNum   : BigUInt = 0
+    var CNY       : String = ""
 }

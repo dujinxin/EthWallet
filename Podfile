@@ -8,5 +8,8 @@ target 'EthWallet' do
 
     pod 'web3swift'
     pod 'JXFMDBHelper'
+    pod 'JXFoundation'
+    pod 'MBProgressHUD'
+    pod 'JX_AFNetworking' 
     
 end
