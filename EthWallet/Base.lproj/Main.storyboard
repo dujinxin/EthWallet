@@ -557,8 +557,41 @@
                                             <constraint firstAttribute="bottom" secondItem="fF6-sS-HaW" secondAttribute="bottom" constant="1" id="sNa-Ys-eRi"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6VH-ol-DYG">
+                                        <rect key="frame" x="0.0" y="150" width="375" height="50"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码提示信息" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F9C-KB-K9I">
+                                                <rect key="frame" x="24" y="0.0" width="327" height="49"/>
+                                                <color key="textColor" red="0.23137254900000001" green="0.26274509800000001" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="tvS-qm-BDX" id="z4d-J7-W3z"/>
+                                                </connections>
+                                            </textField>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQH-gc-CbB">
+                                                <rect key="frame" x="10" y="49" width="355" height="1"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="5Sw-vI-kWW"/>
+                                                    <constraint firstAttribute="height" constant="1" id="DTw-va-6z3"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="RQH-gc-CbB" firstAttribute="leading" secondItem="6VH-ol-DYG" secondAttribute="leading" constant="10" id="5FT-Yu-eNd"/>
+                                            <constraint firstAttribute="trailing" secondItem="RQH-gc-CbB" secondAttribute="trailing" constant="10" id="6rg-hf-BgT"/>
+                                            <constraint firstAttribute="trailing" secondItem="F9C-KB-K9I" secondAttribute="trailing" constant="24" id="C6h-ma-pwu"/>
+                                            <constraint firstAttribute="bottom" secondItem="F9C-KB-K9I" secondAttribute="bottom" constant="1" id="N7U-Ik-E8S"/>
+                                            <constraint firstItem="F9C-KB-K9I" firstAttribute="top" secondItem="6VH-ol-DYG" secondAttribute="top" id="UYp-cH-Qmi"/>
+                                            <constraint firstAttribute="height" constant="50" id="bMV-ac-Xll"/>
+                                            <constraint firstAttribute="bottom" secondItem="RQH-gc-CbB" secondAttribute="bottom" id="e1K-yh-pyw"/>
+                                            <constraint firstItem="F9C-KB-K9I" firstAttribute="leading" secondItem="6VH-ol-DYG" secondAttribute="leading" constant="24" id="sRF-Rm-mXO"/>
+                                        </constraints>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wrU-wx-H1y" customClass="JXShadowButton" customModule="EthWallet" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="190" width="327" height="44"/>
+                                        <rect key="frame" x="24" y="240" width="327" height="44"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="8ec-aa-EmB"/>
@@ -575,15 +608,18 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="CST-QK-6d5" secondAttribute="trailing" id="6xR-br-twB"/>
                                     <constraint firstItem="hIb-KW-vrV" firstAttribute="top" secondItem="CST-QK-6d5" secondAttribute="bottom" id="7gq-Ve-7dv"/>
+                                    <constraint firstItem="6VH-ol-DYG" firstAttribute="top" secondItem="hIb-KW-vrV" secondAttribute="bottom" id="Cm1-bb-Tyo"/>
                                     <constraint firstItem="hIb-KW-vrV" firstAttribute="leading" secondItem="ryH-lj-oZv" secondAttribute="leading" id="HRu-XJ-ksg"/>
+                                    <constraint firstAttribute="trailing" secondItem="6VH-ol-DYG" secondAttribute="trailing" id="MpC-fc-P7c"/>
+                                    <constraint firstItem="6VH-ol-DYG" firstAttribute="leading" secondItem="ryH-lj-oZv" secondAttribute="leading" id="QvD-uD-V6O"/>
                                     <constraint firstAttribute="trailing" secondItem="wrU-wx-H1y" secondAttribute="trailing" constant="24" id="TTO-5b-43R"/>
                                     <constraint firstItem="CST-QK-6d5" firstAttribute="top" secondItem="RDD-KE-HSL" secondAttribute="bottom" id="ZMe-Ps-PMh"/>
                                     <constraint firstAttribute="trailing" secondItem="RDD-KE-HSL" secondAttribute="trailing" id="bSe-YB-xA1"/>
+                                    <constraint firstItem="wrU-wx-H1y" firstAttribute="top" secondItem="6VH-ol-DYG" secondAttribute="bottom" constant="40" id="bzK-kT-2zw"/>
                                     <constraint firstItem="CST-QK-6d5" firstAttribute="leading" secondItem="ryH-lj-oZv" secondAttribute="leading" id="dgi-Xy-8Wd"/>
                                     <constraint firstItem="RDD-KE-HSL" firstAttribute="leading" secondItem="ryH-lj-oZv" secondAttribute="leading" id="ilc-Bf-FJ9"/>
                                     <constraint firstItem="wrU-wx-H1y" firstAttribute="leading" secondItem="ryH-lj-oZv" secondAttribute="leading" constant="24" id="kVV-6A-Vg0"/>
                                     <constraint firstAttribute="trailing" secondItem="hIb-KW-vrV" secondAttribute="trailing" id="oUZ-hl-WRX"/>
-                                    <constraint firstItem="wrU-wx-H1y" firstAttribute="top" secondItem="hIb-KW-vrV" secondAttribute="bottom" constant="40" id="tYT-lS-mUk"/>
                                     <constraint firstItem="RDD-KE-HSL" firstAttribute="top" secondItem="ryH-lj-oZv" secondAttribute="top" id="xgR-p2-Jeo"/>
                                 </constraints>
                             </view>
@@ -601,6 +637,7 @@
                         <outlet property="confirmPsdTextField" destination="fF6-sS-HaW" id="nY6-mm-uO1"/>
                         <outlet property="createButton" destination="wrU-wx-H1y" id="T3A-en-GeP"/>
                         <outlet property="passwordTextField" destination="VUQ-Zx-SPX" id="fxq-nd-jln"/>
+                        <outlet property="remarkTextField" destination="F9C-KB-K9I" id="m60-GM-rrT"/>
                         <outlet property="topConstraint" destination="9we-rV-jTb" id="n2T-8B-frO"/>
                         <outlet property="walletNameTextField" destination="VhQ-lB-1Mn" id="dxp-aM-cMU"/>
                         <segue destination="p9M-me-GW9" kind="show" identifier="createSuccess" id="VP7-Gu-JR1"/>
@@ -853,7 +890,7 @@
                                 <rect key="frame" x="89.5" y="172" width="196" height="196"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="转账成功" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heA-uu-xX7">
-                                <rect key="frame" x="153" y="378" width="70" height="21"/>
+                                <rect key="frame" x="152.5" y="378" width="70" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

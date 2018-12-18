@@ -26,8 +26,6 @@ class WalletViewController: JXTableViewController {
     var prise : Double = 0
     var totalWorth : Double = 0
     
-    var vm : Web3VM!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "钱包"
@@ -123,7 +121,6 @@ class WalletViewController: JXTableViewController {
     func dataInit(index: Int, total: Int, completion: @escaping (()->())) {
         let entity = PropertyEntity()
         
-        self.vm = Web3VM.init(keystoreBase64Str: WalletManager.shared.entity.keystore)
         let walletAddress = Address(WalletManager.shared.entity.address)
         
         let group = DispatchGroup()
@@ -132,7 +129,7 @@ class WalletViewController: JXTableViewController {
         //1
         if index == 0 { //eth
             DispatchQueue.global().async {
-                let balanceResult = try? self.vm.web3.eth.getBalance(address: walletAddress)
+                let balanceResult = try? WalletManager.shared.vm.web3.eth.getBalance(address: walletAddress)
                 
                 print("balance = ",balanceResult ?? 0)
                 DispatchQueue.main.async {
@@ -150,7 +147,7 @@ class WalletViewController: JXTableViewController {
 
             DispatchQueue.global().async {
                 guard
-                    let contract = try? self.vm.web3.contract(Web3.Utils.erc20ABI, at: contractAddress), // utilize precompiled ERC20 ABI for your concenience
+                    let contract = try? WalletManager.shared.vm.web3.contract(Web3.Utils.erc20ABI, at: contractAddress), // utilize precompiled ERC20 ABI for your concenience
                     let bkxBalanceResult = try? contract.method("balanceOf", parameters: [walletAddress] as [AnyObject], options: Web3Options.default).call(options: nil) else { return } // encode parameters for transaction
                 guard let bal = bkxBalanceResult["0"] as? BigUInt else {return} // bkxBalance is [String: Any], and parameters are enumerated as "0", "1", etc in order of being returned. If returned parameter has a name in ABI, it is also duplicated
                 print(bkxBalanceResult)
@@ -218,8 +215,14 @@ class WalletViewController: JXTableViewController {
             cell.addressLabel.text = WalletManager.shared.entity.address
             cell.nameLabel.text = WalletManager.shared.entity.name
             cell.settingBlock = {
-                let vc = SettingViewController()
+                let storyboard = UIStoryboard(name: "Export", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "verifyMnemonicVC") as! VerifyMnemonicController
+                
                 self.navigationController?.pushViewController(vc, animated: true)
+                
+//                //let vc = SettingViewController()
+//                let vc = VerifyMnemonicController()
+//                self.navigationController?.pushViewController(vc, animated: true)
             }
             cell.scanBlock = {
                 //self.performSegue(withIdentifier: "receipt", sender: nil)

@@ -28,7 +28,7 @@ class WalletListController: JXTableViewController {
         
         let date1 = Date()
         
-        dataArray = WalletDB.shareInstance.selectData()!
+        dataArray = WalletDB.shared.selectData()!
         let date2 = Date()
         
         
@@ -49,14 +49,14 @@ class WalletListController: JXTableViewController {
             let vc = segue.destination as! CreateWalletController
             vc.backBlock = { ()->() in
                 self.dataArray.removeAll()
-                self.dataArray = WalletDB.shareInstance.selectData()!
+                self.dataArray = WalletDB.shared.selectData()!
                 self.tableView?.reloadData()
             }
         case "importWallet":
             let vc = segue.destination as! ImportWalletController
             vc.backBlock = { ()->() in
                 self.dataArray.removeAll()
-                self.dataArray = WalletDB.shareInstance.selectData()!
+                self.dataArray = WalletDB.shared.selectData()!
                 self.tableView?.reloadData()
             }
         case "walletDetail":
@@ -106,7 +106,7 @@ class WalletListController: JXTableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         guard
             let dict = dataArray[indexPath.row] as? Dictionary<String, Any>,
-            WalletDB.shareInstance.createTable(keys: Array(dict.keys)) == true,
+            WalletDB.shared.createTable(keys: Array(dict.keys)) == true,
             WalletManager.shared.switchWallet(dict: dict) == true else {
               return
         }

@@ -66,6 +66,13 @@ class KeyStoreController: BaseViewController {
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(iOS 11.0, *) {
+            self.scrollView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
+        
         self.view.superview?.addSubview(self.keyboard)
         
         print(view.bounds.height)
@@ -121,8 +128,8 @@ class KeyStoreController: BaseViewController {
         //let privateKey = try! keyStore.UNSAFE_getPrivateKeyData(password: password, account: address).toHexString()
         
         let dict = ["name":name,"isDefault":false,"address":address.address,"keystore":keystoreBase64Str] as [String : Any]
-        let _ = WalletDB.shareInstance.createTable(keys: Array(dict.keys))
-        let isSuc = WalletDB.shareInstance.appendWallet(data: dict, key: address.address)
+        let _ = WalletDB.shared.createTable(keys: Array(dict.keys))
+        let isSuc = WalletDB.shared.appendWallet(data: dict, key: address.address)
         if isSuc {
             print("添加成功")
             if let block = backBlock {

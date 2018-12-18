@@ -10,9 +10,30 @@ import Foundation
 import web3swift
 import JX_AFNetworking
 
+
+/*
+ {
+    "version":3,
+    "id":" 33f582c4-0432-4ae7-8416-476dec347135",
+    "crypto":{
+      "ciphertext":"d6710f77bf6327b7bfdaeec3c9ffa94b1077c45e01170c6e6f419cc5bff68aa0",
+      "cipherparams":{"iv":"43f7f8880519540d68fd296b1d7ab529"},
+      "kdf":"scrypt",
+      "kdfparams":{
+         "r":6,
+         "p":1,
+         "n":4096,
+         "dklen":32,
+         "salt":"4aaf93ff3e4e8215f7b435ff06cac4b3e987f688fea7ea72c7b9b31eab56dab0"
+       },
+      "mac":"e89d42e0c8404659775a09d4121ea714501a39c8b45166c47e6a2c61d3f8065c",
+      "cipher":"aes-128-cbc"
+    },
+    "address":"0xe156adcd604330357595e5c8d38dc7664b7c1314"
+ }
+ */
+
 class Web3VM : BaseViewModel{
-    
-    //static let shared = Web3VM()
     
     //https://mainnet.infura.io/0a8aa5d2db674577bf61aa4be1e38472
     //https://mainnet.infura.io/v3/e91a846b69f14dc1a87fbd19a52955ed
@@ -22,27 +43,65 @@ class Web3VM : BaseViewModel{
     //var web3 = Web3.init(infura: .mainnet, accessToken: "e91a846b69f14dc1a87fbd19a52955ed") //主网测试token
     
     //var web3 = Web3.new(URL(string: "http://192.168.0.129:8545")!)! //自己搭建的
-    var keystore: EthereumKeystoreV3?
     
-    
-    init(keystoreData:Data) {
+    init(bIP32KeystoreJsonStr: String) {
+        super.init()
+        //let keystoreJsonStr1 = String.convertKeystore(keystoreJsonStr)
+        guard JSONSerialization.isValidJSONObject(bIP32KeystoreJsonStr) == true else {
+            fatalError("keystore is not Json string")
+        }
+//        guard
+//            let result = try? JSONSerialization.data(withJSONObject: bIP32KeystoreJsonStr, options: []),
+//            let jsonStr = String.init(data: result, encoding: .utf8) else{
+//                return
+//        }
+        guard let keystore = BIP32Keystore.init(bIP32KeystoreJsonStr) else {return}
+        let keystoreManager = KeystoreManager.init([keystore])
+        self.web3.addKeystoreManager(keystoreManager)
+
+    }
+    init(bIP32KeystoreJsonData: String) {
+        super.init()
+        
+        guard let keystore = BIP32Keystore.init(bIP32KeystoreJsonData) else {return}
+        let keystoreManager = KeystoreManager.init([keystore])
+        self.web3.addKeystoreManager(keystoreManager)
+       
+    }
+    init(bIP32KeystoreBase64Str: String) {
+        super.init()
+        guard
+            bIP32KeystoreBase64Str.isEmpty == false,
+            
+            let keystoreData = Data.init(base64Encoded: bIP32KeystoreBase64Str, options: .ignoreUnknownCharacters)
+            //,let keystoreStr = String.init(data: keystoreData, encoding: .utf8)
+            else {
+                return
+        }
+        //let keystoreJsonStr = String.convertKeystore(keystoreStr)
+        
+        guard let keystore = BIP32Keystore.init(keystoreData) else {return}
+        let keystoreManager = KeystoreManager.init([keystore])
+        self.web3.addKeystoreManager(keystoreManager)
+    }
+    //MARK:EthereumKeystoreV3
+    init(keystoreData: Data) {
         super.init()
         
         guard let keystoreV3 = EthereumKeystoreV3.init(keystoreData) else {return}
         let keystoreManager = KeystoreManager.init([keystoreV3])
         self.web3.addKeystoreManager(keystoreManager)
-        self.keystore = keystoreV3
+
     }
-    init(keystoreJsonStr:String) {
+    init(keystoreJsonStr: String) {
         super.init()
         let keystoreJsonStr1 = String.convertKeystore(keystoreJsonStr)
         
         guard let keystoreV3 = EthereumKeystoreV3.init(keystoreJsonStr1) else {return}
         let keystoreManager = KeystoreManager.init([keystoreV3])
         self.web3.addKeystoreManager(keystoreManager)
-        self.keystore = keystoreV3
     }
-    init(keystoreBase64Str:String) {
+    init(keystoreBase64Str: String) {
         super.init()
         guard
             keystoreBase64Str.isEmpty == false,
@@ -56,7 +115,6 @@ class Web3VM : BaseViewModel{
         guard let keystoreV3 = EthereumKeystoreV3.init(keystoreJsonStr) else {return}
         let keystoreManager = KeystoreManager.init([keystoreV3])
         self.web3.addKeystoreManager(keystoreManager)
-        self.keystore = keystoreV3
     }
     
     
@@ -227,7 +285,7 @@ class Web3Request: JXRequest {
 }
 extension String {
     
-    static func convertKeystore(_ keystoreStr: String, addPrefix: String = "0x") -> String {
+    static func convertKeystore(_ keystoreStr: String, addPrefixStr str: String = "0x") -> String {
         
         guard
             let data = keystoreStr.data(using: .utf8),
@@ -237,11 +295,11 @@ extension String {
             else {
                 fatalError("Not format keystoreData!")
         }
-        if address.hasPrefix("0x"){
+        if address.hasPrefix(str){
             print("convertKeystore func","address：\(address)")
             return keystoreStr
         } else {
-            let newAddress = "0x" + address
+            let newAddress = str + address
             dict["address"] = newAddress
             print("newAddress：\(newAddress)")
             guard

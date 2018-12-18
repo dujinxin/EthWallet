@@ -65,7 +65,11 @@ class ExportKSTextController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if #available(iOS 11.0, *) {
+            self.scrollView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
         self.textView.text = self.keystoreStr
     }
 

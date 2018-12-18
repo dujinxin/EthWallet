@@ -18,13 +18,14 @@ enum WalletType {
 
 class WalletEntity: NSObject {
     
-    @objc var isDefault : Bool = false           //
+    @objc var isDefault : Int = 0// 0, 1         //是否为默认钱包
+    @objc var isAppWallet : Int = 0// 0, 1       //是否为本app钱包
     @objc var name : String = ""                 //钱包名称
+    @objc var mnemonics : String = ""            //助记词
     @objc var address : String = ""              //钱包地址
-    @objc var keystore : String = ""
+    @objc var keystore : String = ""             //keystore
     
-    @objc var notice : String = ""               //密码提示
-    
+    @objc var remark : String = ""               //密码提示
     
     override func setValue(_ value: Any?, forUndefinedKey key: String) {
         print("")
@@ -35,16 +36,34 @@ class WalletManager : NSObject{
     
     static let shared = WalletManager()
     
+    //MARK:WalletEntity
     //实体
     var entity = WalletEntity()
     //字典
-    var walletDict = Dictionary<String, Any>()
+    var walletDict: Dictionary<String, Any> = [
+        "isDefault": 0,
+        "isAppWallet": 0,
+        "name": "",
+        "mnemonics": "",
+        "address": "",
+        "keystore": "",
+        "remark": ""]
     //钱包是否存在
     var isWalletExist: Bool {
         get {
             return !self.entity.address.isEmpty
         }
     }
+    //MARK:WalletDB
+    //WalletDB
+    var db = WalletDB(name: dbName)
+    
+    //MARK:Web3
+    //Web3
+    lazy var vm: Web3VM = {
+        let v = Web3VM.init(bIP32KeystoreBase64Str: entity.keystore)
+        return v
+    }()
     
     override init() {
         super.init()
@@ -53,16 +72,10 @@ class WalletManager : NSObject{
     /// 数据初始化
     func setupInfo() {
         print("钱包地址：\(userPath)")
-        if
-            WalletDB.shareInstance.manager.isExist == true,
-            let data = WalletDB.shareInstance.getDefaultWallet(),
-            data.isEmpty == false {
-            
-            self.walletDict = data
-            self.entity.setValuesForKeys(data)
-            //let _ = WalletDB.shareInstance.setDefaultWallet(key: self.userEntity.address!)
-            print(data)
-        }
+        guard WalletDB.shared.manager.isExist == true, let data = WalletDB.shared.getDefaultWallet(),data.isEmpty == false else { return }
+        self.walletDict = data
+        self.entity.setValuesForKeys(data)
+        print(data)
     }
     /// 切换默认钱包
     func switchWallet(dict: Dictionary<String, Any>) -> Bool {
@@ -70,7 +83,7 @@ class WalletManager : NSObject{
         guard let address = dict["address"] as? String else { return false }
         self.entity.setValuesForKeys(dict)
         self.walletDict = dict
-        return WalletDB.shareInstance.setDefaultWallet(key: address)
+        return WalletDB.shared.setDefaultWallet(key: address)
     }
     /// 删除钱包
     func removeAccound() {
@@ -135,8 +148,7 @@ private let dbName = "WalletDB"
 
 class WalletDB: BaseDB {
     
-    static let shareInstance = WalletDB(name: dbName)
-    
+    static let shared = WalletDB(name: dbName)
     
     override init(name: String) {
         super.init(name: name)
@@ -179,7 +191,7 @@ class WalletDB: BaseDB {
         let isSuccess1 = self.updateData(keyValues: ["isDefault":0], condition: [])
         //再设置
         if isSuccess1 {
-            let isSuccess2 = self.updateData(keyValues: ["isDefault":1], condition: [cs])
+            let isSuccess2 = self.updateData(keyValues: ["isDefault": 1], condition: [cs])
             if isSuccess2 {
                 //userModel.UserName = name
             }
@@ -209,16 +221,17 @@ extension WalletDB {
     ///
     /// - Parameter name: 钱包名称
     /// - Returns: 返回结果
-    func updateWalletNotice(_ notice: String) {
+    func updateWalletNotice(_ remark: String) -> Bool {
         
         
         let cs = "address = '\(WalletManager.shared.entity.address)'"
-        let isSuccess = self.updateData(keyValues: ["notice": notice], condition: [cs])
+        let isSuccess = self.updateData(keyValues: ["remark": remark], condition: [cs])
         if isSuccess {
             var dict = WalletManager.shared.walletDict
-            dict["notice"] = notice
-            WalletManager.shared.entity.notice = notice
+            dict["remark"] = remark
+            WalletManager.shared.entity.remark = remark
         }
+        return isSuccess
     }
    
 }

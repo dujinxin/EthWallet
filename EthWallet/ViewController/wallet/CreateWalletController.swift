@@ -16,6 +16,7 @@ class CreateWalletController : BaseViewController{
     @IBOutlet weak var walletNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPsdTextField: UITextField!
+    @IBOutlet weak var remarkTextField: UITextField!
     
     @IBOutlet weak var createButton: JXShadowButton!
     
@@ -55,80 +56,56 @@ class CreateWalletController : BaseViewController{
     @IBAction func createWallet(_ sender: Any) {
         
         
-        guard let name = self.walletNameTextField.text else { return }
-        guard let password = self.passwordTextField.text else { return }
-        guard let confirmPsd = self.confirmPsdTextField.text else { return }
+        guard let name = self.walletNameTextField.text, name.isEmpty == false else { return }
+        guard let password = self.passwordTextField.text, password.isEmpty == false else { return }
+        guard let confirmPsd = self.confirmPsdTextField.text, confirmPsd.isEmpty == false else { return }
+        guard let remark = self.remarkTextField.text else { return }
         guard password == confirmPsd else { return }
         
-        let keyStore1 : EthereumKeystoreV3?
+        
+        let mnemonics = Mnemonics()
+        
+        print(mnemonics.string)
+        
+        let keyStore1 : BIP32Keystore?
         do {
-            keyStore1 = try EthereumKeystoreV3(password: password)
+            keyStore1 = try BIP32Keystore(mnemonics: mnemonics, password: password)
         } catch let error {
             print(error)
             fatalError("keyStore创建失败")
         }
         
-        guard let keyStore = keyStore1 else { return }
-        guard let keystoreData = try? keyStore.serialize() else { return }
-        guard let keystoreData1 = keystoreData else { return }
-        let keystoreBase64Str = keystoreData1.base64EncodedString()
+        guard
+            let keyStore = keyStore1,
+            let keystoreData = try? keyStore.serialize(),
+            let keystoreData1 = keystoreData else { return }
         
+        
+        
+        let keystoreBase64Str = keystoreData1.base64EncodedString()
         let address = keyStore.addresses[0]
         
-        let dict = ["name":name,"isDefault":false,"address":address.address ,"keystore":keystoreBase64Str] as [String : Any]
+        let dict: [String :Any] = [
+            "name": name,
+            "isDefault": 0,
+            "isAppWallet": 1,
+            "address": address.address,
+            "keystore": keystoreBase64Str,
+            "mnemonics": mnemonics.string,
+            "remark": remark]
         
-        let _ = WalletDB.shareInstance.createTable(keys: Array(dict.keys))
-        let isSuccess = WalletDB.shareInstance.insertData(data: dict)
-        
-        if isSuccess {
-            let _ = WalletManager.shared.switchWallet(dict: dict)
-            //            if let block = backBlock {
-            //                block()
-            //            }
-            self.performSegue(withIdentifier: "createSuccess", sender: nil)
-            
-            //self.navigationController?.popViewController(animated: true)
-        } else {
+        guard
+            WalletDB.shared.createTable(keys: Array(dict.keys)) == true,
+            WalletDB.shared.insertData(data: dict) == true,
+            WalletManager.shared.switchWallet(dict: dict) == true else {
             print("保存钱包失败")
+            return
         }
-    }
-    func createEthereumKeystoreV3(){
-        guard let name = self.walletNameTextField.text else { return }
-        guard let password = self.passwordTextField.text else { return }
-        guard let confirmPsd = self.confirmPsdTextField.text else { return }
-        guard password == confirmPsd else { return }
+        self.performSegue(withIdentifier: "createSuccess", sender: nil)
         
-        let keyStore1 : EthereumKeystoreV3?
-        do {
-            keyStore1 = try EthereumKeystoreV3(password: password)
-        } catch let error {
-            print(error)
-            fatalError("keyStore创建失败")
-        }
-        
-        guard let keyStore = keyStore1 else { return }
-        guard let keystoreData = try? keyStore.serialize() else { return }
-        guard let keystoreData1 = keystoreData else { return }
-        let keystoreBase64Str = keystoreData1.base64EncodedString()
-        
-        let address = keyStore.addresses[0]
-        
-        let dict = ["name":name,"isDefault":false,"address":address.address ,"keystore":keystoreBase64Str] as [String : Any]
-        
-        let _ = WalletDB.shareInstance.createTable(keys: Array(dict.keys))
-        let isSuccess = WalletDB.shareInstance.insertData(data: dict)
-        
-        if isSuccess {
-            let _ = WalletManager.shared.switchWallet(dict: dict)
-            //            if let block = backBlock {
-            //                block()
-            //            }
-            self.performSegue(withIdentifier: "createSuccess", sender: nil)
-            
-            //self.navigationController?.popViewController(animated: true)
-        } else {
-            print("保存钱包失败")
-        }
+        print(keyStore)
+    
+        //Web3.default.keystoreManager = KeystoreManager([keyStore])
     }
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
