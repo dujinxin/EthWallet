@@ -215,14 +215,13 @@ class WalletViewController: JXTableViewController {
             cell.addressLabel.text = WalletManager.shared.entity.address
             cell.nameLabel.text = WalletManager.shared.entity.name
             cell.settingBlock = {
-                let storyboard = UIStoryboard(name: "Export", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "verifyMnemonicVC") as! VerifyMnemonicController
-                
-                self.navigationController?.pushViewController(vc, animated: true)
-                
-//                //let vc = SettingViewController()
-//                let vc = VerifyMnemonicController()
+//                let storyboard = UIStoryboard(name: "Export", bundle: nil)
+//                let vc = storyboard.instantiateViewController(withIdentifier: "verifyMnemonicVC") as! VerifyMnemonicController
+//
 //                self.navigationController?.pushViewController(vc, animated: true)
+            
+                let vc = SettingViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
             }
             cell.scanBlock = {
                 //self.performSegue(withIdentifier: "receipt", sender: nil)

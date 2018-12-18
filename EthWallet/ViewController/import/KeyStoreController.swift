@@ -73,11 +73,8 @@ class KeyStoreController: BaseViewController {
             self.automaticallyAdjustsScrollViewInsets = false
         }
         
-        self.view.superview?.addSubview(self.keyboard)
         
-        print(view.bounds.height)
-        print(UIScreen.main.bounds.height)
-        print(UIScreen.main.bounds.height - 44 - 64)
+        
         self.textView.placeHolderText = "keystone 文件内容"
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -126,8 +123,14 @@ class KeyStoreController: BaseViewController {
         let keystoreBase64Str = keystoreData.base64EncodedString(options: .lineLength64Characters)
         let address = keyStore.addresses[0]
         //let privateKey = try! keyStore.UNSAFE_getPrivateKeyData(password: password, account: address).toHexString()
-        
-        let dict = ["name":name,"isDefault":false,"address":address.address,"keystore":keystoreBase64Str] as [String : Any]
+        let dict: [String :Any] = [
+            "name": name,
+            "isDefault": 0,
+            "isAppWallet": 0,
+            "address": address.address,
+            "keystore": keystoreBase64Str,
+            "mnemonics": "",
+            "remark": ""]
         let _ = WalletDB.shared.createTable(keys: Array(dict.keys))
         let isSuc = WalletDB.shared.appendWallet(data: dict, key: address.address)
         if isSuc {

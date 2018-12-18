@@ -106,7 +106,14 @@ class PrivateKeyController: BaseViewController {
         let address = keyStore.addresses[0]
         //let privateKey = try! keyStore.UNSAFE_getPrivateKeyData(password: password, account: address).toHexString()
         
-        let dict = ["name":name,"isDefault":false,"address":address.address,"keystore":keystoreBase64Str] as [String : Any]
+        let dict: [String :Any] = [
+            "name": name,
+            "isDefault": 0,
+            "isAppWallet": 0,
+            "address": address.address,
+            "keystore": keystoreBase64Str,
+            "mnemonics": "",
+            "remark": ""]
         
         let _ = WalletDB.shared.createTable(keys: Array(dict.keys))
         let isSuc = WalletDB.shared.appendWallet(data: dict, key: address.address)

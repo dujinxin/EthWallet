@@ -81,6 +81,7 @@ class WalletDetailController: JXTableViewController {
     @IBAction func scan(_ sender: Any) {
     }
     @IBAction func deleteWallet(_ sender: Any) {
+        
     }
     
     

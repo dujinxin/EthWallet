@@ -74,12 +74,20 @@ class WalletListController: JXTableViewController {
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "createVC") as! CreateWalletController
+            vc.backBlock = {
+                self.dataArray = WalletDB.shared.selectData()!
+                self.tableView?.reloadData()
+            }
             self.navigationController?.pushViewController(vc, animated: true)
         }))
         alert.addAction(UIAlertAction(title: "导入钱包", style: .default, handler: { (action) in
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "importVC") as! ImportWalletController
+            vc.backBlock = {
+                self.dataArray = WalletDB.shared.selectData()!
+                self.tableView?.reloadData()
+            }
             self.navigationController?.pushViewController(vc, animated: true)
         }))
         alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: { (action) in
