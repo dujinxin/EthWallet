@@ -118,8 +118,8 @@ class WalletListController: JXTableViewController {
             WalletManager.shared.switchWallet(dict: dict) == true else {
               return
         }
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationwalletChange"), object: nil)
-        self.navigationController?.popViewController(animated: true)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationWalletChange"), object: nil)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
 }

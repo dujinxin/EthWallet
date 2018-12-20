@@ -88,7 +88,7 @@ class CreateWalletController : BaseViewController{
         let dict: [String :Any] = [
             "name": name,
             "isDefault": 0,
-            "isAppWallet": 1,
+            "isHDWallet": 1,
             "address": address.address,
             "keystore": keystoreBase64Str,
             "mnemonics": mnemonics.string,

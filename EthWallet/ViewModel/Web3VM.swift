@@ -10,7 +10,7 @@ import Foundation
 import web3swift
 import JX_AFNetworking
 
-
+//keystoreV3
 /*
  {
     "version":3,
@@ -32,7 +32,31 @@ import JX_AFNetworking
     "address":"0xe156adcd604330357595e5c8d38dc7664b7c1314"
  }
  */
-
+//BIPKeystore32
+/*
+ {
+   "isHDWallet":true,
+   "id":"f233650b-7d78-40af-a46a-fe0e620d48b9",
+   "crypto":{
+ "ciphertext":"ff58c452f08d4b248a29f4320210680f213e8536aad7e53cb84bc4c6561d9a236424d42e7b792c2e306d0a7c315e52f19e664107b1f5ef762b95ec49171645a224f5c5280ac6d38646979051c651799285d27aa35bcf44b38b1dd160ee76c04c",
+     "cipherparams":{"iv":"eece6c40fcd7e72b90e25a7e529e635e"},
+     "kdf":"scrypt",
+     "kdfparams":{
+         "r":6,
+         "p":1,
+         "n":4096,
+         "dklen":32,
+         "salt":"5b9827647b8646054b38e4935063b7b42a5984ff67e526a27eb13f1541794222"},
+         "mac":"b3e2f451023a02768976be52be5135e1c08e31a863d9a7ee16b36dfbd2bfe6af",
+         "cipher":"aes-128-cbc"
+     },
+     "pathToAddress":{
+         "m\/44'\/60'\/0'\/0\/0":"0xC9492530a4eA23AF15BbB479D57619C7699391cB"
+     },
+     "rootPath":"m\/44'\/60'\/0'\/0",
+     "version":3
+ }
+ */
 class Web3VM : BaseViewModel{
     
     //https://mainnet.infura.io/0a8aa5d2db674577bf61aa4be1e38472
@@ -207,6 +231,90 @@ class Web3VM : BaseViewModel{
         })
     }
     
+    static func getEthTokens(completion: @escaping ((_ data: Array<TokenEntity>, _ msg: String, _ isSuccess: Bool)->())){
+        JXNetworkManager.manager.afmanager.responseSerializer.acceptableContentTypes = NSSet(objects: "text/html","application/json","text/json","image/jpeg","text/plain") as? Set<String>
+        
+        let ethTokenUrl = "https://raw.githubusercontent.com/kvhnuke/etherwallet/mercury/app/scripts/tokens/ethTokens.json"
+        Web3Request.request(tag: 0, method: .get, url: ethTokenUrl, param: [:], success: { (data, message) in
+            guard
+                let array = data as? Array<Dictionary<String, Any>>
+                else{
+                    completion([],message,false)
+                    return
+            }
+            var list = Array<TokenEntity>()
+            array.forEach({ (dict) in
+                let entity = TokenEntity()
+                entity.setValuesForKeys(dict)
+                list.append(entity)
+            })
+            completion(list,message,true)
+            
+        }, failure: { (message, code) in
+            completion([],message,false)
+        })
+    }
+    
+    //tokentx: 合约, txlist: eth
+    //http://api.etherscan.io/api?module=account&action=txlist&address=0xddbd2b932c763ba5b1b7ae3b362eac3e8d40121a&startblock=0&endblock=99999999&sort=asc&apikey=YourApiKeyToken
+    //https://api.etherscan.io/api?module=account&action=txlist&address=0xddbd2b932c763ba5b1b7ae3b362eac3e8d40121a&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=YourApiKeyToken
+    /**
+     [{
+         blockHash = 0x4a5b042b55a4209ea5b82bc040272a497ace4d2b047bb24c14adb5816d6a0fa7;
+         blockNumber = 6096374;
+         confirmations = 823436;
+         contractAddress = "";
+         cumulativeGasUsed = 7524531;
+         from = 0xd9ab35f204b40a355763ba23a917dc7883f1084f;
+         gas = 21000;
+         gasPrice = 2000000000;
+         gasUsed = 21000;
+         hash = 0xe16156dba1168f2dc88f4808ddff56e10a605ff49a99eefbbed58b564e2604a6;
+         input = 0x;
+         isError = 0;
+         nonce = 8;
+         timeStamp = 1533526043;
+         to = 0xe156adcd604330357595e5c8d38dc7664b7c1314;
+         transactionIndex = 227;
+         "txreceipt_status" = 1;
+         value = 100000000000000;
+     }]
+     */
+    static var formatter: DateFormatter = {
+        let f = DateFormatter()
+        f.dateFormat = "YYYY-MM-dd HH:mm:ss"
+        return f
+    }()
+    static func getTxlist(address: String, type: Type = .eth, page: Int = 1, offset: Int = 20, completion: @escaping ((_ data: Array<TxEntity>, _ msg: String, _ isSuccess: Bool)->())){
+        
+        let actionStr = (type == .eth) ? "txlist" : "tokentx"
+        let ethTokenUrl = "http://api.etherscan.io/api?module=account&action=\(actionStr)&address=\(address)&startblock=0&endblock=99999999$page=\(page)&offset=\(offset)&sort=asc&apikey=\("VQTHS2DB1GKV9ZRQA2SUR16TGUH5CSQ44W")"
+        
+        
+        Web3Request.request(tag: 0, method: .get, url: ethTokenUrl, param: [:], success: { (data, message) in
+            guard
+                let result = data as? Dictionary<String, Any>,
+                let array = result["result"] as? Array<Dictionary<String, Any>>
+                else {
+                    completion([],message,false)
+                    return
+            }
+            var list = Array<TxEntity>()
+            array.forEach({ (dict) in
+                let entity = TxEntity()
+                entity.setValuesForKeys(dict)
+                entity.Hash = dict["hash"] as? String
+                let d = Date.init(timeIntervalSince1970: entity.timeStamp)
+
+                entity.timeStampStr = self.formatter.string(from: d)
+                list.append(entity)
+            })
+            completion(list,message,true)
+            
+        }, failure: { (message, code) in
+            completion([],message,false)
+        })
+    }
 }
 class Web3Request: JXRequest {
     
@@ -227,8 +335,12 @@ class Web3Request: JXRequest {
             data = result
         }else if result is Array<Any>{
             print("Array")
+            isSuccess = true
+            data = result
         }else if result is String{
             print("String")
+            isSuccess = true
+            data = result
         }else if result is Error{
             print("Error")
             guard let error = result as? NSError,
@@ -267,7 +379,7 @@ class Web3Request: JXRequest {
         handleResponseResult(result: data, message: msg, code: netCode, isSuccess: isSuccess)
     }
     
-    override func handleResponseResult(result:Any?,message:String,code:JXNetworkError,isSuccess:Bool) {
+    override func handleResponseResult(result: Any?, message: String, code: JXNetworkError, isSuccess: Bool) {
         
         guard
             let success = self.success,

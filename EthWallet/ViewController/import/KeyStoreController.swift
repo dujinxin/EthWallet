@@ -24,12 +24,12 @@ class KeyStoreController: BaseViewController {
     }
     @IBOutlet weak var nameTextField: UITextField!{
         didSet{
-            nameTextField.textColor = JXMainColor
+            nameTextField.textColor = JXMainTextColor
         }
     }
     @IBOutlet weak var passwordTextField: UITextField!{
         didSet{
-            passwordTextField.textColor = JXMainColor
+            passwordTextField.textColor = JXMainTextColor
         }
     }
     @IBOutlet weak var selectButton: UIButton!
@@ -126,7 +126,7 @@ class KeyStoreController: BaseViewController {
         let dict: [String :Any] = [
             "name": name,
             "isDefault": 0,
-            "isAppWallet": 0,
+            "isHDWallet": 0,
             "address": address.address,
             "keystore": keystoreBase64Str,
             "mnemonics": "",

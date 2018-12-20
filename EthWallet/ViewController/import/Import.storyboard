@@ -24,26 +24,26 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mwd-hz-TUo">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="导入钱包" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VtY-6A-CrK">
-                                                <rect key="frame" x="24" y="30" width="327" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VtY-6A-CrK">
+                                                <rect key="frame" x="24" y="30" width="327" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码用于保护keystore和交易授权，强度非常重要" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxj-zM-tuV">
-                                                <rect key="frame" x="24" y="70.5" width="327" height="17"/>
+                                                <rect key="frame" x="24" y="30" width="327" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="keystore内容文本" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sGH-rz-gxI">
-                                                <rect key="frame" x="24" y="117.5" width="327" height="21"/>
+                                                <rect key="frame" x="24" y="77" width="327" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ola-X2-t5z" customClass="JXPlaceHolderTextView" customModule="JXFoundation">
-                                                <rect key="frame" x="24" y="148.5" width="327" height="128"/>
+                                                <rect key="frame" x="24" y="108" width="327" height="128"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="128" id="iEf-Hk-mFy"/>
@@ -55,7 +55,7 @@
                                                 </connections>
                                             </textView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入钱包名称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zIv-1d-ugf">
-                                                <rect key="frame" x="24" y="286.5" width="327" height="44"/>
+                                                <rect key="frame" x="24" y="246" width="327" height="44"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="ak4-q2-8GM"/>
@@ -68,27 +68,27 @@
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7zP-wH-sSx">
-                                                <rect key="frame" x="24" y="414.5" width="30" height="30"/>
+                                                <rect key="frame" x="24" y="374" width="30" height="30"/>
                                                 <state key="normal" title="@"/>
                                                 <connections>
                                                     <action selector="selectAction:" destination="bnM-z0-NFI" eventType="touchUpInside" id="gOt-HZ-k03"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="阅读并同意" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rHN-r9-Cem">
-                                                <rect key="frame" x="54" y="420.5" width="76.5" height="18"/>
+                                                <rect key="frame" x="54" y="380" width="76.5" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cjn-lA-uiF">
-                                                <rect key="frame" x="135.5" y="414.5" width="138" height="30"/>
+                                                <rect key="frame" x="135.5" y="374" width="138" height="30"/>
                                                 <state key="normal" title="《服务及隐私条款》"/>
                                                 <connections>
                                                     <action selector="privacyAction:" destination="bnM-z0-NFI" eventType="touchUpInside" id="pPu-yE-qJ7"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kWq-sv-QN9" customClass="JXShadowButton" customModule="EthWallet" customModuleProvider="target">
-                                                <rect key="frame" x="24" y="474.5" width="327" height="44"/>
+                                                <rect key="frame" x="24" y="434" width="327" height="44"/>
                                                 <color key="backgroundColor" red="0.39946720460000001" green="0.60794903079999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="Ar3-Y5-19h"/>
@@ -101,7 +101,7 @@
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入原钱包密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="36L-Ho-NCb">
-                                                <rect key="frame" x="24" y="340.5" width="327" height="44"/>
+                                                <rect key="frame" x="24" y="300" width="327" height="44"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -117,7 +117,7 @@
                                             <constraint firstItem="kWq-sv-QN9" firstAttribute="top" secondItem="7zP-wH-sSx" secondAttribute="bottom" constant="30" id="59B-aB-veo"/>
                                             <constraint firstItem="rHN-r9-Cem" firstAttribute="centerY" secondItem="7zP-wH-sSx" secondAttribute="centerY" id="5ha-cF-Y3Q"/>
                                             <constraint firstAttribute="trailing" secondItem="kWq-sv-QN9" secondAttribute="trailing" constant="24" id="5xM-Ds-Xvk"/>
-                                            <constraint firstItem="vxj-zM-tuV" firstAttribute="top" secondItem="VtY-6A-CrK" secondAttribute="bottom" constant="20" id="8Yj-CI-lKY"/>
+                                            <constraint firstItem="vxj-zM-tuV" firstAttribute="top" secondItem="VtY-6A-CrK" secondAttribute="bottom" id="8Yj-CI-lKY"/>
                                             <constraint firstItem="Ola-X2-t5z" firstAttribute="leading" secondItem="VtY-6A-CrK" secondAttribute="leading" id="DDT-Vf-vJ9"/>
                                             <constraint firstItem="zIv-1d-ugf" firstAttribute="leading" secondItem="Ola-X2-t5z" secondAttribute="leading" id="JKC-mg-pvY"/>
                                             <constraint firstItem="36L-Ho-NCb" firstAttribute="top" secondItem="zIv-1d-ugf" secondAttribute="bottom" constant="10" id="OqT-l3-wks"/>
@@ -180,7 +180,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bKL-GQ-BNP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1934" y="-433"/>
+            <point key="canvasLocation" x="1959" y="-433"/>
         </scene>
         <!--Private Key Controller-->
         <scene sceneID="rtS-7f-ZHq">
@@ -196,26 +196,26 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EZH-pD-uHq">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="导入钱包" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcx-ek-28E">
-                                                <rect key="frame" x="24" y="30" width="327" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcx-ek-28E">
+                                                <rect key="frame" x="24" y="30" width="327" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="输入private key 文件内容至输入框，或者通过扫描private key 内容生成的二维码录入。注意字符的大小写。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDh-eP-Rnm">
-                                                <rect key="frame" x="24" y="70.5" width="327" height="50.5"/>
+                                                <rect key="frame" x="24" y="30" width="327" height="50.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="明文私钥文本内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K9k-eB-hYF">
-                                                <rect key="frame" x="24" y="151" width="327" height="21"/>
+                                                <rect key="frame" x="24" y="110.5" width="327" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fZk-3M-X5j" customClass="JXPlaceHolderTextView" customModule="JXFoundation">
-                                                <rect key="frame" x="24" y="182" width="327" height="64"/>
+                                                <rect key="frame" x="24" y="141.5" width="327" height="64"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="64" id="bhv-fq-pAP"/>
@@ -227,7 +227,7 @@
                                                 </connections>
                                             </textView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入钱包名称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SIF-Nf-VJb">
-                                                <rect key="frame" x="24" y="256" width="327" height="44"/>
+                                                <rect key="frame" x="24" y="215.5" width="327" height="44"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="ghs-g2-5UK"/>
@@ -240,27 +240,27 @@
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fx-qw-F6e">
-                                                <rect key="frame" x="24" y="384" width="30" height="30"/>
+                                                <rect key="frame" x="24" y="343.5" width="30" height="30"/>
                                                 <state key="normal" title="@"/>
                                                 <connections>
                                                     <action selector="selectAction:" destination="dkP-Gu-v2l" eventType="touchUpInside" id="RQb-a6-5jV"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="阅读并同意" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Th4-qp-rwr">
-                                                <rect key="frame" x="54" y="390" width="76.5" height="18"/>
+                                                <rect key="frame" x="54" y="349.5" width="76.5" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KnQ-7w-uHA">
-                                                <rect key="frame" x="135.5" y="384" width="138" height="30"/>
+                                                <rect key="frame" x="135.5" y="343.5" width="138" height="30"/>
                                                 <state key="normal" title="《服务及隐私条款》"/>
                                                 <connections>
                                                     <action selector="privacyAction:" destination="dkP-Gu-v2l" eventType="touchUpInside" id="gQS-Cr-aNY"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETO-2R-byJ" customClass="JXShadowButton" customModule="EthWallet" customModuleProvider="target">
-                                                <rect key="frame" x="24" y="444" width="327" height="44"/>
+                                                <rect key="frame" x="24" y="403.5" width="327" height="44"/>
                                                 <color key="backgroundColor" red="0.39946720460000001" green="0.60794903079999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="mKl-li-nl9"/>
@@ -273,7 +273,7 @@
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入原钱包密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DCQ-wv-Un5">
-                                                <rect key="frame" x="24" y="310" width="327" height="44"/>
+                                                <rect key="frame" x="24" y="269.5" width="327" height="44"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -308,7 +308,7 @@
                                             <constraint firstAttribute="trailing" secondItem="jcx-ek-28E" secondAttribute="trailing" constant="24" id="igs-oa-RCk"/>
                                             <constraint firstItem="KnQ-7w-uHA" firstAttribute="centerY" secondItem="3fx-qw-F6e" secondAttribute="centerY" id="k8k-pA-5VD"/>
                                             <constraint firstItem="3fx-qw-F6e" firstAttribute="top" secondItem="DCQ-wv-Un5" secondAttribute="bottom" constant="30" id="p9g-pD-CqT"/>
-                                            <constraint firstItem="FDh-eP-Rnm" firstAttribute="top" secondItem="jcx-ek-28E" secondAttribute="bottom" constant="20" id="pNb-Ql-xAC"/>
+                                            <constraint firstItem="FDh-eP-Rnm" firstAttribute="top" secondItem="jcx-ek-28E" secondAttribute="bottom" id="pNb-Ql-xAC"/>
                                             <constraint firstItem="SIF-Nf-VJb" firstAttribute="top" secondItem="fZk-3M-X5j" secondAttribute="bottom" constant="10" id="rPw-7i-QJH"/>
                                             <constraint firstAttribute="trailing" secondItem="ETO-2R-byJ" secondAttribute="trailing" constant="24" id="rTd-fa-Izw"/>
                                             <constraint firstItem="DCQ-wv-Un5" firstAttribute="height" secondItem="SIF-Nf-VJb" secondAttribute="height" id="xJD-vT-Izi"/>

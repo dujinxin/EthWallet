@@ -17,15 +17,37 @@ enum Type : Int{
 }
 
 class TransferViewController: BaseViewController {
-    @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!{
+        didSet{
+            topConstraint.constant = kNavStatusHeight
+        }
+    }
     
-    @IBOutlet weak var addressTextField: UITextField!
-    @IBOutlet weak var numberTextField: UITextField!
-    @IBOutlet weak var remarkTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!{
+        didSet{
+            //addressTextField.text = "0xe156adcd604330357595e5c8d38dc7664b7c1314"
+            addressTextField.textColor = JXMainTextColor
+            addressTextField.font = UIFont.systemFont(ofSize: 14)
+        }
+    }
+    @IBOutlet weak var numberTextField: UITextField!{
+        didSet{
+            numberTextField.textColor = JXMainTextColor
+        }
+    }
+    @IBOutlet weak var remarkTextField: UITextField!{
+        didSet{
+            remarkTextField.textColor = JXMainTextColor
+        }
+    }
     
     @IBOutlet weak var codeButton: UIButton!
     
-    @IBOutlet weak var balanceLabel: UILabel!
+    @IBOutlet weak var balanceLabel: UILabel!{
+        didSet{
+            balanceLabel.textColor = JXMainTextColor
+        }
+    }
     @IBOutlet weak var gasSlider: UISlider!
     @IBOutlet weak var gasLabel: UILabel!
     @IBOutlet weak var tradeButton: JXShadowButton!
@@ -57,10 +79,10 @@ class TransferViewController: BaseViewController {
     var password : String?
     var type : Type = .eth
     
-    lazy var vm: Web3VM = {
-        let vm = Web3VM.init(keystoreBase64Str: WalletManager.shared.entity.keystore)//自己的钱包
-        return vm
-    }()
+//    lazy var vm: Web3VM = {
+//        let vm = Web3VM.init(keystoreBase64Str: WalletManager.shared.entity.keystore)//自己的钱包
+//        return vm
+//    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,7 +99,6 @@ class TransferViewController: BaseViewController {
         //钱包密钥：123456
         
         
-        //self.addressTextField.text = WalletManager.shared.entity.address
         //self.numberTextField.text = "0.000000000000001"
         
         
@@ -93,17 +114,12 @@ class TransferViewController: BaseViewController {
         if let entity = self.entity {
             if entity.shortName == "ETH" {
                 self.type = .eth
-                // 查询余额
-                let ether = EthUnit.weiToEther(wei: EthUnit.Wei(entity.coinNum))
-                let formatEther = EthUnit.decimalNumberHandler(ether, scale: 4)
-                self.balanceLabel.text = "余额:\(formatEther) \(entity.shortName ?? "")"
             } else {
                 self.type = .erc20
-                
-                let ether = EthUnit.weiToEther(wei: EthUnit.Wei(entity.coinNum))
-                let formatEther = EthUnit.decimalNumberHandler(ether, scale: 4)
-                self.balanceLabel.text = "余额:\(formatEther) \(entity.shortName ?? "")"
             }
+            let ether = EthUnit.weiToEther(wei: EthUnit.Wei(entity.coinNum))
+            let formatEther = EthUnit.decimalNumberHandler(ether, scale: 4)
+            self.balanceLabel.text = "余额:\(formatEther) \(entity.shortName ?? "")"
         }
         
         self.requestData()
@@ -111,15 +127,10 @@ class TransferViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    override func updateViewConstraints() {
-        super.updateViewConstraints()
-        self.topConstraint.constant = kNavStatusHeight
     }
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -129,27 +140,22 @@ class TransferViewController: BaseViewController {
             vc.number = self.numberTextField.text
         }
     }
-    override func isCustomNavigationBarUsed() -> Bool {
-        return true
-    }
+   
     override func requestData() {
         
         if self.type == .eth {
-            
-
             DispatchQueue.global().async {
-                guard let gasPriceRinkeby = try? self.vm.web3.eth.getGasPrice() else {return}
+                guard let gasPriceRinkeby = try? WalletManager.shared.vm.web3.eth.getGasPrice() else {return}
                 print("web3?.eth.getGasPrice() = ",gasPriceRinkeby)
                 self.gasPrise = gasPriceRinkeby
             }
         } else {
             DispatchQueue.global().async {
-                guard let gasPriceRinkeby = try? self.vm.web3.eth.getGasPrice() else {return}
+                guard let gasPriceRinkeby = try? WalletManager.shared.vm.web3.eth.getGasPrice() else {return}
                 print("web3?.eth.getGasPrice() = ",gasPriceRinkeby)
                 self.gasPrise = gasPriceRinkeby
             }
         }
-        
     }
     @objc func goScan() {
         self.view.endEditing(true)
@@ -186,8 +192,6 @@ class TransferViewController: BaseViewController {
         })
         alertVC.addAction(UIAlertAction(title: "确定", style: .destructive, handler: { (action) in
             
-            
-            
             if
                 let textField = alertVC.textFields?[0],
                 let text = textField.text,
@@ -201,28 +205,6 @@ class TransferViewController: BaseViewController {
         alertVC.addAction(UIAlertAction(title: "取消", style: .cancel, handler: { (action) in
         }))
         self.present(alertVC, animated: true, completion: nil)
-    }
-    
-    func web3KitGetBalance() {
-        
-        if self.type == .eth {
-            let address = Address(WalletManager.shared.entity.address)
-            DispatchQueue.global().async {
-                let balanceResult = try? self.vm.web3.eth.getBalance(address: address)
-                guard let balance = balanceResult else { return }
-                print("balance = ",balance)
-            }
-        } else {
-            let address = Address(WalletManager.shared.entity.address)
-            let contractAddress = Address("0x8553de7f3ce4993adbf02b0d676e4be4c5333398") // BKX token on Ethereum mainnet
-            let contract = try? self.vm.web3.contract(Web3.Utils.erc20ABI, at: contractAddress) // utilize precompiled ERC20 ABI for your concenience
-            DispatchQueue.global().async {
-                guard let bkxBalanceResult = try? contract?.method("balanceOf", parameters: [address] as [AnyObject], options: Web3Options.default).call(options: nil) else {return} // encode parameters for transaction
-                guard let bkxBalance = bkxBalanceResult, let bal = bkxBalance["0"] as? BigUInt else {return} // bkxBalance is [String: Any], and parameters are enumerated as "0", "1", etc in order of being returned. If returned parameter has a name in ABI, it is also duplicated
-                print(bkxBalance)
-                print("BKX token balance = " + String(bal))
-            }
-        }
     }
     /**
      相关概念
@@ -255,129 +237,9 @@ class TransferViewController: BaseViewController {
         self.statusBottomView.customView = self.customViewInit(number: number, address: address, gas: gas, remark: self.remarkTextField.text ?? "无备注")
         self.statusBottomView.show()
     }
-    func sendEth(_ psd:String) {
-
-        guard let number = self.numberTextField.text, number.isEmpty == false  else {
-            ViewManager.showNotice("请填写转账数量")
-            return
-        }
-        guard let address = self.addressTextField.text, address.isEmpty == false else {
-            ViewManager.showNotice("请填写收款人地址")
-            return
-        }
-        //guard let remark = self.remarkTextField.text else { return }
-        //guard let gas = self.gasLabel.text else { return }
-        
-        let walletAddress = Address(WalletManager.shared.entity.address)
-        let toAddress = Address(address)
-        var options = Web3Options.init()
-        
-        options.gasPrice = self.gasPrise //getGasPrice() =  2000000000
-        let v = Int(self.gasSlider.value)
-        
-        let ether = EthUnit.Ether(Double(v) / Double(10000000))
-        let wei = EthUnit.etherToWei(ether: ether)
-        
-        let gasLimit = BigUInt(wei) / self.gasPrise
-        options.gasLimit = BigUInt(gasLimit) // BigUInt(21000) // BigUInt(90000)
-        options.from = walletAddress
-        options.to = toAddress
-        //options.value = Web3.Utils.parseToBigUInt("1.0", units: .eth)
-        
-        print(ether,wei,gasLimit)
-        
-        DispatchQueue.global().async {
-            //let intermediate = web3?.contract(Web3.Utils.coldWalletABI, at: EthereumAddress(address), abiVersion: 2)?.method(options: options)
-            
-            guard let intermediate = try? self.vm.web3.eth.sendETH(to: toAddress, amount: BigUInt.init(number) ?? 0, extraData: Data(), options: options) else {return}
-            
-            //web3?.eth.sendETH(to: EthereumAddress("0x50d2cf603b4fa3107396fa49ac01469a3aaf0f79")!, amount: "0.001")
-            //guard let intermediate = web3?.eth.sendETH(to: EthereumAddress("0x50d2cf603b4fa3107396fa49ac01469a3aaf0f79")!, amount: "0.001") else {return}
-            
-            guard let result = try? intermediate.send(password: psd, options: options) else { return }
-            print(result.transaction)
-            print(result.hash)
-        }
-    }
-    func sendERC20Token(_ psd:String) {
-        
-        guard let number = self.numberTextField.text, number.isEmpty == false  else {
-            ViewManager.showNotice("请填写转账数量")
-            return
-        }
-        guard let address = self.addressTextField.text, address.isEmpty == false else {
-            ViewManager.showNotice("请填写收款人地址")
-            return
-        }
-        //guard let remark = self.remarkTextField.text else { return }
-        guard let gas = self.gasLabel.text else { return }
-        
-        print(address,number,gas)
-        self.statusBottomView.customView = self.customViewInit(number: number, address: address, gas: gas, remark: self.remarkTextField.text ?? "无备注")
-        self.statusBottomView.show()
-        
-        return
-        
-        let walletAddress = Address(WalletManager.shared.entity.address)
-        let toAddress = Address(address)
-        
-        var options = Web3Options.init()  //Web3Options.defaultOptions()
-        options.gasPrice = self.gasPrise // BigUInt("5000000000", radix: 10)!
-        let v = Int(self.gasSlider.value)
-        
-        let ether = EthUnit.Ether(Double(v) / Double(10000000))
-        let wei = EthUnit.etherToWei(ether: ether)
-        
-        let gasLimit = BigUInt(wei) / self.gasPrise
-        //options.gasLimit = BigUInt(gasLimit) // BigUInt(21000) // BigUInt(90000)
-        //        options.gasLimit = BigUInt(21000) // BigUInt(90000)
-        //        options.from = EthereumAddress(self.address1)
-        //        options.to = EthereumAddress(address)
-        //options.value = Web3.Utils.parseToBigUInt("10", units: .eth)
-        options.value = BigUInt(0)
-        print(ether,wei,gasLimit)
-        
-        //        guard let keystoreData = WalletManager.shared.getKeystoreData() else {return}
-        //        guard let keystoreV3 = EthereumKeystoreV3.init(keystoreData) else {return}
-        //        let privateKey = try! keystoreV3.UNSAFE_getPrivateKeyData(password: "123456", account: EthereumAddress("0xc166ca53567b84f5bdf3bd42b74106ebec574cfe")!).toHexString()
-        //        print("privateKey = ",privateKey)
-        
-        DispatchQueue.global().async {
-//
-//            let convenienceTokenTransfer = self.vm.web3.eth.sendERC20tokensWithNaturalUnits(tokenAddress: Address("0x34a9a46340d0b76e423ea75e5a62b6a81ff35bf6"), from: walletAddress, to: toAddress, amount: number, options: options)
-//            let gasEstimateResult2 = convenienceTokenTransfer.estimateGas(options: nil)
-//            guard case .success(let gasEstimate2) = gasEstimateResult2 else {return}
-//            options.gasLimit = gasEstimate2
-//            let convenienceTransferResult = convenienceTokenTransfer!.send(password: psd, options: options)
-//            switch convenienceTransferResult {
-//            case .success(let res):
-//                print("Token transfer successful = ",convenienceTransferResult.value ?? 0)
-//                print(res)
-//            case .failure(let error):
-//                print(error)
-//            }
-        }
-        
-        
-        
-        //        DispatchQueue.global().async {
-        //            guard let intermediate = WalletManager.shared.web3?.eth.sendETH(from: EthereumAddress(self.address1)!, to: EthereumAddress(address)!, amount: number) else {return}
-        //
-        //            let result = intermediate.send(password: psd, options: options)
-        //
-        //            switch result {
-        //            case .success(let res):
-        //                print(res.hash)
-        //                self.web3KitGetBalance()
-        //                return
-        //            case .failure(let error):
-        //                print(error)
-        //            }
-        //        }
-    }
+  
     lazy var statusBottomView: JXSelectView = {
         let selectView = JXSelectView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 200), style: JXSelectViewStyle.custom)
-        
         selectView.topBarView = {
             let view = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 260))
             view.backgroundColor = JX999999Color
@@ -514,11 +376,8 @@ class TransferViewController: BaseViewController {
         
         print(address,number,remark,gas)
         
-        
         let walletAddress = Address(WalletManager.shared.entity.address)
         let toAddress = Address(address)
-            //ViewManager.showNotice("收款人地址有误")
-          
         
         var options = Web3Options.default
         options.value = BigUInt(0)
@@ -532,38 +391,32 @@ class TransferViewController: BaseViewController {
         if self.type == .eth {
             
             options.to = toAddress
-            
-            //options.value = Web3.Utils.parseToBigUInt(number, units: .eth)
-            
+            //附加信息
             let data = remark.data(using: .utf8) ?? Data()
             
             DispatchQueue.global().async {
-                
-                
-                guard let intermediate = try? self.vm.web3.eth.sendETH(to: toAddress, amount: EthUnit.etherToWei(ether: Decimal.init(string: number) ?? 0), extraData: data, options: options) else { return }
-               
+
                 do {
-                    let result = try intermediate.send(password: psd, options: options)
+                    let intermediate = try? WalletManager.shared.vm.web3.eth.sendETH(to: toAddress, amount: EthUnit.etherToWei(ether: Decimal.init(string: number) ?? 0), extraData: data, options: options)
+                    let result = try intermediate?.send(password: psd, options: options)
                     
                     DispatchQueue.main.async {
                         self.hideMBProgressHUD()
                         
-                        print("交易哈希：",result.hash)
+                        print("交易哈希：",result?.hash ?? "")
                         self.performSegue(withIdentifier: "transferSuccess", sender: nil)
                     }
-                } catch let error{
-                    ViewManager.showNotice(error.localizedDescription)
-                    print(error)
+                } catch let error {
+                    DispatchQueue.main.async {
+                        self.hideMBProgressHUD()
+                        ViewManager.showNotice(error.localizedDescription)
+                        print(error)
+                    }
                 }
-                
-                
-                
             }
         } else {
-            
             //options.to = toAddress  //交易token不能在此设置地址，不然会默认为交易eth
-            //options.value = Web3.Utils.parseToBigUInt(number, units: .eth)
-            
+            //附加信息
             let data = remark.data(using: .utf8) ?? Data()
             guard
                 let num = Decimal.init(string: number) else {
@@ -583,7 +436,7 @@ class TransferViewController: BaseViewController {
                     //2
                     //let convenienceTokenTransfer = self.vm.web3.eth.sendERC20tokensWithNaturalUnits(tokenAddress: tokenAddress, from: walletAddress, to: toAddress, amount: number, options: options)
                     //3
-                    let testToken = try? self.vm.web3.contract(Web3.Utils.erc20ABI, at: tokenAddress),
+                    let testToken = try? WalletManager.shared.vm.web3.contract(Web3.Utils.erc20ABI, at: tokenAddress),
                     let convenienceTokenTransfer = try? testToken.method("transfer", parameters: [toAddress, etherBigInt] as [AnyObject], extraData: data, options: options)
                     else {
                         DispatchQueue.main.async {
@@ -608,7 +461,6 @@ class TransferViewController: BaseViewController {
                         self.hideMBProgressHUD()
                         ViewManager.showNotice(error.localizedDescription)
                     }
-                    print(error)
                 }
             }
         }

@@ -7,13 +7,39 @@
 //
 
 import UIKit
+import JXFoundation
 
 class AddPropertyCell: UITableViewCell {
 
-    @IBOutlet weak var coinImageView: UIImageView!
-    @IBOutlet weak var coinShortNameLabel: UILabel!
-    @IBOutlet weak var coinWholeNameLabel: UILabel!
-    @IBOutlet weak var coinAddressLabel: UILabel!
+    @IBOutlet weak var coinImageView: UIImageView!{
+        didSet{
+            coinImageView.layer.cornerRadius = 20
+            coinImageView.layer.masksToBounds = true
+            coinImageView.backgroundColor = UIColor.randomColor
+        }
+    }
+    @IBOutlet weak var coinNameIcon: UILabel!{
+        didSet{
+            coinNameIcon.textColor = JXFfffffColor
+        }
+    }
+    
+    @IBOutlet weak var coinShortNameLabel: UILabel!{
+        didSet{
+            coinShortNameLabel.textColor = JXMainTextColor
+        }
+    }
+    @IBOutlet weak var coinWholeNameLabel: UILabel!{
+        didSet{
+            coinWholeNameLabel.text = ""
+            coinWholeNameLabel.textColor = JXMainText50Color
+        }
+    }
+    @IBOutlet weak var coinAddressLabel: UILabel!{
+        didSet{
+            coinAddressLabel.textColor = JXMainText50Color
+        }
+    }
     @IBOutlet weak var addButton: UIButton!
     
     var clickBlock : (()->())?
@@ -27,19 +53,20 @@ class AddPropertyCell: UITableViewCell {
             block()
         }
     }
-    var entity: PropertyEntity? {
+    var entity: TokenEntity? {
         didSet {
-            if (entity?.isAdded)! {
-                self.addButton.setTitle("已添加", for: .normal)
-                self.addButton.isEnabled = false
-            } else {
+//            if (entity?.isAdded)! {
+//                self.addButton.setTitle("已添加", for: .normal)
+//                self.addButton.isEnabled = false
+//            } else {
                 self.addButton.setTitle("添加", for: .normal)
                 self.addButton.isEnabled = true
-            }
-            self.coinShortNameLabel.text = entity?.shortName
-            self.coinWholeNameLabel.text = entity?.wholeName
-//            self.coinAddressLabel.text = entity?.address
-            self.coinImageView.backgroundColor = UIColor.green
+//            }
+            self.coinShortNameLabel.text = entity?.symbol
+            self.coinWholeNameLabel.text = entity?.symbol
+            self.coinAddressLabel.text = entity?.address
+            //self.coinImageView.backgroundColor = UIColor.green
+            self.coinNameIcon.text = String(entity?.symbol?.first ?? "A")
         }
     }
     override func awakeFromNib() {

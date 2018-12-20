@@ -36,7 +36,7 @@ class WalletDetailController: JXTableViewController {
         self.tableView?.register(UINib(nibName: "ImageTitleCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier2")
         self.tableView?.estimatedRowHeight = 64
         
-        if WalletManager.shared.entity.isAppWallet == 1 {
+        if WalletManager.shared.entity.isHDWallet == 1 {
             self.defaultArray = [
                 [
                     ["image":"IPE","title":""]
@@ -145,7 +145,7 @@ class WalletDetailController: JXTableViewController {
             self.modifyWalletName(indexPath)
         } else if indexPath.section == 1 {
 
-            if WalletManager.shared.entity.isAppWallet == 1 {
+            if WalletManager.shared.entity.isHDWallet == 1 {
                 if indexPath.row == 0 {
                     self.modifyPasswordNotice(indexPath)
                 } else if indexPath.row == 1 {
@@ -295,10 +295,29 @@ class WalletDetailController: JXTableViewController {
             vc.mnemonicStr = WalletManager.shared.entity.mnemonics
             self.navigationController?.pushViewController(vc, animated: true)
         } else if type == .keyStore { //导出keystore
-            let keystoreBase64Str = WalletManager.shared.entity.keystore
-            let vc = ExportKSViewController()
-            vc.keystoreStr = String.convertBase64Str(keystoreBase64Str)
-            self.navigationController?.pushViewController(vc, animated: true)
+            
+            if WalletManager.shared.entity.isHDWallet == 1 {
+                let bip32keystore = WalletManager.shared.vm.web3.keystoreManager.bip32keystores[0]
+                if
+                    let privateKey = try? bip32keystore.UNSAFE_getPrivateKeyData(password: password, account: Address.init(WalletManager.shared.entity.address)),
+                    let keystoreV3 = try? EthereumKeystoreV3.init(privateKey: privateKey, password: password),
+                    let keystoreData = try? keystoreV3?.serialize(),
+                    let keystoreData1 = keystoreData,
+                    let keystoreStr = String(data: keystoreData1, encoding: .utf8){
+                    
+                    let vc = ExportKSViewController()
+                    vc.keystoreStr = keystoreStr
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+                
+                
+            } else {
+                let keystoreBase64Str = WalletManager.shared.entity.keystore
+                let vc = ExportKSViewController()
+                vc.keystoreStr = String.convertBase64Str(keystoreBase64Str)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
         } else if type == .privateKey { //导出私钥
             let address = WalletManager.shared.vm.web3.keystoreManager.addresses[0]
             if let privateKey = try? WalletManager.shared.vm.web3.keystoreManager.bip32keystores.first?.UNSAFE_getPrivateKeyData(password: password, account: address).hex {

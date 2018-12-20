@@ -10,92 +10,116 @@ import UIKit
 import web3swift
 import BigInt
 import JXFoundation
+import MJRefresh
 
-class PropertyViewController: BaseViewController,UITableViewDelegate,UITableViewDataSource {
+class PropertyViewController: BaseViewController, UITableViewDelegate,UITableViewDataSource {
     
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!{
+        didSet{
+            topConstraint.constant = kNavStatusHeight
+        }
+    }
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var recipeButton: UIButton!
-    @IBOutlet weak var transferButton: UIButton!
+    @IBOutlet weak var recipeButton: JXShadowButton!
+    @IBOutlet weak var transferButton: JXShadowButton!
     
+    var currentPage: Int = 1
+    var tradeList = [TxEntity]()
     
+    var type: Type = .eth
     var propertyEntity = PropertyEntity()
-    
-    var vm : Web3VM!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "钱包"
+        self.title = propertyEntity.shortName
         
         self.tableView.register(UINib.init(nibName: "WalletHeadCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifierHead")
         self.tableView.register(UINib.init(nibName: "PropertyViewCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifierCell")
         self.tableView.estimatedRowHeight = 70
-        //        self.tableView.rowHeight = UITableViewAutomaticDimension
-        //        self.tableView.isScrollEnabled = false
         self.tableView.separatorStyle = .none
-        
+        self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            self.currentPage = 1
+            self.requestPage(self.currentPage)
+        })
+        self.tableView.mj_footer = MJRefreshBackFooter(refreshingBlock: {
+            self.currentPage += 1
+            self.requestPage(self.currentPage)
+        })
+        self.tableView.mj_header.beginRefreshing()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func updateViewConstraints() {
-        super.updateViewConstraints()
-    }
-    override func isCustomNavigationBarUsed() -> Bool {
-        return true
-    }
-    
-    override func requestData() {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
         
-//        self.showMBProgressHUD()
-//        self.count = 2
-//        self.fetchData(count: count) {
-//            if self.count == 0 {
-//                self.hideMBProgressHUD()
-//            }
-//            self.tableView?.reloadData()
-//        }
-        
+        case "transfer":
+            if let vc = segue.destination as? TransferViewController, let entity = sender as? PropertyEntity {
+                vc.entity = entity
+            }
+            //        case "receipt":
+            //            if let vc = segue.destination as? ReceiptViewController, let entity = sender as? PropertyEntity {
+            //                //vc.entity = entity
+        //            }
+       
+        default:
+            print("")
+        }
+    }
+
+    func requestPage(_ page: Int) {
+        self.showMBProgressHUD()
+        Web3VM.getTxlist(address: WalletManager.shared.entity.address, type: self.type, page: page, offset: 20) { (array, msg, isSuc) in
+            self.hideMBProgressHUD()
+            self.tableView.mj_header.endRefreshing()
+            self.tableView.mj_footer.endRefreshing()
+            if page == 1 {
+                self.tradeList.removeAll()
+                self.tradeList = array
+            } else {
+                self.tradeList += array
+            }
+            self.tableView.reloadData()
+        }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.tradeList.count + 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifierHead", for: indexPath) as! WalletHeadCell
-            cell.accessoryType = .none
-            
-            cell.totalNumberLabel.text = "≈￥\(propertyEntity.CNY)"
-            cell.addressLabel.text = propertyEntity.tokenAddress
-            cell.nameLabel.text = propertyEntity.shortName
-            cell.codeBlock = {
-                print(WalletManager.shared.entity.address)
-            }
-            cell.addBlock = {
-                let vc = AddPropertyController()
-                vc.finishBlock = { array in
-                    print("entity = ",array)
-                    self.tableView?.reloadData()
-                }
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-            
+       
+            let ether = EthUnit.weiToEther(wei: EthUnit.Wei(propertyEntity.coinNum))
+            cell.totalNumberLabel.text = "\(EthUnit.decimalNumberHandler(ether))"
+            cell.infoLabel.text = "≈￥\(propertyEntity.CNY)"
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifierCell", for: indexPath) as! PropertyViewCell
-            //let entity = self.propertyArray[indexPath.row - 1]
-//
-//            cell.coinImagView.image = UIImage(named: entity.image!)
-//            cell.coinNameLabel.text = entity.shortName
-//            //            cell.coinLongNameLabel.text = entity.wholeName
-//            let ether = EthUnit.weiToEther(wei: EthUnit.Wei(entity.coinNum))
-//            //            cell.coinNumberLabel.text = "\(EthUnit.decimalNumberHandler(ether))"
-//            //cell.coinNumberLabel.text = String.init(format: "%.4f", ether as CVarArg) //"\(ether)"
-//            cell.worthLabel.text = "≈￥" + entity.CNY
+            
+            let entity = self.tradeList[indexPath.row - 1]
+            cell.coinNameLabel.text = entity.from
+            cell.coinLongNameLabel.text = entity.timeStampStr//Date.calculateTimeIntervalFrom(entity.timeStamp)
+            cell.coinNumberLabel.text = "数量"
+            
+            if let fromAddress = entity.from, fromAddress.lowercased() == WalletManager.shared.entity.address.lowercased() {
+                cell.coinImagView.image = UIImage(named: "arrowDown")
+            } else {
+                cell.coinImagView.image = UIImage(named: "arrowUp")
+            }
+            let bigUInt = BigUInt.init(entity.value ?? "0") ?? 0
+            let ether = EthUnit.weiToEther(wei: EthUnit.Wei(bigUInt))
+            cell.worthLabel.text = "\(EthUnit.decimalNumberHandler(ether))"
+            
+            if entity.from?.lowercased() == WalletManager.shared.entity.address.lowercased() {
+                cell.worthLabel.text = "-\(EthUnit.decimalNumberHandler(ether))"
+            } else {
+                cell.worthLabel.text = "+\(EthUnit.decimalNumberHandler(ether))"
+            }
+
             return cell
         }
     }

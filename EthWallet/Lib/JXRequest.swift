@@ -46,12 +46,14 @@ class JXRequest: JXBaseRequest {
         
         handleResponseResult(result: jsonData)
         
+        
     }
     override func requestFailure(error: Error) {
         print("请求失败:\(error)")
         handleResponseResult(result: error)
     }
-    func handleResponseResult(result:Any?) {
+    
+    func handleResponseResult(result: Any?) {
         var msg : String?
         var netCode : JXNetworkError = .kResponseUnknow
         var data : Any? = nil
@@ -95,8 +97,10 @@ class JXRequest: JXBaseRequest {
             }
         }else if result is Array<Any>{
             print("Array")
+            data = result
         }else if result is String{
             print("String")
+            data = result
         }else if result is Error{
             print("Error")
             guard
@@ -135,7 +139,7 @@ class JXRequest: JXBaseRequest {
         }
         handleResponseResult(result: data, message: msg ?? "", code: netCode, isSuccess: isSuccess)
     }
-    func handleResponseResult(result:Any?,message:String,code:JXNetworkError,isSuccess:Bool) {
+    func handleResponseResult(result: Any?, message: String, code: JXNetworkError, isSuccess: Bool) {
         
         if isSuccess {
             guard let success = self.success else {return}

@@ -10,12 +10,125 @@ import UIKit
 import web3swift
 import BigInt
 import JXFoundation
+import MJRefresh
 
-class WalletViewController: JXTableViewController {
-    @IBOutlet var defaultBackView: UIView!
+class WalletViewController: BaseViewController {
     
-    @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    //MARK:wallet headerView
     
+    @IBOutlet weak var headerView: UIView!{
+        didSet{
+            headerView.backgroundColor = JXMainColor
+        }
+    }
+    @IBOutlet weak var topSubConstraint: NSLayoutConstraint!{
+        didSet{
+            topSubConstraint.constant = kStatusBarHeight
+        }
+    }
+    @IBOutlet weak var coinImageView: UIImageView!{
+        didSet{
+            coinImageView.isUserInteractionEnabled = true
+            coinImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(walletDetail)))
+        }
+    }
+    @IBOutlet weak var nameLabel: UILabel!{
+        didSet{
+            nameLabel.text = ""
+            nameLabel.textColor = JXFfffffColor
+        }
+    }
+    
+    @IBOutlet weak var settingButton: UIButton!{
+        didSet{
+            
+            settingButton.tintColor = JXFfffffColor
+            settingButton.setImage(UIImage(named: "iconGear")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        }
+    }
+    @IBOutlet weak var scanButton: UIButton!{
+        didSet{
+            scanButton.tintColor = JXFfffffColor
+            scanButton.setImage(UIImage(named: "scanIcon")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        }
+    }
+    @IBOutlet weak var addressLabel: UILabel!{
+        didSet{
+            addressLabel.text = ""
+            addressLabel.textColor = JXFfffffColor
+        }
+    }
+    @IBOutlet weak var codeButton: UIButton!{
+        didSet{
+            codeButton.tintColor = JXFfffffColor
+            codeButton.setImage(UIImage(named: "icon-qc")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        }
+    }
+    
+    @IBOutlet weak var totalNumberLabel: UILabel!{
+        didSet{
+            totalNumberLabel.text = ""
+            totalNumberLabel.textColor = JXFfffffColor
+        }
+    }
+    @IBOutlet weak var infoLabel: UILabel!{
+        didSet{
+            infoLabel.text = "总资产"
+            infoLabel.textColor = JXFfffffColor
+        }
+    }
+    @IBOutlet weak var addButton: UIButton!{
+        didSet{
+            addButton.tintColor = JXFfffffColor
+        }
+    }
+    
+    
+    @IBAction func setting(_ sender: Any) {
+        let vc = SettingViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    @IBAction func scan(_ sender: Any) {
+        //self.performSegue(withIdentifier: "receipt", sender: nil)
+    }
+    @IBAction func codeAddress(_ sender: Any) {
+        print(WalletManager.shared.entity.address)
+        self.performSegue(withIdentifier: "walletAddress", sender: WalletManager.shared.entity.address)
+    }
+    @IBAction func addProperty(_ sender: Any) {
+        let vc = AddPropertyController()
+        vc.finishBlock = { array in
+            print("entity = ",array)
+            self.tableView?.reloadData()
+        }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    @objc func walletDetail() {
+        self.performSegue(withIdentifier: "walletDetail", sender: false)
+    }
+    //MARK:wallet tableView
+    @IBOutlet weak var tableView: UITableView!{
+        didSet{
+            tableView.register(UINib.init(nibName: "WalletHeadCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifierHead")
+            tableView.register(UINib.init(nibName: "PropertyViewCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifierCell")
+            tableView.estimatedRowHeight = 70
+            tableView.separatorStyle = .none
+            tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+                self.requestData()
+            })
+        }
+    }
+    //MARK:no wallet
+    @IBOutlet weak var defaultBackView: UIView!{
+        didSet{
+            defaultBackView.backgroundColor = JXFfffffColor
+        }
+    }
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!{
+        didSet{
+            topConstraint.constant = kNavStatusHeight + 84
+        }
+    }
     @IBOutlet weak var createButton: JXShadowButton!
     @IBOutlet weak var importButton: UIButton!
     
@@ -29,30 +142,19 @@ class WalletViewController: JXTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "钱包"
-        
-        self.tableView?.register(UINib.init(nibName: "WalletHeadCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifierHead")
-        self.tableView?.register(UINib.init(nibName: "PropertyViewCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifierCell")
-        self.tableView?.estimatedRowHeight = 70
-        //        self.tableView.rowHeight = UITableViewAutomaticDimension
-        //        self.tableView.isScrollEnabled = false
-        self.tableView?.separatorStyle = .none
+ 
+        NotificationCenter.default.addObserver(self, selector: #selector(walletChange(notify:)), name: NSNotification.Name(rawValue: "NotificationWalletChange"), object: nil)
         
         self.resetMainView()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(walletChange(notify:)), name: NSNotification.Name(rawValue: "NotificationwalletChange"), object: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func updateViewConstraints() {
-        super.updateViewConstraints()
-        self.topConstraint.constant = kNavStatusHeight + 84
-    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
 //        case "walletAddress":
@@ -62,6 +164,12 @@ class WalletViewController: JXTableViewController {
         case "transfer":
             if let vc = segue.destination as? TransferViewController, let entity = sender as? PropertyEntity {
                 vc.entity = entity
+                if entity.shortName == "ETH" {
+                    vc.type = .eth
+                } else {
+                    vc.type = .erc20
+                }
+                
             }
 //        case "receipt":
 //            if let vc = segue.destination as? ReceiptViewController, let entity = sender as? PropertyEntity {
@@ -83,18 +191,19 @@ class WalletViewController: JXTableViewController {
         return false
     }
     func resetMainView() {
+        
         if WalletManager.shared.isWalletExist == true {
             self.title = WalletManager.shared.entity.name
             self.defaultBackView.isHidden = true
-            self.tableView?.isHidden = false
+            self.tableView.isHidden = false
+            self.headerView.isHidden = false
             
-            self.showMBProgressHUD()
-            self.requestData()
-            
+            self.tableView.mj_header.beginRefreshing()
         } else {
             self.title = "钱包"
             self.defaultBackView.isHidden = false
-            self.tableView?.isHidden = true
+            self.tableView.isHidden = true
+            self.tableView.isHidden = true
         }
     }
     @objc func walletChange(notify: Notification) {
@@ -102,12 +211,20 @@ class WalletViewController: JXTableViewController {
     }
     override func requestData() {
         
-        //self.showMBProgressHUD()
+        self.showMBProgressHUD()
         self.count = 2
         self.fetchData(count: count) {
+            self.tableView.mj_header.endRefreshing()
             if self.count == 0 {
                 self.hideMBProgressHUD()
             }
+            
+            self.infoLabel.text = "总资产"
+            let s = String(format: "%0.2f", self.totalWorth)
+            self.totalNumberLabel.text = "≈￥\(s)"
+            self.addressLabel.text = WalletManager.shared.entity.address
+            self.nameLabel.text = WalletManager.shared.entity.name
+            
             self.tableView?.reloadData()
         }
     }
@@ -202,82 +319,37 @@ class WalletViewController: JXTableViewController {
             completion()
         }
     }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.propertyArray.count + 1
+}
+extension WalletViewController: UITableViewDelegate,UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.propertyArray.count
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifierHead", for: indexPath) as! WalletHeadCell
-            cell.accessoryType = .none
-            let s = String(format: "%0.2f", self.totalWorth)
-            cell.totalNumberLabel.text = "总资产"
-            cell.infoLabel.text = "≈￥\(s)"
-            cell.addressLabel.text = WalletManager.shared.entity.address
-            cell.nameLabel.text = WalletManager.shared.entity.name
-            cell.settingBlock = {
-//                let storyboard = UIStoryboard(name: "Export", bundle: nil)
-//                let vc = storyboard.instantiateViewController(withIdentifier: "verifyMnemonicVC") as! VerifyMnemonicController
-//
-//                self.navigationController?.pushViewController(vc, animated: true)
-            
-                let vc = SettingViewController()
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-            cell.scanBlock = {
-                //self.performSegue(withIdentifier: "receipt", sender: nil)
-            }
-            cell.detailBlock = {
-                self.performSegue(withIdentifier: "walletDetail", sender: false)
-            }
-            cell.codeBlock = {
-                print(WalletManager.shared.entity.address)
-                self.performSegue(withIdentifier: "walletAddress", sender: WalletManager.shared.entity.address)
-            }
-            cell.addBlock = {
-                let vc = AddPropertyController()
-                vc.finishBlock = { array in
-                    print("entity = ",array)
-                    self.tableView?.reloadData()
-                }
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-            
-//            cell.transferBlock = {
-//                self.performSegue(withIdentifier: "transfer", sender: nil)
-//            }
-//            cell.receiptBlock = {
-//                self.performSegue(withIdentifier: "receipt", sender: nil)
-//            }
-//            cell.checkBlock = {
-//                self.performSegue(withIdentifier: "checkWallet", sender: false)
-//            }
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifierCell", for: indexPath) as! PropertyViewCell
-            let entity = self.propertyArray[indexPath.row - 1]
-            
-            cell.coinImagView.image = UIImage(named: entity.image!)
-            cell.coinNameLabel.text = entity.shortName
-            cell.coinLongNameLabel.text = entity.wholeName
-            let ether = EthUnit.weiToEther(wei: EthUnit.Wei(entity.coinNum))
-            cell.coinNumberLabel.text = "\(EthUnit.decimalNumberHandler(ether))"
-            //cell.coinNumberLabel.text = String.init(format: "%.4f", ether as CVarArg) //"\(ether)"
-            cell.worthLabel.text = "≈￥" + entity.CNY
-            return cell
-        }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifierCell", for: indexPath) as! PropertyViewCell
+        let entity = self.propertyArray[indexPath.row]
+        
+        cell.coinImagView.image = UIImage(named: entity.image!)
+        cell.coinNameLabel.text = entity.shortName
+        cell.coinLongNameLabel.text = entity.wholeName
+        let ether = EthUnit.weiToEther(wei: EthUnit.Wei(entity.coinNum))
+        cell.coinNumberLabel.text = "\(EthUnit.decimalNumberHandler(ether))"
+        //cell.coinNumberLabel.text = String.init(format: "%.4f", ether as CVarArg) //"\(ether)"
+        cell.worthLabel.text = "≈￥" + entity.CNY
+        return cell
+        
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.row > 0 {
-            let entity = self.propertyArray[indexPath.row - 1]
-            self.performSegue(withIdentifier: "property", sender: entity)
-        }
+        
+        let entity = self.propertyArray[indexPath.row]
+        self.performSegue(withIdentifier: "property", sender: entity)
+        
     }
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        guard indexPath.row > 0 else{
-            return []
-        }
-        let entity = self.propertyArray[indexPath.row - 1]
+        
+        let entity = self.propertyArray[indexPath.row]
         //default,destructive默认红色，normal默认灰色，可以通过backgroundColor 修改背景颜色，backgroundEffect 添加模糊效果
         let recipeAction = UITableViewRowAction(style: .destructive, title: "收款") { (action, indexPath) in
             self.performSegue(withIdentifier: "receipt", sender: entity)
@@ -293,5 +365,4 @@ class WalletViewController: JXTableViewController {
         cancelAction.backgroundColor = JXOrangeColor
         return [cancelAction,transferAction,recipeAction]
     }
-         
 }

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,7 +28,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="简称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5P-Fg-HAf">
-                        <rect key="frame" x="75" y="15" width="167" height="20"/>
+                        <rect key="frame" x="75" y="10" width="167" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="cdq-mE-YSt"/>
                         </constraints>
@@ -38,13 +37,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="全称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQA-EH-Ort">
-                        <rect key="frame" x="75" y="35" width="167" height="16.5"/>
+                        <rect key="frame" x="75" y="30" width="167" height="26.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="地址" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8k2-Oy-YIW">
-                        <rect key="frame" x="75" y="51.5" width="167" height="20"/>
+                        <rect key="frame" x="75" y="56.5" width="167" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="di9-r7-n69"/>
                         </constraints>
@@ -52,7 +51,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLb-gq-AJd">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLb-gq-AJd" customClass="JXShadowButton" customModule="EthWallet" customModuleProvider="target">
                         <rect key="frame" x="257" y="28.5" width="44" height="30"/>
                         <color key="backgroundColor" red="0.54483035498473598" green="0.70848529420955408" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -65,16 +64,27 @@
                             <action selector="addProperty:" destination="oOR-cd-EnV" eventType="touchUpInside" id="6jV-Ek-OeZ"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTr-5w-55l">
+                        <rect key="frame" x="20" y="23.5" width="40" height="40"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="t5P-Fg-HAf" firstAttribute="top" secondItem="rJK-Do-EQ0" secondAttribute="top" constant="15" id="4ka-4h-5T9"/>
-                    <constraint firstItem="8k2-Oy-YIW" firstAttribute="top" secondItem="PQA-EH-Ort" secondAttribute="bottom" id="FNj-e9-RAw"/>
+                    <constraint firstItem="PQA-EH-Ort" firstAttribute="centerY" secondItem="rJK-Do-EQ0" secondAttribute="centerY" id="0U2-KW-pVn"/>
+                    <constraint firstItem="t5P-Fg-HAf" firstAttribute="top" secondItem="rJK-Do-EQ0" secondAttribute="top" constant="10" id="4ka-4h-5T9"/>
+                    <constraint firstItem="WTr-5w-55l" firstAttribute="height" secondItem="ex8-W5-wJI" secondAttribute="height" id="5qs-Fi-R0w"/>
+                    <constraint firstItem="WTr-5w-55l" firstAttribute="width" secondItem="ex8-W5-wJI" secondAttribute="width" id="AqH-NO-xVU"/>
+                    <constraint firstItem="8k2-Oy-YIW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="PQA-EH-Ort" secondAttribute="bottom" id="FNj-e9-RAw"/>
                     <constraint firstAttribute="trailing" secondItem="yLb-gq-AJd" secondAttribute="trailing" constant="20" id="IYM-bu-RX9"/>
+                    <constraint firstItem="WTr-5w-55l" firstAttribute="top" secondItem="ex8-W5-wJI" secondAttribute="top" id="NDn-YN-iN1"/>
                     <constraint firstItem="PQA-EH-Ort" firstAttribute="top" secondItem="t5P-Fg-HAf" secondAttribute="bottom" id="SgW-5U-huZ"/>
                     <constraint firstItem="ex8-W5-wJI" firstAttribute="leading" secondItem="rJK-Do-EQ0" secondAttribute="leading" constant="20" id="WLA-CF-rhV"/>
-                    <constraint firstAttribute="bottom" secondItem="8k2-Oy-YIW" secondAttribute="bottom" constant="15" id="ZM6-4k-Skx"/>
+                    <constraint firstAttribute="bottom" secondItem="8k2-Oy-YIW" secondAttribute="bottom" constant="10" id="ZM6-4k-Skx"/>
                     <constraint firstItem="t5P-Fg-HAf" firstAttribute="leading" secondItem="ex8-W5-wJI" secondAttribute="trailing" constant="15" id="cDN-86-BaL"/>
                     <constraint firstItem="yLb-gq-AJd" firstAttribute="leading" secondItem="8k2-Oy-YIW" secondAttribute="trailing" constant="15" id="fG1-xA-cya"/>
+                    <constraint firstItem="WTr-5w-55l" firstAttribute="leading" secondItem="ex8-W5-wJI" secondAttribute="leading" id="gAR-Mt-zBt"/>
                     <constraint firstItem="ex8-W5-wJI" firstAttribute="centerY" secondItem="rJK-Do-EQ0" secondAttribute="centerY" id="lGw-4v-9mk"/>
                     <constraint firstItem="t5P-Fg-HAf" firstAttribute="trailing" secondItem="8k2-Oy-YIW" secondAttribute="trailing" id="q2G-OR-PSf"/>
                     <constraint firstItem="PQA-EH-Ort" firstAttribute="trailing" secondItem="8k2-Oy-YIW" secondAttribute="trailing" id="qjA-RI-GSe"/>
@@ -88,6 +98,7 @@
                 <outlet property="addButton" destination="yLb-gq-AJd" id="djz-lz-gsz"/>
                 <outlet property="coinAddressLabel" destination="8k2-Oy-YIW" id="JUC-6c-IdW"/>
                 <outlet property="coinImageView" destination="ex8-W5-wJI" id="hci-3E-g1v"/>
+                <outlet property="coinNameIcon" destination="WTr-5w-55l" id="0dT-qO-iYb"/>
                 <outlet property="coinShortNameLabel" destination="t5P-Fg-HAf" id="65X-zX-lhb"/>
                 <outlet property="coinWholeNameLabel" destination="PQA-EH-Ort" id="itH-2E-wGw"/>
             </connections>

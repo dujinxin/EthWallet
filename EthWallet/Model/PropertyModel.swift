@@ -31,3 +31,37 @@ class CoinEntity: BaseModel {
     var coinNum   : BigUInt = 0
     var CNY       : String = ""
 }
+
+
+class TokenEntity: BaseModel {
+    @objc var address : String?
+    @objc var symbol : String?
+    @objc var type   : String = ""
+    @objc var decimal: Int = 18
+}
+
+class TxEntity: BaseModel {
+    
+    @objc var blockHash: String?
+    @objc var blockNumber: Int = 0
+    @objc var confirmations: Double = 0
+    @objc var contractAddress: String?
+    @objc var cumulativeGasUsed: Double = 0
+    @objc var from: String?
+    @objc var gas: Int = 0
+    @objc var gasPrice: Double = 0
+    @objc var gasUsed: Int = 0
+    @objc var Hash: String?
+    @objc var input: String?
+    @objc var isError: Int = 0
+    @objc var nonce: Int = 0
+    @objc var timeStamp: Double = 0
+    @objc var to: String?
+    @objc var transactionIndex: Int = 0
+    @objc var txreceipt_status: Int = 0
+    @objc var value: String?
+    
+    @objc var timeStampStr: String = ""
+}
+
+

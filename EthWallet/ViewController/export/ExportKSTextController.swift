@@ -52,6 +52,8 @@ class ExportKSTextController: BaseViewController {
     
     @IBOutlet weak var textView: JXPlaceHolderTextView!{
         didSet{
+            textView.isEditable = false
+            
             textView.layer.cornerRadius = 2
             textView.layer.shadowOpacity = 1
             textView.layer.shadowRadius = 10

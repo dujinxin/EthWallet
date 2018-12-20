@@ -19,7 +19,7 @@ enum WalletType {
 class WalletEntity: NSObject {
     
     @objc var isDefault : Int = 0// 0, 1         //是否为默认钱包
-    @objc var isAppWallet : Int = 0// 0, 1       //是否为本app钱包
+    @objc var isHDWallet : Int = 0// 0, 1       //是否为本app钱包,HD wallet
     @objc var name : String = ""                 //钱包名称
     @objc var mnemonics : String = ""            //助记词
     @objc var address : String = ""              //钱包地址
@@ -42,7 +42,7 @@ class WalletManager : NSObject{
     //字典
     var walletDict: Dictionary<String, Any> = [
         "isDefault": 0,
-        "isAppWallet": 0,
+        "isHDWallet": 0,
         "name": "",
         "mnemonics": "",
         "address": "",
@@ -60,10 +60,11 @@ class WalletManager : NSObject{
     
     //MARK:Web3
     //Web3
-    lazy var vm: Web3VM = {
-        let v = Web3VM.init(bIP32KeystoreBase64Str: entity.keystore)
-        return v
-    }()
+    var vm: Web3VM!
+//    lazy var vm: Web3VM = {
+//        let v = Web3VM.init(bIP32KeystoreBase64Str: entity.keystore)
+//        return v
+//    }()
     
     override init() {
         super.init()
@@ -72,9 +73,18 @@ class WalletManager : NSObject{
     /// 数据初始化
     func setupInfo() {
         print("钱包地址：\(userPath)")
-        guard WalletDB.shared.manager.isExist == true, let data = WalletDB.shared.getDefaultWallet(),data.isEmpty == false else { return }
+        guard
+            WalletDB.shared.manager.isExist == true,
+            let data = WalletDB.shared.getDefaultWallet(),
+            data.isEmpty == false else { return }
         self.walletDict = data
         self.entity.setValuesForKeys(data)
+        if entity.isHDWallet == 1 {
+            self.vm = Web3VM.init(bIP32KeystoreBase64Str: entity.keystore)
+        } else {
+            self.vm = Web3VM.init(keystoreBase64Str: entity.keystore)
+        }
+        
         print(data)
     }
     /// 切换默认钱包
@@ -83,6 +93,11 @@ class WalletManager : NSObject{
         guard let address = dict["address"] as? String else { return false }
         self.entity.setValuesForKeys(dict)
         self.walletDict = dict
+        if entity.isHDWallet == 1 {
+            self.vm = Web3VM.init(bIP32KeystoreBase64Str: entity.keystore)
+        } else {
+            self.vm = Web3VM.init(keystoreBase64Str: entity.keystore)
+        }
         return WalletDB.shared.setDefaultWallet(key: address)
     }
     /// 删除钱包
@@ -166,20 +181,18 @@ class WalletDB: BaseDB {
         let cs = "address = '\(address)'"
         return self.deleteData(condition: [cs])
     }
-    func getDefaultWallet() -> Dictionary<String,Any>? {
-        if self.manager.isExist == false {
-            return nil
-        }
+    func getDefaultWallet() -> Dictionary<String, Any>? {
+        guard self.manager.isExist == true else { return nil }
         if
             let data = self.selectData(keys: [], condition: ["isDefault = \(1)"]),
             data.isEmpty == false,
-            let dict = data[0] as? Dictionary<String,Any>{
+            let dict = data[0] as? Dictionary<String, Any> {
             return dict
         }
         if
             let data = self.selectData(),
             data.isEmpty == false,
-            let dict = data[0] as? Dictionary<String,Any> {
+            let dict = data[0] as? Dictionary<String, Any> {
             
             return dict
         }

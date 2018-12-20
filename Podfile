@@ -11,5 +11,6 @@ target 'EthWallet' do
     pod 'JXFoundation'
     pod 'MBProgressHUD'
     pod 'JX_AFNetworking' 
+    pod 'MJRefresh'
     
 end

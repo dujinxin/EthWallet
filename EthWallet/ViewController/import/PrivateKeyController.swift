@@ -15,6 +15,7 @@ class PrivateKeyController: BaseViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var textView: JXPlaceHolderTextView!{
         didSet{
+            
             textView.layer.cornerRadius = 2
             textView.layer.shadowOpacity = 1
             textView.layer.shadowRadius = 10
@@ -24,12 +25,12 @@ class PrivateKeyController: BaseViewController {
     }
     @IBOutlet weak var nameTextField: UITextField!{
         didSet{
-            nameTextField.textColor = JXMainColor
+            nameTextField.textColor = JXMainTextColor
         }
     }
     @IBOutlet weak var passwordTextField: UITextField!{
         didSet{
-            passwordTextField.textColor = JXMainColor
+            passwordTextField.textColor = JXMainTextColor
         }
     }
     @IBOutlet weak var selectButton: UIButton!
@@ -109,7 +110,7 @@ class PrivateKeyController: BaseViewController {
         let dict: [String :Any] = [
             "name": name,
             "isDefault": 0,
-            "isAppWallet": 0,
+            "isHDWallet": 0,
             "address": address.address,
             "keystore": keystoreBase64Str,
             "mnemonics": "",
