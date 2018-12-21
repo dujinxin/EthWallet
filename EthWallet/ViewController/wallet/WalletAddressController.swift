@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WalletAddressController: BaseViewController {
+class WalletAddressController: JXBaseViewController {
     
     @IBOutlet weak internal var topConstraint: NSLayoutConstraint!
     

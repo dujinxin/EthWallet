@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 import JXFoundation
 
-class JXWkWebViewController: BaseViewController {
+class JXWkWebViewController: JXBaseViewController {
 
     lazy var webView: WKWebView = {
         let config = WKWebViewConfiguration()

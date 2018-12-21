@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExportMnemonicController: BaseViewController {
+class ExportMnemonicController: JXBaseViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
 

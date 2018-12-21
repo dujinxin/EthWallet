@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExportPKCodeController: BaseViewController {
+class ExportPKCodeController: JXBaseViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     

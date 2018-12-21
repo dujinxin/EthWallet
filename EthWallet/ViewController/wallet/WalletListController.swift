@@ -17,9 +17,9 @@ class WalletListController: JXTableViewController {
         
         self.customNavigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(walletAction))
         
-        self.tableView?.register(UINib(nibName: "JXActionCell", bundle: nil), forCellReuseIdentifier: "cellIdentifier")
+        self.tableView.register(UINib(nibName: "JXActionCell", bundle: nil), forCellReuseIdentifier: "cellIdentifier")
         
-        self.tableView?.rowHeight = 50
+        self.tableView.rowHeight = 50
         
         
     }
@@ -50,14 +50,14 @@ class WalletListController: JXTableViewController {
             vc.backBlock = { ()->() in
                 self.dataArray.removeAll()
                 self.dataArray = WalletDB.shared.selectData()!
-                self.tableView?.reloadData()
+                self.tableView.reloadData()
             }
         case "importWallet":
             let vc = segue.destination as! ImportWalletController
             vc.backBlock = { ()->() in
                 self.dataArray.removeAll()
                 self.dataArray = WalletDB.shared.selectData()!
-                self.tableView?.reloadData()
+                self.tableView.reloadData()
             }
         case "walletDetail":
             let vc = segue.destination as! WalletDetailController
@@ -76,7 +76,7 @@ class WalletListController: JXTableViewController {
             let vc = storyboard.instantiateViewController(withIdentifier: "createVC") as! CreateWalletController
             vc.backBlock = {
                 self.dataArray = WalletDB.shared.selectData()!
-                self.tableView?.reloadData()
+                self.tableView.reloadData()
             }
             self.navigationController?.pushViewController(vc, animated: true)
         }))
@@ -86,7 +86,7 @@ class WalletListController: JXTableViewController {
             let vc = storyboard.instantiateViewController(withIdentifier: "importVC") as! ImportWalletController
             vc.backBlock = {
                 self.dataArray = WalletDB.shared.selectData()!
-                self.tableView?.reloadData()
+                self.tableView.reloadData()
             }
             self.navigationController?.pushViewController(vc, animated: true)
         }))

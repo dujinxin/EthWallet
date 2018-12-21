@@ -19,7 +19,7 @@ enum WalletType {
 class WalletEntity: NSObject {
     
     @objc var isDefault : Int = 0// 0, 1         //是否为默认钱包
-    @objc var isHDWallet : Int = 0// 0, 1       //是否为本app钱包,HD wallet
+    @objc var isHDWallet : Int = 0// 0, 1        //是否为本app钱包,HD wallet
     @objc var name : String = ""                 //钱包名称
     @objc var mnemonics : String = ""            //助记词
     @objc var address : String = ""              //钱包地址

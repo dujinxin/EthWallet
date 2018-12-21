@@ -9,7 +9,7 @@
 import UIKit
 import BigInt
 
-class ReceiptViewController: BaseViewController {
+class ReceiptViewController: JXBaseViewController {
     
     @IBOutlet weak internal var topConstraint: NSLayoutConstraint!
     

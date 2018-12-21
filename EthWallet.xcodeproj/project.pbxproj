@@ -12,7 +12,7 @@
 		351DD43621C4A275007E94FA /* JXDefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DD42B21C4A275007E94FA /* JXDefaultView.swift */; };
 		351DD43721C4A275007E94FA /* JXCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DD42D21C4A275007E94FA /* JXCollectionViewController.swift */; };
 		351DD43821C4A275007E94FA /* JXNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DD42E21C4A275007E94FA /* JXNavigationController.swift */; };
-		351DD43921C4A275007E94FA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DD42F21C4A275007E94FA /* BaseViewController.swift */; };
+		351DD43921C4A275007E94FA /* JXBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DD42F21C4A275007E94FA /* JXBaseViewController.swift */; };
 		351DD43A21C4A275007E94FA /* ZPCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DD43021C4A275007E94FA /* ZPCollectionViewController.swift */; };
 		351DD43B21C4A275007E94FA /* JXWkWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DD43121C4A275007E94FA /* JXWkWebViewController.swift */; };
 		351DD43C21C4A275007E94FA /* JSTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DD43221C4A275007E94FA /* JSTableViewController.swift */; };
@@ -40,8 +40,6 @@
 		35249D5520C1558E001C1140 /* WalletHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35249D5320C1558E001C1140 /* WalletHeadCell.swift */; };
 		35249D5620C1558E001C1140 /* WalletHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35249D5420C1558E001C1140 /* WalletHeadCell.xib */; };
 		35249D5C20C2433D001C1140 /* TransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35249D5B20C2433D001C1140 /* TransferViewController.swift */; };
-		3598764C20DA25900027F982 /* JXTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598764A20DA25900027F982 /* JXTopBarView.swift */; };
-		3598764D20DA25900027F982 /* JXHorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598764B20DA25900027F982 /* JXHorizontalView.swift */; };
 		3598764F20DA25E70027F982 /* ImportWalletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598764E20DA25E70027F982 /* ImportWalletController.swift */; };
 		3598765120DA260C0027F982 /* PrivateKeyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598765020DA260C0027F982 /* PrivateKeyController.swift */; };
 		3598765320DA26220027F982 /* KeyStoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598765220DA26220027F982 /* KeyStoreController.swift */; };
@@ -63,7 +61,6 @@
 		35A0F34421C63ECF006B2F65 /* WalletAddressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A0F34321C63ECF006B2F65 /* WalletAddressController.swift */; };
 		35A0F34621C661C4006B2F65 /* CreateSuccessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A0F34521C661C4006B2F65 /* CreateSuccessController.swift */; };
 		35A0F34821C667D7006B2F65 /* Import.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35A0F34721C667D7006B2F65 /* Import.storyboard */; };
-		35A0F34C21C7B1FF006B2F65 /* JXKeyStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A0F34B21C7B1FF006B2F65 /* JXKeyStoreManager.swift */; };
 		35A0F34E21C7CA11006B2F65 /* ExportMnemonicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A0F34D21C7CA11006B2F65 /* ExportMnemonicController.swift */; };
 		35A0F35021C7CA3C006B2F65 /* VerifyMnemonicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A0F34F21C7CA3C006B2F65 /* VerifyMnemonicController.swift */; };
 		35CB0D9820BA5FB60092C5FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CB0D9720BA5FB60092C5FC /* AppDelegate.swift */; };
@@ -93,7 +90,7 @@
 		351DD42B21C4A275007E94FA /* JXDefaultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXDefaultView.swift; sourceTree = "<group>"; };
 		351DD42D21C4A275007E94FA /* JXCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXCollectionViewController.swift; sourceTree = "<group>"; };
 		351DD42E21C4A275007E94FA /* JXNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXNavigationController.swift; sourceTree = "<group>"; };
-		351DD42F21C4A275007E94FA /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		351DD42F21C4A275007E94FA /* JXBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXBaseViewController.swift; sourceTree = "<group>"; };
 		351DD43021C4A275007E94FA /* ZPCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZPCollectionViewController.swift; sourceTree = "<group>"; };
 		351DD43121C4A275007E94FA /* JXWkWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXWkWebViewController.swift; sourceTree = "<group>"; };
 		351DD43221C4A275007E94FA /* JSTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSTableViewController.swift; sourceTree = "<group>"; };
@@ -121,8 +118,6 @@
 		35249D5320C1558E001C1140 /* WalletHeadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletHeadCell.swift; sourceTree = "<group>"; };
 		35249D5420C1558E001C1140 /* WalletHeadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletHeadCell.xib; sourceTree = "<group>"; };
 		35249D5B20C2433D001C1140 /* TransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferViewController.swift; sourceTree = "<group>"; };
-		3598764A20DA25900027F982 /* JXTopBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXTopBarView.swift; sourceTree = "<group>"; };
-		3598764B20DA25900027F982 /* JXHorizontalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXHorizontalView.swift; sourceTree = "<group>"; };
 		3598764E20DA25E70027F982 /* ImportWalletController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletController.swift; sourceTree = "<group>"; };
 		3598765020DA260C0027F982 /* PrivateKeyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKeyController.swift; sourceTree = "<group>"; };
 		3598765220DA26220027F982 /* KeyStoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyStoreController.swift; sourceTree = "<group>"; };
@@ -144,7 +139,6 @@
 		35A0F34321C63ECF006B2F65 /* WalletAddressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAddressController.swift; sourceTree = "<group>"; };
 		35A0F34521C661C4006B2F65 /* CreateSuccessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSuccessController.swift; sourceTree = "<group>"; };
 		35A0F34721C667D7006B2F65 /* Import.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Import.storyboard; sourceTree = "<group>"; };
-		35A0F34B21C7B1FF006B2F65 /* JXKeyStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXKeyStoreManager.swift; sourceTree = "<group>"; };
 		35A0F34D21C7CA11006B2F65 /* ExportMnemonicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportMnemonicController.swift; sourceTree = "<group>"; };
 		35A0F34F21C7CA3C006B2F65 /* VerifyMnemonicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyMnemonicController.swift; sourceTree = "<group>"; };
 		35CB0D9420BA5FB60092C5FC /* EthWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EthWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,7 +206,7 @@
 			children = (
 				351DD42D21C4A275007E94FA /* JXCollectionViewController.swift */,
 				351DD42E21C4A275007E94FA /* JXNavigationController.swift */,
-				351DD42F21C4A275007E94FA /* BaseViewController.swift */,
+				351DD42F21C4A275007E94FA /* JXBaseViewController.swift */,
 				351DD43021C4A275007E94FA /* ZPCollectionViewController.swift */,
 				351DD43121C4A275007E94FA /* JXWkWebViewController.swift */,
 				351DD43221C4A275007E94FA /* JSTableViewController.swift */,
@@ -240,6 +234,8 @@
 				351DD44921C4C918007E94FA /* PropertyViewCell.xib */,
 				351DD45821C5436C007E94FA /* ImageTitleCell.swift */,
 				351DD45921C5436D007E94FA /* ImageTitleCell.xib */,
+				3598767820DE3E430027F982 /* AddPropertyCell.swift */,
+				3598767920DE3E430027F982 /* AddPropertyCell.xib */,
 				351DD46221C6230F007E94FA /* JXShadowButton.swift */,
 			);
 			path = View;
@@ -301,8 +297,6 @@
 				351DD45221C4F637007E94FA /* TransferSuccessController.swift */,
 				351DD45621C520EB007E94FA /* ReceiptViewController.swift */,
 				3598767620DE3D430027F982 /* AddPropertyController.swift */,
-				3598767820DE3E430027F982 /* AddPropertyCell.swift */,
-				3598767920DE3E430027F982 /* AddPropertyCell.xib */,
 			);
 			path = property;
 			sourceTree = "<group>";
@@ -338,16 +332,13 @@
 		35A0F34A21C69942006B2F65 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				3598764A20DA25900027F982 /* JXTopBarView.swift */,
 				351DD45421C4F8D9007E94FA /* JXSelectView.swift */,
-				3598764B20DA25900027F982 /* JXHorizontalView.swift */,
 				351DD44121C4A84E007E94FA /* ConstantHeader.swift */,
 				3598766120DBA2250027F982 /* String+Extension.swift */,
 				351DD45021C4F5D6007E94FA /* ViewManager.swift */,
 				35249D5120C15139001C1140 /* WalletManager.swift */,
 				351DD44321C4B3DB007E94FA /* JXRequest.swift */,
 				3598767320DE1F5F0027F982 /* EthUnit.swift */,
-				35A0F34B21C7B1FF006B2F65 /* JXKeyStoreManager.swift */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -568,7 +559,7 @@
 			files = (
 				351DD43721C4A275007E94FA /* JXCollectionViewController.swift in Sources */,
 				35249D5C20C2433D001C1140 /* TransferViewController.swift in Sources */,
-				351DD43921C4A275007E94FA /* BaseViewController.swift in Sources */,
+				351DD43921C4A275007E94FA /* JXBaseViewController.swift in Sources */,
 				3598767E20DE42980027F982 /* PropertyModel.swift in Sources */,
 				351DD45A21C5436D007E94FA /* ImageTitleCell.swift in Sources */,
 				351DD43A21C4A275007E94FA /* ZPCollectionViewController.swift in Sources */,
@@ -578,17 +569,14 @@
 				351DD44F21C4DED5007E94FA /* PropertyViewController.swift in Sources */,
 				3598765320DA26220027F982 /* KeyStoreController.swift in Sources */,
 				35249D5520C1558E001C1140 /* WalletHeadCell.swift in Sources */,
-				3598764C20DA25900027F982 /* JXTopBarView.swift in Sources */,
 				3598766420DBD1770027F982 /* WalletDetailController.swift in Sources */,
 				35A0F34621C661C4006B2F65 /* CreateSuccessController.swift in Sources */,
 				35A0F34421C63ECF006B2F65 /* WalletAddressController.swift in Sources */,
 				351DD45521C4F8DA007E94FA /* JXSelectView.swift in Sources */,
 				351DD43D21C4A275007E94FA /* JXTableViewController.swift in Sources */,
 				3598768020E0D5BC0027F982 /* Web3VM.swift in Sources */,
-				3598764D20DA25900027F982 /* JXHorizontalView.swift in Sources */,
 				351DD43B21C4A275007E94FA /* JXWkWebViewController.swift in Sources */,
 				3598765720DA37200027F982 /* SettingViewController.swift in Sources */,
-				35A0F34C21C7B1FF006B2F65 /* JXKeyStoreManager.swift in Sources */,
 				351DD45721C520EB007E94FA /* ReceiptViewController.swift in Sources */,
 				3598766E20DC927E0027F982 /* ExportPKViewController.swift in Sources */,
 				351DD44021C4A325007E94FA /* JXNavigationBar.swift in Sources */,

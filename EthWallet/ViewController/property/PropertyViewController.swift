@@ -12,7 +12,7 @@ import BigInt
 import JXFoundation
 import MJRefresh
 
-class PropertyViewController: BaseViewController, UITableViewDelegate,UITableViewDataSource {
+class PropertyViewController: JXBaseViewController, UITableViewDelegate,UITableViewDataSource {
     
     @IBOutlet weak var topConstraint: NSLayoutConstraint!{
         didSet{

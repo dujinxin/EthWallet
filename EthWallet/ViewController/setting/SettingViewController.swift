@@ -30,8 +30,8 @@ class SettingViewController: JXTableViewController {
         
         self.title = "设置"
 
-        self.tableView?.register(UINib(nibName: "ImageTitleCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier")
-        self.tableView?.estimatedRowHeight = 64
+        self.tableView.register(UINib(nibName: "ImageTitleCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier")
+        self.tableView.estimatedRowHeight = 64
     }
 
     override func didReceiveMemoryWarning() {

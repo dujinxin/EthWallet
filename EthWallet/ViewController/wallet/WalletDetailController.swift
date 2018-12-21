@@ -31,10 +31,10 @@ class WalletDetailController: JXTableViewController {
         
         self.title = "管理"
         
-        //self.tableView?.register(UINib(nibName: "MyCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier1")
-        //self.tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier1")
-        self.tableView?.register(UINib(nibName: "ImageTitleCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier2")
-        self.tableView?.estimatedRowHeight = 64
+        self.customNavigationBar.separatorHidden = true
+        
+        self.tableView.register(UINib(nibName: "ImageTitleCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier2")
+        self.tableView.estimatedRowHeight = 64
         
         if WalletManager.shared.entity.isHDWallet == 1 {
             self.defaultArray = [
@@ -59,18 +59,12 @@ class WalletDetailController: JXTableViewController {
                 ]
             ]
         }
-        self.tableView?.reloadData()
+        self.tableView.reloadData()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     
-        
+ 
         switch segue.identifier {
-        
         case "modifyPassword":
             let vc = segue.destination as! ModifyPasswordController
             vc.dict = self.dict
@@ -83,7 +77,6 @@ class WalletDetailController: JXTableViewController {
     @IBAction func deleteWallet(_ sender: Any) {
         
     }
-    
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -127,6 +120,8 @@ class WalletDetailController: JXTableViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier2", for: indexPath) as! ImageTitleCell
+        cell.accessoryType = .disclosureIndicator
+        
         let dict = defaultArray[indexPath.section][indexPath.row]
         
         cell.iconView.image = UIImage(named: dict["image"]!)
@@ -135,31 +130,32 @@ class WalletDetailController: JXTableViewController {
         } else {
             cell.titleView.text = dict["title"]
         }
-        cell.accessoryType = .disclosureIndicator
-        
+       
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.section == 0 {
-            self.modifyWalletName(indexPath)
-        } else if indexPath.section == 1 {
-
-            if WalletManager.shared.entity.isHDWallet == 1 {
-                if indexPath.row == 0 {
-                    self.modifyPasswordNotice(indexPath)
-                } else if indexPath.row == 1 {
-                    self.showInputView(.mnemonics)
-                } else if indexPath.row == 2 {
-                    self.showInputView(.keyStore)
-                } else if indexPath.row == 3 {
-                    self.showInputView(.privateKey)
-                }
-            } else {
-                if indexPath.row == 0 {
-                    self.showInputView(.keyStore)
-                } else if indexPath.row == 1 {
-                    self.showInputView(.privateKey)
+        //tableView.deselectRow(at: indexPath, animated: true)
+        DispatchQueue.main.async {
+            if indexPath.section == 0 {
+                self.modifyWalletName(indexPath)
+            } else if indexPath.section == 1 {
+                
+                if WalletManager.shared.entity.isHDWallet == 1 {
+                    if indexPath.row == 0 {
+                        self.modifyPasswordNotice(indexPath)
+                    } else if indexPath.row == 1 {
+                        self.showInputView(.mnemonics)
+                    } else if indexPath.row == 2 {
+                        self.showInputView(.keyStore)
+                    } else if indexPath.row == 3 {
+                        self.showInputView(.privateKey)
+                    }
+                } else {
+                    if indexPath.row == 0 {
+                        self.showInputView(.keyStore)
+                    } else if indexPath.row == 1 {
+                        self.showInputView(.privateKey)
+                    }
                 }
             }
         }
@@ -181,12 +177,13 @@ class WalletDetailController: JXTableViewController {
                 text.isEmpty == false {
                 
                 if WalletDB.shared.updateWalletName(text) == true {
-                    self.tableView?.reloadSections([0], with: .automatic)
+                    self.tableView.reloadSections([0], with: .automatic)
                 }
             }
         }))
         alertVC.addAction(UIAlertAction(title: "取消", style: .cancel, handler: { (action) in
         }))
+        
         self.present(alertVC, animated: true, completion: nil)
     }
     /// 修改密码提示语
@@ -206,7 +203,7 @@ class WalletDetailController: JXTableViewController {
                 text.isEmpty == false {
                 
                 if WalletDB.shared.updateWalletNotice(text) == true {
-                    self.tableView?.reloadSections([0], with: .automatic)
+                    self.tableView.reloadSections([0], with: .automatic)
                 }
             }
         }))
@@ -234,6 +231,7 @@ class WalletDetailController: JXTableViewController {
         }))
         alertVC.addAction(UIAlertAction(title: "取消", style: .cancel, handler: { (action) in
         }))
+        
         self.present(alertVC, animated: true, completion: nil)
     }
     /// 导出 助记词、keystore、私钥

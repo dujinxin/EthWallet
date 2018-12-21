@@ -12,7 +12,7 @@ import BigInt
 import JXFoundation
 import MJRefresh
 
-class WalletViewController: BaseViewController {
+class WalletViewController: JXBaseViewController {
     
     //MARK:wallet headerView
     
@@ -141,7 +141,7 @@ class WalletViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "钱包"
+        //self.title = "钱包"
  
         NotificationCenter.default.addObserver(self, selector: #selector(walletChange(notify:)), name: NSNotification.Name(rawValue: "NotificationWalletChange"), object: nil)
         

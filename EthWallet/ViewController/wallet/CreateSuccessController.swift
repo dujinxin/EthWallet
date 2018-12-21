@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateSuccessController: BaseViewController {
+class CreateSuccessController: JXBaseViewController {
     @IBOutlet weak var defaultBackView: UIView!
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     

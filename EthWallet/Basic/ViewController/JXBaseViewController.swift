@@ -1,5 +1,5 @@
 //
-//  BaseViewController.swift
+//  JXBaseViewController.swift
 //  ShoppingGo-Swift
 //
 //  Created by 杜进新 on 2017/6/6.
@@ -10,7 +10,7 @@ import UIKit
 import MBProgressHUD
 import JXFoundation
 
-open class BaseViewController: UIViewController {
+open class JXBaseViewController: UIViewController {
     
     var backBlock : (()->())?
     
@@ -23,18 +23,16 @@ open class BaseViewController: UIViewController {
         navigationBar.barTintColor = UIColor.clear//导航条颜色,透明色不起作用
         navigationBar.isTranslucent = true
         navigationBar.barStyle = .default
-        //navigationBar.barStyle = .default
         navigationBar.tintColor = UIColor.rgbColor(rgbValue: 0x000000) //item图片文字颜色
         navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.rgbColor(rgbValue: 0x000000),NSAttributedString.Key.font:UIFont.systemFont(ofSize: 17)]//标题设置
         navigationBar.setBackgroundImage(navigationBar.imageWithColor(UIColor.clear), for: UIBarMetrics.default)
         return navigationBar
     }()
     lazy var customNavigationItem: UINavigationItem = {
-        let item = UINavigationItem()
+        let item = UINavigationItem(title: "")
         return item
     }()
-    
-    //重写title的setter方法
+    //子类重写title的setter方法
     override open var title: String?{
         didSet {
             customNavigationItem.title = title
@@ -53,7 +51,7 @@ open class BaseViewController: UIViewController {
     var defaultInfo : [String: String]?
     
     //log state
-    var isLogin = false
+    var isLogin: Bool = true
     //var isCustomNavigationBarUsed = false
     
 
@@ -62,14 +60,12 @@ open class BaseViewController: UIViewController {
         
         self.view.backgroundColor = JXFfffffColor
         
-        
-        //isLogin ? setUpMainView() : setUpDefaultView()
-        
-        self.isCustomNavigationBarUsed() ? setCustomNavigationBar() : navigationBarConfig()
+        self.isCustomNavigationBarUsed() ? setupCustomNavigationBar() : setupNavigationBarConfig()
     }
     override open func loadView() {
         super.loadView()
-        setUpMainView()
+        
+        isLogin ? setUpMainView() : setUpDefaultView()
     }
     override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -96,16 +92,16 @@ open class BaseViewController: UIViewController {
     }
 }
 
-extension BaseViewController {
-    func setCustomNavigationBar() {
+extension JXBaseViewController {
+    func setupCustomNavigationBar() {
         //隐藏navigationBar
         self.navigationController?.navigationBar.isHidden = true
         //1.自定义view代替NavigationBar,需要自己实现手势返回;
         //2.自定义navigatioBar代替系统的，手势返回不用自己实现
-        view.addSubview(self.customNavigationBar)
-        customNavigationBar.items = [customNavigationItem]
+        self.view.addSubview(self.customNavigationBar)
+        self.customNavigationBar.items = [self.customNavigationItem]
     }
-    func navigationBarConfig() {
+    func setupNavigationBarConfig() {
         let image = UIImage(named: "icon-back")
         self.navigationController?.navigationBar.backIndicatorImage = image
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = image?.withRenderingMode(.alwaysOriginal)
@@ -119,18 +115,17 @@ extension BaseViewController {
     }
 }
 
-extension BaseViewController {
+extension JXBaseViewController {
     
 }
 
-extension BaseViewController {
+extension JXBaseViewController {
     open func showMBProgressHUD() {
         let _ = MBProgressHUD.showAdded(to: self.view, animated: true)
 //        hud.backgroundView.color = UIColor.black
 //        hud.contentColor = UIColor.black
 //        hud.bezelView.backgroundColor = UIColor.black
 //        hud.label.text = "加载中..."
-
     }
     open func hideMBProgressHUD() {
         MBProgressHUD.hide(for: self.view, animated: true)

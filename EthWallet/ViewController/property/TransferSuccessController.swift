@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TransferSuccessController: BaseViewController {
+class TransferSuccessController: JXBaseViewController {
 
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var addressLabel: UILabel!

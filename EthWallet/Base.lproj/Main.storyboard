@@ -35,7 +35,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CyC-t3-azP" customClass="JXShadowButton" customModule="EthWallet" customModuleProvider="target">
-                                <rect key="frame" x="20" y="603" width="157.5" height="44"/>
+                                <rect key="frame" x="20" y="613" width="157.5" height="44"/>
                                 <color key="backgroundColor" red="0.59581649879999998" green="0.59468733640000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="ZwD-a0-6hZ"/>
@@ -48,7 +48,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u7p-iN-6I5" customClass="JXShadowButton" customModule="EthWallet" customModuleProvider="target">
-                                <rect key="frame" x="197.5" y="603" width="157.5" height="44"/>
+                                <rect key="frame" x="197.5" y="613" width="157.5" height="44"/>
                                 <color key="backgroundColor" red="0.59581649879999998" green="0.59468733640000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="转账">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -69,7 +69,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="u7p-iN-6I5" firstAttribute="height" secondItem="CyC-t3-azP" secondAttribute="height" id="17G-cu-pnw"/>
-                            <constraint firstItem="CyC-t3-azP" firstAttribute="top" secondItem="nmh-A3-FqK" secondAttribute="bottom" id="9Rg-ZB-wbI"/>
+                            <constraint firstItem="CyC-t3-azP" firstAttribute="top" secondItem="nmh-A3-FqK" secondAttribute="bottom" constant="10" id="9Rg-ZB-wbI"/>
                             <constraint firstItem="nmh-A3-FqK" firstAttribute="top" secondItem="hOv-fk-rpo" secondAttribute="top" id="H9C-0i-LYI"/>
                             <constraint firstItem="CyC-t3-azP" firstAttribute="leading" secondItem="xhJ-E3-f9g" secondAttribute="leading" constant="20" id="J2T-H1-yaO"/>
                             <constraint firstItem="u7p-iN-6I5" firstAttribute="leading" secondItem="CyC-t3-azP" secondAttribute="trailing" constant="20" id="NIQ-e7-giV"/>
@@ -78,7 +78,7 @@
                             <constraint firstItem="u7p-iN-6I5" firstAttribute="width" secondItem="CyC-t3-azP" secondAttribute="width" id="p3D-4q-UNL"/>
                             <constraint firstItem="xhJ-E3-f9g" firstAttribute="trailing" secondItem="nmh-A3-FqK" secondAttribute="trailing" id="toK-LP-tdw"/>
                             <constraint firstItem="u7p-iN-6I5" firstAttribute="bottom" secondItem="CyC-t3-azP" secondAttribute="bottom" id="wxi-t0-8x9"/>
-                            <constraint firstItem="xhJ-E3-f9g" firstAttribute="bottom" secondItem="CyC-t3-azP" secondAttribute="bottom" constant="20" id="xTd-ow-wVn"/>
+                            <constraint firstItem="xhJ-E3-f9g" firstAttribute="bottom" secondItem="CyC-t3-azP" secondAttribute="bottom" constant="10" id="xTd-ow-wVn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xhJ-E3-f9g"/>
                     </view>

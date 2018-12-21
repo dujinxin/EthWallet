@@ -7,11 +7,11 @@
 //
 
 import UIKit
+import JXFoundation
 
+class ImportWalletController: JXBaseViewController,JXBarViewDelegate,JXHorizontalViewDelegate {
 
-class ImportWalletController: BaseViewController,JXTopBarViewDelegate,JXHorizontalViewDelegate {
-
-    var topBar : JXTopBarView?
+    var topBar : JXBarView!
     var horizontalView : JXHorizontalView?
     
     lazy var keystoreVC: KeyStoreController = {
@@ -42,11 +42,20 @@ class ImportWalletController: BaseViewController,JXTopBarViewDelegate,JXHorizont
                 block()
             }
         }
+        
+        topBar = JXBarView.init(frame: CGRect.init(x: 0, y: kNavStatusHeight, width: view.bounds.width, height: 44), titles: ["keystore导入","明文私钥导入"])
+        topBar.delegate = self
+        topBar.backgroundColor = JXFfffffColor
+        topBar.bottomLineSize = CGSize(width: 60, height: 2)
+        topBar.bottomLineView.backgroundColor = JXSeparatorColor
+        topBar.isBottomLineEnabled = true
+        let att = JXAttribute()
+        att.normalColor = JXMainText50Color
+        att.selectedColor = JXMainTextColor
+        att.font = UIFont.systemFont(ofSize: 17)
+        topBar.attribute = att
+        view.addSubview(topBar)
 
-        topBar = JXTopBarView.init(frame: CGRect.init(x: 0, y: kNavStatusHeight, width: view.bounds.width, height: 44), titles: ["keystore导入","明文私钥导入"])
-        topBar?.delegate = self
-        topBar?.isBottomLineEnabled = true
-        view.addSubview(topBar!)
         
         horizontalView = JXHorizontalView.init(frame: CGRect.init(x: 0, y: kNavStatusHeight + 44, width: view.bounds.width, height: UIScreen.main.bounds.height - kNavStatusHeight - 44), containers: [keystoreVC,privateVC], parentViewController: self)
         view.addSubview(horizontalView!)
@@ -58,25 +67,37 @@ class ImportWalletController: BaseViewController,JXTopBarViewDelegate,JXHorizont
     }
 }
 extension ImportWalletController {
-    func jxTopBarView(topBarView: JXTopBarView, didSelectTabAt index: Int) {
+    
+    func jxBarView(barView: JXBarView, didClick index: Int) {
         let indexPath = IndexPath.init(item: index, section: 0)
+        //开启动画会影响topBar的点击移动动画
         self.horizontalView?.containerView.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.left, animated: true)
     }
     func horizontalViewDidScroll(scrollView:UIScrollView) {
-        var frame = self.topBar?.bottomLineView.frame
+//        var frame = self.topBar?.bottomLineView.frame
+//        let offset = scrollView.contentOffset.x
+//        frame?.origin.x = (offset / view.bounds.width ) * (view.bounds.width / 2)
+//        self.topBar?.bottomLineView.frame = frame!
+        
         let offset = scrollView.contentOffset.x
-        frame?.origin.x = (offset / view.bounds.width ) * (view.bounds.width / 2)
-        self.topBar?.bottomLineView.frame = frame!
+        var x : CGFloat
+        let count = CGFloat(self.topBar.titles.count)
+        
+        x = (kScreenWidth / count  - self.topBar.bottomLineSize.width) / 2 + (offset / kScreenWidth ) * ((kScreenWidth / count))
+        
+        self.topBar.bottomLineView.frame.origin.x = x
     }
     func horizontalView(_: JXHorizontalView, to indexPath: IndexPath) {
         //
         if self.topBar?.selectedIndex == indexPath.item {
             return
         }
-        resetTopBarStatus(index: indexPath.item)
+        self.topBar.scrollToItem(at: indexPath)
     }
     
     func resetTopBarStatus(index:Int) {
+        
+        
         
         self.topBar?.selectedIndex = index
         self.topBar?.subviews.forEach { (v : UIView) -> () in

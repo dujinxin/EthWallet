@@ -10,10 +10,26 @@ import UIKit
 
 let reuseIdentifierNormal = "reuseIdentifierNormal"
 
-class JXTableViewController: BaseViewController{
+class JXTableViewController: JXBaseViewController{
 
     //tableview
-    var tableView : UITableView?
+    lazy var tableView : UITableView = {
+        let table = UITableView(frame: CGRect())
+        
+        table.backgroundColor = UIColor.clear
+        table.separatorStyle = .none
+        table.separatorColor = JXSeparatorColor
+        table.delegate = self
+        table.dataSource = self
+        table.estimatedSectionHeaderHeight = 0
+        table.estimatedSectionFooterHeight = 0
+        table.estimatedRowHeight = 44
+        table.rowHeight = UITableView.automaticDimension
+        table.sectionHeaderHeight = UITableView.automaticDimension
+        table.sectionFooterHeight = UITableView.automaticDimension
+        
+        return table
+    }()
     //refreshControl
     var refreshControl : UIRefreshControl?
     //data array
@@ -25,14 +41,10 @@ class JXTableViewController: BaseViewController{
         super.viewDidLoad()
         
         if #available(iOS 11.0, *) {
-            self.tableView?.contentInsetAdjustmentBehavior = .never
+            self.tableView.contentInsetAdjustmentBehavior = .never
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @objc override func setUpMainView() {
@@ -43,19 +55,8 @@ class JXTableViewController: BaseViewController{
         let y = self.isCustomNavigationBarUsed() ? kNavStatusHeight : 0
         let height = self.isCustomNavigationBarUsed() ? (view.bounds.height - kNavStatusHeight) : view.bounds.height
         
-        self.tableView = UITableView(frame: CGRect(x: 0, y: y, width: view.bounds.width, height: height), style: .plain)
-        self.tableView?.backgroundColor = UIColor.clear
-        self.tableView?.separatorStyle = .none
-        self.tableView?.separatorColor = JXSeparatorColor
-        self.tableView?.delegate = self
-        self.tableView?.dataSource = self
-        self.tableView?.estimatedSectionHeaderHeight = 0
-        self.tableView?.estimatedSectionFooterHeight = 0
-        self.tableView?.estimatedRowHeight = 44
-        self.tableView?.rowHeight = UITableView.automaticDimension
-        self.tableView?.sectionHeaderHeight = UITableView.automaticDimension
-        self.tableView?.sectionFooterHeight = UITableView.automaticDimension
-        self.view.addSubview(self.tableView!)
+        self.tableView.frame = CGRect(x: 0, y: y, width: view.bounds.width, height: height)
+        self.view.addSubview(self.tableView)
         
 //        refreshControl = UIRefreshControl()
 //        refreshControl?.addTarget(self, action: #selector(requestData), for: UIControlEvents.valueChanged)
@@ -66,8 +67,6 @@ class JXTableViewController: BaseViewController{
     /// - Parameter page: load data for page,
     func request(page:Int) {}
 }
-
-
 extension JXTableViewController : UITableViewDelegate,UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,7 +79,7 @@ extension JXTableViewController : UITableViewDelegate,UITableViewDataSource{
         return UIView()
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.01
+        return 0.1
     }
 }
 

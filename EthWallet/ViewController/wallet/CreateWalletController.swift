@@ -10,7 +10,7 @@ import UIKit
 import web3swift
 import JXFoundation
 
-class CreateWalletController : BaseViewController{
+class CreateWalletController : JXBaseViewController{
     
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var walletNameTextField: UITextField!

@@ -255,7 +255,6 @@ class Web3VM : BaseViewModel{
         })
     }
     
-    //tokentx: 合约, txlist: eth
     //http://api.etherscan.io/api?module=account&action=txlist&address=0xddbd2b932c763ba5b1b7ae3b362eac3e8d40121a&startblock=0&endblock=99999999&sort=asc&apikey=YourApiKeyToken
     //https://api.etherscan.io/api?module=account&action=txlist&address=0xddbd2b932c763ba5b1b7ae3b362eac3e8d40121a&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=YourApiKeyToken
     /**
@@ -285,6 +284,15 @@ class Web3VM : BaseViewModel{
         f.dateFormat = "YYYY-MM-dd HH:mm:ss"
         return f
     }()
+   
+    /// 查询交易记录
+    ///
+    /// - Parameters:
+    ///   - address: 钱包地址
+    ///   - type: 类型，tokentx: 合约, txlist: eth
+    ///   - page: 分页
+    ///   - offset: 数量
+    ///   - completion: 回调
     static func getTxlist(address: String, type: Type = .eth, page: Int = 1, offset: Int = 20, completion: @escaping ((_ data: Array<TxEntity>, _ msg: String, _ isSuccess: Bool)->())){
         
         let actionStr = (type == .eth) ? "txlist" : "tokentx"

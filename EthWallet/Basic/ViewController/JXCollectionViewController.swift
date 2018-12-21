@@ -12,7 +12,7 @@ import JXFoundation
 private let reuseIdentifier = "reuseIdentifier"
 private let reuseIndentifierHeader = "reuseIndentifierHeader"
 
-class JXCollectionViewController: BaseViewController {
+class JXCollectionViewController: JXBaseViewController {
 
     //tableview
     var collectionView : UICollectionView?

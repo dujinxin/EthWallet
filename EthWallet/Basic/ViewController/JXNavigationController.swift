@@ -61,7 +61,7 @@ extension JXNavigationController {
             titleName = viewControllers.first?.title ?? titleName
         }
         
-        if let vc = viewController as? BaseViewController {
+        if let vc = viewController as? JXBaseViewController {
             vc.hidesBottomBarWhenPushed = true
             vc.customNavigationItem.leftBarButtonItem = self.backItem
             //vc.customNavigationItem.leftBarButtonItem = UIBarButtonItem.init(title: titleName, imageName: "imgBack", target: self, action: #selector(pop))

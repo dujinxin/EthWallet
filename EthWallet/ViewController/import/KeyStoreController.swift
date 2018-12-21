@@ -10,7 +10,7 @@ import UIKit
 import web3swift
 import JXFoundation
 
-class KeyStoreController: BaseViewController {
+class KeyStoreController: JXBaseViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var textView: JXPlaceHolderTextView!{

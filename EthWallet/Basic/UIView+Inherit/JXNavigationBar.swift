@@ -40,30 +40,37 @@ class JXNavigationBar: UINavigationBar {
         UIGraphicsEndImageContext()
         return image!
     }
+    var separatorHidden: Bool? {
+        didSet {
+            print("------------------------------------------------")
+            clipsToBounds = separatorHidden ?? true
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupAttribute()
+    }
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupAttribute()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     override func layoutSubviews() {
         super.layoutSubviews()
         var rect = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: kNavStatusHeight)
 
+        print("*******************\(#file)************************")
         self.subviews.forEach { (v) in
-          
+            
             if NSStringFromClass(type(of: v)).contains("UIBarBackground") {
                 v.frame = rect
                 //隐藏分割线
-                v.subviews.forEach({ (subV) in
-                    if subV is UIImageView {
-                        subV.backgroundColor = UIColor.clear
-                    }
-                })
-//                self.gradientLayer.frame = CGRect(x: 0, y: 0, width: v.jxWidth, height: v.jxHeight)
-//                v.layer.addSublayer(self.gradientLayer)
+//                v.subviews.forEach({ (subV) in
+//                    if subV is UIImageView {
+//                        subV.backgroundColor = UIColor.clear
+//                    }
+//                })
             
             } else if NSStringFromClass(type(of: v)).contains("UINavigationBarContentView") {
                 rect.origin.y += kStatusBarHeight
@@ -71,5 +78,14 @@ class JXNavigationBar: UINavigationBar {
                 v.frame = rect
             }
         }
+    }
+    func setupAttribute() {
+        titleTextAttributes = [NSAttributedString.Key.foregroundColor:  UIColor.rgbColor(rgbValue: 0x000000), NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17)]//标题设置
+        barTintColor = UIColor.clear //导航条颜色, 透明色不起作用, 需用透明图片来代替
+        tintColor = UIColor.darkText //item图片文字颜色
+        isTranslucent = true
+        barStyle = .default
+        
+        setBackgroundImage(self.imageWithColor(UIColor.clear), for: UIBarMetrics.default) //导航条透明
     }
 }

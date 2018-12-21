@@ -49,17 +49,17 @@ class AddPropertyController: JXTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView?.register(UINib.init(nibName: "AddPropertyCell", bundle: nil), forCellReuseIdentifier: "cellIdentifier")
-        self.tableView?.separatorColor = JXSeparatorColor
-        self.tableView?.separatorStyle = .singleLine
+        self.tableView.register(UINib.init(nibName: "AddPropertyCell", bundle: nil), forCellReuseIdentifier: "cellIdentifier")
+        self.tableView.separatorColor = JXSeparatorColor
+        self.tableView.separatorStyle = .singleLine
         
-        let searchField = self.searchVC.searchBar.value(forKey: "searchField") as? UITextField
-        var rect = searchField?.frame
-        rect?.size.height = 44
-        searchField?.frame = rect ?? CGRect()
-        self.titleView.frame = CGRect(x: 0, y: 0, width: kScreenWidth - 60, height: 44)
+//        let searchField = self.searchVC.searchBar.value(forKey: "searchField") as? UITextField
+//        var rect = searchField?.frame
+//        rect?.size.height = 44
+//        searchField?.frame = rect ?? CGRect()
+//        self.titleView.frame = CGRect(x: 0, y: 0, width: kScreenWidth - 60, height: 44)
         
-        self.customNavigationItem.titleView = self.titleView
+        self.customNavigationItem.titleView = self.searchVC.searchBar
 
         
 //        let entity = PropertyEntity()
@@ -82,7 +82,7 @@ class AddPropertyController: JXTableViewController {
             if isSuc {
                 self.tokenArray = array
             }
-            self.tableView?.reloadData()
+            self.tableView.reloadData()
         }
     }
     // MARK: - Table view data source
@@ -128,6 +128,6 @@ extension AddPropertyController : UISearchResultsUpdating {
                 }
             }
         }
-        self.tableView?.reloadData()
+        self.tableView.reloadData()
     }
 }
