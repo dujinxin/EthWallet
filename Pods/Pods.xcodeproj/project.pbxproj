@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -642,9 +642,9 @@
 		0FD9E873C4CFEF7DAC6D235AA7BF1A56 /* JXConstantHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXConstantHelper.swift; path = JXFoundation/Classes/Constant/JXConstantHelper.swift; sourceTree = "<group>"; };
 		0FF9CE434683E3548AB21C9336151CEC /* Strideable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Strideable.swift; path = sources/Strideable.swift; sourceTree = "<group>"; };
 		10237D41A1877867F18C6B068E893303 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLResponseSerialization.h; path = AFNetworking/AFURLResponseSerialization.h; sourceTree = "<group>"; };
-		10E087FFC17A793F842052B03168E936 /* JXFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JXFoundation.framework; path = JXFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		10E087FFC17A793F842052B03168E936 /* JXFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JXFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		110214674A3095C068A7D127FC6B7B81 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIRefreshControl+AFNetworking.m"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
-		12254A7D69589E13BA5F319C968D942D /* crypto_scrypt.c */ = {isa = PBXFileReference; includeInIndex = 1; name = crypto_scrypt.c; path = scrypt/crypto_scrypt.c; sourceTree = "<group>"; };
+		12254A7D69589E13BA5F319C968D942D /* crypto_scrypt.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = crypto_scrypt.c; path = scrypt/crypto_scrypt.c; sourceTree = "<group>"; };
 		12939A56DA0390EFDC28219270CB504E /* secp256k1.c-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "secp256k1.c-prefix.pch"; sourceTree = "<group>"; };
 		129540300803FA55ACA3A384A9AA30C4 /* group.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = group.h; path = secp256k1/group.h; sourceTree = "<group>"; };
 		1378CAE5F8310D181ECD5607E173674D /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshAutoFooter.h; path = MJRefresh/Base/MJRefreshAutoFooter.h; sourceTree = "<group>"; };
@@ -662,7 +662,7 @@
 		18F155FB1E03FF48B6253025893E73EC /* fwd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = fwd.h; path = Sources/fwd.h; sourceTree = "<group>"; };
 		1A91BB2D4F0AAB4A8A8461A2D0D42A54 /* JX_AFNetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JX_AFNetworking-prefix.pch"; sourceTree = "<group>"; };
 		1AD1FE410B7057307F45669CFF591796 /* LogEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LogEvent.swift; path = Sources/LogEvent.swift; sourceTree = "<group>"; };
-		1C383B26327D19451591E3961C6C596D /* keccak.c */ = {isa = PBXFileReference; includeInIndex = 1; name = keccak.c; path = keccak/keccak.c; sourceTree = "<group>"; };
+		1C383B26327D19451591E3961C6C596D /* keccak.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = keccak.c; path = keccak/keccak.c; sourceTree = "<group>"; };
 		1C44E4EE0650F7F873C4D52A6D57EC80 /* Pods-EthWallet.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-EthWallet.modulemap"; sourceTree = "<group>"; };
 		1C55663D15245FF3226D82A3500E6288 /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Sources/Error.swift; sourceTree = "<group>"; };
 		1D07CD51CF3ED18C7594BC92ACCDA2FA /* AFNetworking.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.xcconfig; sourceTree = "<group>"; };
@@ -678,7 +678,7 @@
 		234CFA7196BF5AC45CDE15FAA3886B78 /* SipHash-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SipHash-umbrella.h"; sourceTree = "<group>"; };
 		238269D8920929269AB16566D0EAA08E /* Web3+Methods.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Web3+Methods.swift"; path = "Sources/web3swift/Web3/Web3+Methods.swift"; sourceTree = "<group>"; };
 		2487A4F578EAE702795140AA220BE2FE /* scalar_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = scalar_impl.h; path = secp256k1/scalar_impl.h; sourceTree = "<group>"; };
-		24CC020CEBBD0FF56F4FAC86B1CBAFBB /* asprintf.c */ = {isa = PBXFileReference; includeInIndex = 1; name = asprintf.c; path = scrypt/asprintf.c; sourceTree = "<group>"; };
+		24CC020CEBBD0FF56F4FAC86B1CBAFBB /* asprintf.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = asprintf.c; path = scrypt/asprintf.c; sourceTree = "<group>"; };
 		253BDF3FEA51B09F36575F4459B688BA /* SecurityToken.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SecurityToken.swift; path = Sources/web3swift/Contracts/SecurityToken.swift; sourceTree = "<group>"; };
 		25FDF09C2077BEC67400DD5B6038F593 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26FB1CD6F21394E1C632272D4FB7870F /* ComparisonExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ComparisonExtensions.swift; path = Sources/web3swift/Contract/ComparisonExtensions.swift; sourceTree = "<group>"; };
@@ -699,7 +699,7 @@
 		2D283BD1573781805704D8ECDAD587A6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		2D55E92C3E7220F9AFB558E481BA0FF1 /* getopt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = getopt.h; path = scrypt/getopt.h; sourceTree = "<group>"; };
 		2E0EEB8912C6C80E7D73E608C1935659 /* ERC721.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ERC721.swift; path = Sources/web3swift/Contracts/ERC721.swift; sourceTree = "<group>"; };
-		2EE088CB9E41D9DD62B7D6240FFA29B6 /* secp256k1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = secp256k1.framework; path = secp256k1.c.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EE088CB9E41D9DD62B7D6240FFA29B6 /* secp256k1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = secp256k1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EF05C54393450170CD0EEC84AEBC6F3 /* JXFoundation-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JXFoundation-prefix.pch"; sourceTree = "<group>"; };
 		2EF65C8670E8C713C1635DDAF048CAC9 /* JXView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXView.swift; path = JXFoundation/Classes/JXView/JXView.swift; sourceTree = "<group>"; };
 		2F4BF57BF3A12F5527FC5F2BB1B3950F /* scratch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = scratch.h; path = secp256k1/scratch.h; sourceTree = "<group>"; };
@@ -710,7 +710,7 @@
 		31ECA3AB9E263518BB5467940144EF25 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		332FF67A5BA067DC4789B7339B12E934 /* NSURLSession+Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSURLSession+Promise.swift"; path = "Extensions/Foundation/Sources/NSURLSession+Promise.swift"; sourceTree = "<group>"; };
 		33D3C61B5188A197CB404FEEA9FF2787 /* keccak.c.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = keccak.c.xcconfig; sourceTree = "<group>"; };
-		3462AF141C32FC7EFE1BDB47C1060F52 /* web3swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = web3swift.framework; path = web3swift.pod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3462AF141C32FC7EFE1BDB47C1060F52 /* web3swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = web3swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34A6B5DEA7172DE8FF2164CFFCAC3CF5 /* Prime Test.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Prime Test.swift"; path = "sources/Prime Test.swift"; sourceTree = "<group>"; };
 		34FD375ADE98B2FA0AFC6DBBE62386AF /* KeystoreManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeystoreManager.swift; path = Sources/web3swift/KeystoreManager/KeystoreManager.swift; sourceTree = "<group>"; };
 		36D20128BDBA59254159567801DAF7BA /* MBProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -736,7 +736,7 @@
 		41AFFDF10EF2BE619CD2F38ED43AEA01 /* web3swift.pod-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "web3swift.pod-prefix.pch"; sourceTree = "<group>"; };
 		41D928BC1DD3FFABE4186C24A2E447A4 /* CustomStringConvertible.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CustomStringConvertible.swift; path = Sources/CustomStringConvertible.swift; sourceTree = "<group>"; };
 		42A32F56694FDC1045CCE7DB54D7527A /* hang.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = hang.m; path = Sources/hang.m; sourceTree = "<group>"; };
-		42B52AD734EB1C5629F5D5D201DEDC97 /* readpass.c */ = {isa = PBXFileReference; includeInIndex = 1; name = readpass.c; path = scrypt/readpass.c; sourceTree = "<group>"; };
+		42B52AD734EB1C5629F5D5D201DEDC97 /* readpass.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = readpass.c; path = scrypt/readpass.c; sourceTree = "<group>"; };
 		42C5D6C3D6352FB55BF8AA7751685DE4 /* web3swift.pod.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = web3swift.pod.modulemap; sourceTree = "<group>"; };
 		42F0386C7756EDDA13C6D10D181FA541 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIBarButtonItem+Extension.swift"; path = "JXFoundation/Classes/UIKit+Extension/UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		431F14570F555D5A48CB41E5184CB027 /* Pods-EthWallet-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-EthWallet-umbrella.h"; sourceTree = "<group>"; };
@@ -754,7 +754,7 @@
 		4A49C5A43262FDB3976C3052AA185E7E /* field_10x26_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = field_10x26_impl.h; path = secp256k1/field_10x26_impl.h; sourceTree = "<group>"; };
 		4B81C9AEC308E70DBE61213F9B94629F /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLRequestSerialization.h; path = AFNetworking/AFURLRequestSerialization.h; sourceTree = "<group>"; };
 		4C24265865D378398E694971E10FB1C5 /* Web3.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Web3.swift; path = Sources/web3swift/Web3/Web3.swift; sourceTree = "<group>"; };
-		4C5432455ED9D7EE6EC088714E875B36 /* BigInt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BigInt.framework; path = BigInt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C5432455ED9D7EE6EC088714E875B36 /* BigInt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BigInt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CA5624A2022820C819EE925F942EF3A /* recovery_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = recovery_impl.h; path = secp256k1/recovery_impl.h; sourceTree = "<group>"; };
 		4F8484A1FAA09FD411C3F0EB7AD1A2E3 /* BigInt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BigInt.swift; path = sources/BigInt.swift; sourceTree = "<group>"; };
 		4FF10231075DD684E42B5AA48549AFBF /* MJRefreshBackStateFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshBackStateFooter.h; path = MJRefresh/Custom/Footer/Back/MJRefreshBackStateFooter.h; sourceTree = "<group>"; };
@@ -767,7 +767,7 @@
 		52916B5DC7EE6198AE368D9DC90A2AA0 /* Division.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Division.swift; path = sources/Division.swift; sourceTree = "<group>"; };
 		53928F652AABE22074847D9C54E2FC04 /* Web3+Structures.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Web3+Structures.swift"; path = "Sources/web3swift/Web3/Web3+Structures.swift"; sourceTree = "<group>"; };
 		53A3AC111F9044B017B1AD8B52097975 /* Digest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Digest.swift; path = Sources/web3swift/Encryption/Cryptor/Digest.swift; sourceTree = "<group>"; };
-		53FC50EEDF6D7FEC34CDA437527A31FA /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AFNetworking.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		53FC50EEDF6D7FEC34CDA437527A31FA /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54301ED341C9D44581C154DCC93BD845 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityIndicatorManager.h; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.h"; sourceTree = "<group>"; };
 		5474F74600B3B4F309C11ED517B1F675 /* AFNetworking-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-umbrella.h"; sourceTree = "<group>"; };
 		54946969FF33C7B83EACD7C4897FF2C1 /* AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AnyPromise.h; path = Sources/AnyPromise.h; sourceTree = "<group>"; };
@@ -782,17 +782,17 @@
 		5872052D8E717ED1B27890D1AC752FB3 /* NSRegularExpressionExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSRegularExpressionExtension.swift; path = Sources/web3swift/Convenience/NSRegularExpressionExtension.swift; sourceTree = "<group>"; };
 		58AFAF97E9D40BFE95775416FA36713B /* HMAC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HMAC.swift; path = Sources/web3swift/Encryption/Cryptor/HMAC.swift; sourceTree = "<group>"; };
 		58C840521738B291B343B671C46E681F /* AFSecurityPolicy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSecurityPolicy.m; path = AFNetworking/AFSecurityPolicy.m; sourceTree = "<group>"; };
-		594F189E9B12CA11B4FF51D0B0E277B7 /* crypto_scrypt_smix.c */ = {isa = PBXFileReference; includeInIndex = 1; name = crypto_scrypt_smix.c; path = scrypt/crypto_scrypt_smix.c; sourceTree = "<group>"; };
+		594F189E9B12CA11B4FF51D0B0E277B7 /* crypto_scrypt_smix.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = crypto_scrypt_smix.c; path = scrypt/crypto_scrypt_smix.c; sourceTree = "<group>"; };
 		59863717A81A1E943282CC8455036937 /* Data Conversion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Data Conversion.swift"; path = "sources/Data Conversion.swift"; sourceTree = "<group>"; };
 		59CC671488165440AD87DB362FE26BF5 /* parsenum.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = parsenum.h; path = scrypt/parsenum.h; sourceTree = "<group>"; };
-		5A09857CEE9F0BEC7417AF6BEF42AF05 /* PromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PromiseKit.framework; path = PromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A09857CEE9F0BEC7417AF6BEF42AF05 /* PromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A9954AD7BA270CBBD9C4C26D0D2E745 /* ecmult_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ecmult_impl.h; path = secp256k1/ecmult_impl.h; sourceTree = "<group>"; };
 		5ABC49C69B8C09D28DF64497D49CC4E4 /* keccak.c-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "keccak.c-dummy.m"; sourceTree = "<group>"; };
 		5AC7E929E73DFDF00C85E5A9A4E39CAC /* ecmult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ecmult.h; path = secp256k1/ecmult.h; sourceTree = "<group>"; };
 		5ACC2210CB73C341A8D42ACE9F943AEE /* num_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = num_impl.h; path = secp256k1/num_impl.h; sourceTree = "<group>"; };
 		5B630EC4010F228771CBB79E2DAD49CA /* scalar_4x64_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = scalar_4x64_impl.h; path = secp256k1/scalar_4x64_impl.h; sourceTree = "<group>"; };
 		5CE6F0BC9F1E48D4AE70D2EDB989BCF7 /* PromiseKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PromiseKit-umbrella.h"; sourceTree = "<group>"; };
-		5D5E44ED62180A42AC9F5D5175631512 /* SipHash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SipHash.framework; path = SipHash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D5E44ED62180A42AC9F5D5175631512 /* SipHash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SipHash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D74B62879A17CA4B578ECFB7CFD424C /* SipHash-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SipHash-prefix.pch"; sourceTree = "<group>"; };
 		5DAEE8B1F4DF6AA96C4FE2C4034434F5 /* Cryptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Cryptor.swift; path = Sources/web3swift/Encryption/Cryptor/Cryptor.swift; sourceTree = "<group>"; };
 		5EC6E1C9E1D3640336A26072479FA60D /* JX_AFNetworking.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JX_AFNetworking.modulemap; sourceTree = "<group>"; };
@@ -824,16 +824,16 @@
 		6C67344632AC9F4BB9087FFEC94DA1C2 /* Hashable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Hashable.swift; path = sources/Hashable.swift; sourceTree = "<group>"; };
 		6D4767D8162BE83C841BC9208AB84652 /* Data+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Data+Extension.swift"; path = "Sources/web3swift/Convenience/Data+Extension.swift"; sourceTree = "<group>"; };
 		6E344D17483BCC17B80455E55FB3F05B /* Migration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Migration.swift; path = Sources/web3swift/Migration.swift; sourceTree = "<group>"; };
-		6F79FBC2440F70FD876034AE94D59AB5 /* secp256k1.c */ = {isa = PBXFileReference; includeInIndex = 1; name = secp256k1.c; path = secp256k1/secp256k1.c; sourceTree = "<group>"; };
+		6F79FBC2440F70FD876034AE94D59AB5 /* secp256k1.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = secp256k1.c; path = secp256k1/secp256k1.c; sourceTree = "<group>"; };
 		6FC30F025923B817C4137E2050CAF6F9 /* String+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+Extension.swift"; path = "JXFoundation/Classes/Foundation+Extension/String+Extension.swift"; sourceTree = "<group>"; };
 		71331011FD83A8B00E5C7DAE8DCA6B5E /* FMDB.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDB.h; path = src/fmdb/FMDB.h; sourceTree = "<group>"; };
-		7268D08B72E66434EF201FDBF501BD82 /* JXFMDBHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JXFMDBHelper.framework; path = JXFMDBHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7268D08B72E66434EF201FDBF501BD82 /* JXFMDBHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JXFMDBHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		739C4CA4655CD9654B29E08479FFB22E /* NSNotificationCenter+AnyPromise.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSNotificationCenter+AnyPromise.m"; path = "Extensions/Foundation/Sources/NSNotificationCenter+AnyPromise.m"; sourceTree = "<group>"; };
 		73FEB5C31108CA7EF847196CC744D14B /* scrypt.c.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = scrypt.c.modulemap; sourceTree = "<group>"; };
-		741DCFC0C82BCA9A1889E6F76733E248 /* entropy.c */ = {isa = PBXFileReference; includeInIndex = 1; name = entropy.c; path = scrypt/entropy.c; sourceTree = "<group>"; };
+		741DCFC0C82BCA9A1889E6F76733E248 /* entropy.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = entropy.c; path = scrypt/entropy.c; sourceTree = "<group>"; };
 		742554CEAEC6F61B6519E970B4B715E8 /* BigInt.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BigInt.xcconfig; sourceTree = "<group>"; };
 		742668F32A236F2F7514EB65F39357C6 /* MBProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-prefix.pch"; sourceTree = "<group>"; };
-		744D04752F9E9602216C77832C2F1AC9 /* JX_AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JX_AFNetworking.framework; path = JX_AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		744D04752F9E9602216C77832C2F1AC9 /* JX_AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JX_AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74A5872BD5B55FD28EFA185E710AD572 /* BigInt-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BigInt-dummy.m"; sourceTree = "<group>"; };
 		759DB8C660EB888EE227DB0EF4B41903 /* Pods-EthWallet-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-EthWallet-acknowledgements.markdown"; sourceTree = "<group>"; };
 		75DF77F6BD4B2F31F490520F4E247941 /* Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Promise.swift; path = Sources/Promise.swift; sourceTree = "<group>"; };
@@ -847,13 +847,13 @@
 		77EBD20034C1CF9AC16AC24ED812AC6F /* JXNetworkManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXNetworkManager.swift; path = JX_AFNetworking/Classes/JXNetworkManager.swift; sourceTree = "<group>"; };
 		77EF2D61DE3A9D00E03CDC55B61BBAA2 /* Pods-EthWallet-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EthWallet-resources.sh"; sourceTree = "<group>"; };
 		79288E43CD9D0A0CEA096F4719454ABB /* JXFoundation.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JXFoundation.xcconfig; sourceTree = "<group>"; };
-		7ACE9A2B091E7E6D053547B64B9CD550 /* crypto_scrypt_smix_sse2.c */ = {isa = PBXFileReference; includeInIndex = 1; name = crypto_scrypt_smix_sse2.c; path = scrypt/crypto_scrypt_smix_sse2.c; sourceTree = "<group>"; };
+		7ACE9A2B091E7E6D053547B64B9CD550 /* crypto_scrypt_smix_sse2.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = crypto_scrypt_smix_sse2.c; path = scrypt/crypto_scrypt_smix_sse2.c; sourceTree = "<group>"; };
 		7AEFCB51BFD1FD6CAAB3A8F85C677498 /* FileManager+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "FileManager+Extension.swift"; path = "JXFoundation/Classes/Foundation+Extension/FileManager+Extension.swift"; sourceTree = "<group>"; };
 		7AF0973DE1575319224EF1ED5CDA81D3 /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshBackFooter.h; path = MJRefresh/Base/MJRefreshBackFooter.h; sourceTree = "<group>"; };
 		7C1370427D1060889B5DA2FAA08E52D2 /* eckey_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = eckey_impl.h; path = secp256k1/eckey_impl.h; sourceTree = "<group>"; };
 		7C6F1BEBB04B7D67B0EF6392B014667B /* EthereumKeystoreV3.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EthereumKeystoreV3.swift; path = Sources/web3swift/KeystoreManager/EthereumKeystoreV3.swift; sourceTree = "<group>"; };
 		7C88B0B40D8FD16EFD71FF2DA36AAAEB /* PromiseKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PromiseKit-prefix.pch"; sourceTree = "<group>"; };
-		7CB46AAA06F0D237828DDCCCF42779E3 /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MBProgressHUD.framework; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CB46AAA06F0D237828DDCCCF42779E3 /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF8BE6B975A4B4EA1E77A552364FDD2 /* UIViewPropertyAnimator+Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIViewPropertyAnimator+Promise.swift"; path = "Extensions/UIKit/Sources/UIViewPropertyAnimator+Promise.swift"; sourceTree = "<group>"; };
 		7DF79208DDB4543466221CD2E9674402 /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIProgressView+AFNetworking.m"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
 		7EAE7C9D5D5F3DD098C479DEB2304130 /* ERC777.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ERC777.swift; path = Sources/web3swift/Contracts/ERC777.swift; sourceTree = "<group>"; };
@@ -876,7 +876,7 @@
 		8845F7A7219545FFBD04831716EDE733 /* firstly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = firstly.swift; path = Sources/firstly.swift; sourceTree = "<group>"; };
 		88659A6C89ACA9812E88CC477B7AC86B /* W3Contract.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = W3Contract.swift; path = Sources/web3swift/ObjectiveC/W3Contract.swift; sourceTree = "<group>"; };
 		8AA319CB5FACC13AE5E88E96E5485DD8 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIViewController+Extension.swift"; path = "JXFoundation/Classes/UIKit+Extension/UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		8B7D36C4745DF68DB986273D705BB3E2 /* keccak.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = keccak.framework; path = keccak.c.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B7D36C4745DF68DB986273D705BB3E2 /* keccak.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = keccak.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CB51EE6E485C53917A271AFCA6E149A /* LibSecp256k1Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LibSecp256k1Extension.swift; path = Sources/web3swift/Convenience/LibSecp256k1Extension.swift; sourceTree = "<group>"; };
 		8D05A028D81FFD661DFDA73B3D432971 /* MJRefreshBackFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackFooter.m; path = MJRefresh/Base/MJRefreshBackFooter.m; sourceTree = "<group>"; };
 		8DBBC126E507517C62F7FC62C74091A9 /* FMDB-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FMDB-dummy.m"; sourceTree = "<group>"; };
@@ -888,12 +888,12 @@
 		8FF4DA3A6E6458CE1D531356C5EFB8B9 /* Web3+Eth.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Web3+Eth.swift"; path = "Sources/web3swift/Web3/Web3+Eth.swift"; sourceTree = "<group>"; };
 		90FFB0527E54E6D94F9CB0CC33949C3F /* UIImage+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImage+Extension.swift"; path = "JXFoundation/Classes/UIKit+Extension/UIImage+Extension.swift"; sourceTree = "<group>"; };
 		910A1C1F56F601A49C8D23716E108793 /* DerivedKey.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DerivedKey.swift; path = Sources/web3swift/Encryption/DerivedKey.swift; sourceTree = "<group>"; };
-		91A7D94BAC8E5FB83268F55D06438EB7 /* warnp.c */ = {isa = PBXFileReference; includeInIndex = 1; name = warnp.c; path = scrypt/warnp.c; sourceTree = "<group>"; };
+		91A7D94BAC8E5FB83268F55D06438EB7 /* warnp.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = warnp.c; path = scrypt/warnp.c; sourceTree = "<group>"; };
 		91B8DF99E44AB915D53CD0980E0D015E /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkReachabilityManager.m; path = AFNetworking/AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
 		91F40D1015945517FB16E4B1928A9703 /* EthURL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EthURL.swift; path = Sources/web3swift/Utils/EthURL.swift; sourceTree = "<group>"; };
 		91F6752804EA2AE1B714C859529D6EB3 /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+AFNetworking.m"; path = "UIKit+AFNetworking/UIButton+AFNetworking.m"; sourceTree = "<group>"; };
 		9269E16D049389280BD90A9225DE8FFB /* MJRefresh-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MJRefresh-prefix.pch"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94314F7786CFFCCB57635662C519585F /* scalar_8x32_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = scalar_8x32_impl.h; path = secp256k1/scalar_8x32_impl.h; sourceTree = "<group>"; };
 		943775A6C478C09685C5C118179ECCAC /* ecmult_gen_impl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ecmult_gen_impl.h; path = secp256k1/ecmult_gen_impl.h; sourceTree = "<group>"; };
 		94BCE20ADDE17E63733DEAA364612CCA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -924,7 +924,7 @@
 		A2B2876B93FB6D4CA60ABCB47E6AF5BB /* NSBundle+MJRefresh.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+MJRefresh.m"; path = "MJRefresh/NSBundle+MJRefresh.m"; sourceTree = "<group>"; };
 		A2E61082FAF937C6A322E31B7B82FBC6 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		A2F0454766E141D989A9A028B50BD15D /* W3Web3.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = W3Web3.swift; path = Sources/web3swift/ObjectiveC/W3Web3.swift; sourceTree = "<group>"; };
-		A463DCAEF619386912A76C689A356CDF /* Pods_EthWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_EthWallet.framework; path = "Pods-EthWallet.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A463DCAEF619386912A76C689A356CDF /* Pods_EthWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EthWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A58F872D34DAC977B0FF540FB49BF771 /* scalar_low.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = scalar_low.h; path = secp256k1/scalar_low.h; sourceTree = "<group>"; };
 		A612D1E7CF0228A8C039A2444B279F0B /* Web3+Options.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Web3+Options.swift"; path = "Sources/web3swift/Web3/Web3+Options.swift"; sourceTree = "<group>"; };
 		A6448F9909DE747E4DFFC75292FCD03F /* BigInt-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BigInt-prefix.pch"; sourceTree = "<group>"; };
@@ -937,7 +937,7 @@
 		A92A5ABCBA944EF05022FBD2E47FD86C /* AFAutoPurgingImageCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFAutoPurgingImageCache.h; path = "UIKit+AFNetworking/AFAutoPurgingImageCache.h"; sourceTree = "<group>"; };
 		AA0A8870408B0D9C7B690E40506B89EA /* SSLPointerTricks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SSLPointerTricks.swift; path = Sources/web3swift/Encryption/Cryptor/SSLPointerTricks.swift; sourceTree = "<group>"; };
 		AA20B23D190CF8685DACC56BC91AE1C2 /* CryptoExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CryptoExtensions.swift; path = Sources/web3swift/Convenience/CryptoExtensions.swift; sourceTree = "<group>"; };
-		ABD061142574BE4698AC1EC806643186 /* scrypt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = scrypt.framework; path = scrypt.c.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABD061142574BE4698AC1EC806643186 /* scrypt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = scrypt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACAA3589E67CE12E520C1361F59A95AA /* JXAlertView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXAlertView.swift; path = JXFoundation/Classes/JXView/JXAlertView.swift; sourceTree = "<group>"; };
 		AD02E3C1A07AEFFC10EB6C9C4A02873E /* ContractProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContractProtocol.swift; path = Sources/web3swift/Contract/ContractProtocol.swift; sourceTree = "<group>"; };
 		AD9411B1946069109F47E97A1ECA71F6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -950,7 +950,7 @@
 		B04780C46F65D47EC4BFBCE87C8B2BA1 /* keccak.c-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "keccak.c-prefix.pch"; sourceTree = "<group>"; };
 		B0FAC0F374784A18B6654ADFA50CAF8E /* NSObject+Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSObject+Promise.swift"; path = "Extensions/Foundation/Sources/NSObject+Promise.swift"; sourceTree = "<group>"; };
 		B24CFDFC2E2D5715BEEF08A5E6A77B86 /* BigInt-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BigInt-umbrella.h"; sourceTree = "<group>"; };
-		B2A35EE6A0C5EB5C5D280DB6D83138AC /* MJRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MJRefresh.framework; path = MJRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2A35EE6A0C5EB5C5D280DB6D83138AC /* MJRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MJRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B338A0DEA078C1F4A2E13A6AAAF7C55B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		B3516C6F80FD38981E7EA2CA7D7E927B /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+AFNetworking.m"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		B41F0401BE33C8C7D8C18822FA313463 /* secp256k1.c-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "secp256k1.c-umbrella.h"; sourceTree = "<group>"; };
@@ -974,8 +974,8 @@
 		BEA15252D9FD83C56B1354DEAF73CC2B /* MJRefreshBackGifFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshBackGifFooter.h; path = MJRefresh/Custom/Footer/Back/MJRefreshBackGifFooter.h; sourceTree = "<group>"; };
 		BF3570EEDD9536C716A278D9E4CAF808 /* Web3+Protocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Web3+Protocols.swift"; path = "Sources/web3swift/Web3/Web3+Protocols.swift"; sourceTree = "<group>"; };
 		BF7E15B06A48DD74429904DB93E03AA6 /* sysendian.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sysendian.h; path = scrypt/sysendian.h; sourceTree = "<group>"; };
-		BF8967AEA8DCECB4849D569FA5C27650 /* humansize.c */ = {isa = PBXFileReference; includeInIndex = 1; name = humansize.c; path = scrypt/humansize.c; sourceTree = "<group>"; };
-		C02F37C11E85DA2537983EE074FE6C42 /* FMDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FMDB.framework; path = FMDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF8967AEA8DCECB4849D569FA5C27650 /* humansize.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = humansize.c; path = scrypt/humansize.c; sourceTree = "<group>"; };
+		C02F37C11E85DA2537983EE074FE6C42 /* FMDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FMDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2340EB2B90BFD94C66F0312E05FCE69 /* PromiseKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PromiseKit.h; path = Sources/PromiseKit.h; sourceTree = "<group>"; };
 		C3822DA5748FB6A8EAC40D98EAC3D2E1 /* after.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = after.m; path = Sources/after.m; sourceTree = "<group>"; };
 		C3BE9B6A0B4184C89F985943025DF191 /* keccak.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = keccak.swift; path = Sources/web3swift/Encryption/keccak.swift; sourceTree = "<group>"; };
@@ -997,7 +997,7 @@
 		D02692DB388885E13F82C53B06535249 /* W3Transaction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = W3Transaction.swift; path = Sources/web3swift/ObjectiveC/W3Transaction.swift; sourceTree = "<group>"; };
 		D0E0E88050785216CB0DF7FE4CBFCA1E /* Guides.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Guides.swift; path = Sources/web3swift/Guides.swift; sourceTree = "<group>"; };
 		D101F0DA41C8AD20DCE7326835D20B72 /* MJRefreshBackNormalFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackNormalFooter.m; path = MJRefresh/Custom/Footer/Back/MJRefreshBackNormalFooter.m; sourceTree = "<group>"; };
-		D1B421C1A41D3D9E294EF97FBC417116 /* getopt.c */ = {isa = PBXFileReference; includeInIndex = 1; name = getopt.c; path = scrypt/getopt.c; sourceTree = "<group>"; };
+		D1B421C1A41D3D9E294EF97FBC417116 /* getopt.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = getopt.c; path = scrypt/getopt.c; sourceTree = "<group>"; };
 		D1CE0BCDAAA59A4DB07BCC3257E90B19 /* JXPlaceHolderTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXPlaceHolderTextView.swift; path = JXFoundation/Classes/JXView/JXPlaceHolderTextView.swift; sourceTree = "<group>"; };
 		D212A79FF6771D5E36A769C123B2346D /* SolidityDataReader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SolidityDataReader.swift; path = Sources/web3swift/Transactions/SolidityDataReader.swift; sourceTree = "<group>"; };
 		D280AEC37B6936334F31CD441F409D44 /* afterlife.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = afterlife.swift; path = Extensions/Foundation/Sources/afterlife.swift; sourceTree = "<group>"; };
@@ -1006,7 +1006,7 @@
 		D6814D791804BA12F661EB05330EAD0A /* Box.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Box.swift; path = Sources/Box.swift; sourceTree = "<group>"; };
 		D6D73D49A67E154FDEC063D07D4AAB56 /* UIView+AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+AnyPromise.h"; path = "Extensions/UIKit/Sources/UIView+AnyPromise.h"; sourceTree = "<group>"; };
 		D7ACD621E1039EBDDAA07FAFCC4797AB /* AES.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AES.swift; path = Sources/web3swift/Encryption/AES.swift; sourceTree = "<group>"; };
-		D84717DB90C92D75F1FCC3DB9A7E5E1B /* sha256.c */ = {isa = PBXFileReference; includeInIndex = 1; name = sha256.c; path = scrypt/sha256.c; sourceTree = "<group>"; };
+		D84717DB90C92D75F1FCC3DB9A7E5E1B /* sha256.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = sha256.c; path = scrypt/sha256.c; sourceTree = "<group>"; };
 		D88E2AF1E0F7EB2B9EEDAEEA30A1620F /* SipHash.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SipHash.modulemap; sourceTree = "<group>"; };
 		D900CFE8FFA1925B68CC1EB1C0A9CAD4 /* MJRefreshAutoNormalFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshAutoNormalFooter.h; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoNormalFooter.h; sourceTree = "<group>"; };
 		D932C851AF38F85E8DC6892A18FA87FE /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
@@ -1093,7 +1093,7 @@
 		FC3A04902E96B5A1E150F14B896C1614 /* eckey.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = eckey.h; path = secp256k1/eckey.h; sourceTree = "<group>"; };
 		FC420D656AB497318781DEF77B6B0E94 /* AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFNetworking-dummy.m"; sourceTree = "<group>"; };
 		FCB66AF3DCF4C6AE1355F64FBC8A63F3 /* Utilities.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = Sources/web3swift/Encryption/Cryptor/Utilities.swift; sourceTree = "<group>"; };
-		FE8B0926EEBFF387B92ACA9BC7F19E38 /* insecure_memzero.c */ = {isa = PBXFileReference; includeInIndex = 1; name = insecure_memzero.c; path = scrypt/insecure_memzero.c; sourceTree = "<group>"; };
+		FE8B0926EEBFF387B92ACA9BC7F19E38 /* insecure_memzero.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = insecure_memzero.c; path = scrypt/insecure_memzero.c; sourceTree = "<group>"; };
 		FF122D8EE9803C1A340158719FC1B77C /* ABIv2Encoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ABIv2Encoding.swift; path = Sources/web3swift/ABIv2/ABIv2Encoding.swift; sourceTree = "<group>"; };
 		FF7F3200FC9AE60C972CC83308D219C4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFA404CE4ABE91ABC9EBD9A285D8C2EF /* Web3+Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Web3+Utils.swift"; path = "Sources/web3swift/Web3/Web3+Utils.swift"; sourceTree = "<group>"; };
@@ -1305,7 +1305,6 @@
 				DDFC2F01DA40E9BACEA20463A62A886B /* DBManager.swift */,
 				9211C497539C003FF905CF212C6F699F /* Support Files */,
 			);
-			name = JXFMDBHelper;
 			path = JXFMDBHelper;
 			sourceTree = "<group>";
 		};
@@ -1330,7 +1329,6 @@
 				E63831728F6C9F7B51C62CD8065BDCE4 /* MBProgressHUD.m */,
 				279F65A3D30F0C51CEF42756C44E082F /* Support Files */,
 			);
-			name = MBProgressHUD;
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
@@ -1372,7 +1370,6 @@
 				215C7E6E937651E8A9010FE8511B2920 /* Support Files */,
 				06FF210920A46E70E6ABDE48CEBB7D4C /* UIKit+Extension */,
 			);
-			name = JXFoundation;
 			path = JXFoundation;
 			sourceTree = "<group>";
 		};
@@ -1462,7 +1459,6 @@
 				83B7FD927C05C3825C0E881E63F773A8 /* warnp.h */,
 				73A6A071A33DFDB9FE53B9A876BCDD4F /* Support Files */,
 			);
-			name = scrypt.c;
 			path = scrypt.c;
 			sourceTree = "<group>";
 		};
@@ -1593,7 +1589,6 @@
 				D99F214BE3E807C0110B1265EBDC5EE1 /* Support Files */,
 				2605AB9D0EE0F797FCCDFA7F7F00F152 /* UIKit */,
 			);
-			name = PromiseKit;
 			path = PromiseKit;
 			sourceTree = "<group>";
 		};
@@ -1647,7 +1642,6 @@
 				83F4884A1E46EF2E192301A7F13E20CF /* util.h */,
 				D5684465040DEDCAD2F782143863B59E /* Support Files */,
 			);
-			name = secp256k1.c;
 			path = secp256k1.c;
 			sourceTree = "<group>";
 		};
@@ -1684,7 +1678,6 @@
 				BF4990191D0691187BDA87581FB4FC29 /* standard */,
 				E335F8521879003B027BC1ACD0F12009 /* Support Files */,
 			);
-			name = FMDB;
 			path = FMDB;
 			sourceTree = "<group>";
 		};
@@ -1727,7 +1720,6 @@
 				D611BCE650C8E7480DE904625C38EB0E /* Support Files */,
 				D5D65A985CD8C5301F1AE8A30A72AF51 /* UIKit */,
 			);
-			name = AFNetworking;
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
@@ -1842,7 +1834,6 @@
 				2778F0F5F4491FF4496BC1D5674D7530 /* Web3+Wallet.swift */,
 				65A74A90DA350C6E021AB6402FEAC357 /* Support Files */,
 			);
-			name = web3swift.pod;
 			path = web3swift.pod;
 			sourceTree = "<group>";
 		};
@@ -1882,7 +1873,6 @@
 				5030310BA4DE40DC08D7CEFDC6C4208C /* Words and Bits.swift */,
 				8A191FAF76FD0519C061867E3FF739A7 /* Support Files */,
 			);
-			name = BigInt;
 			path = BigInt;
 			sourceTree = "<group>";
 		};
@@ -1895,7 +1885,6 @@
 				8F8E1FF7D22FB40EE9E1B8686FA643CA /* SipHasher.swift */,
 				99E408A8129402404D7975A85C592641 /* Support Files */,
 			);
-			name = SipHash;
 			path = SipHash;
 			sourceTree = "<group>";
 		};
@@ -1924,7 +1913,6 @@
 				09A9E82F74626EBEFCAAF182389F2104 /* keccak.h */,
 				1BAB014D9972952A027F7D3574AD60EC /* Support Files */,
 			);
-			name = keccak.c;
 			path = keccak.c;
 			sourceTree = "<group>";
 		};
@@ -2049,7 +2037,6 @@
 				16E4A787E7BD253B3A0F454222BE6A28 /* JXRequest.swift */,
 				60FACEE289E0EF9B49827C01D2FE2A43 /* Support Files */,
 			);
-			name = JX_AFNetworking;
 			path = JX_AFNetworking;
 			sourceTree = "<group>";
 		};
@@ -2157,7 +2144,6 @@
 				4CD3583122A96F1DFFFE3AA0CA930D18 /* Resources */,
 				E313D4F2BFB83B26A343B2F132712D61 /* Support Files */,
 			);
-			name = MJRefresh;
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
@@ -2702,6 +2688,14 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
+				TargetAttributes = {
+					03808BBE925F20F074C2274A59037496 = {
+						LastSwiftMigration = 1010;
+					};
+					108A05FB1BEE189FA6F576DD9116D9AB = {
+						LastSwiftMigration = 1010;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -3379,11 +3373,7 @@
 				INFOPLIST_FILE = "Target Support Files/MJRefresh/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/MJRefresh/MJRefresh.modulemap";
 				PRODUCT_MODULE_NAME = MJRefresh;
 				PRODUCT_NAME = MJRefresh;
@@ -3414,11 +3404,7 @@
 				INFOPLIST_FILE = "Target Support Files/MJRefresh/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/MJRefresh/MJRefresh.modulemap";
 				PRODUCT_MODULE_NAME = MJRefresh;
 				PRODUCT_NAME = MJRefresh;
@@ -3450,11 +3436,7 @@
 				INFOPLIST_FILE = "Target Support Files/FMDB/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/FMDB/FMDB.modulemap";
 				PRODUCT_MODULE_NAME = FMDB;
 				PRODUCT_NAME = FMDB;
@@ -3485,11 +3467,7 @@
 				INFOPLIST_FILE = "Target Support Files/BigInt/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/BigInt/BigInt.modulemap";
 				PRODUCT_MODULE_NAME = BigInt;
 				PRODUCT_NAME = BigInt;
@@ -3521,11 +3499,7 @@
 				INFOPLIST_FILE = "Target Support Files/secp256k1.c/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/secp256k1.c/secp256k1.c.modulemap";
 				PRODUCT_MODULE_NAME = secp256k1;
 				PRODUCT_NAME = secp256k1;
@@ -3557,18 +3531,14 @@
 				INFOPLIST_FILE = "Target Support Files/JXFMDBHelper/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/JXFMDBHelper/JXFMDBHelper.modulemap";
 				PRODUCT_MODULE_NAME = JXFMDBHelper;
 				PRODUCT_NAME = JXFMDBHelper;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -3593,11 +3563,7 @@
 				INFOPLIST_FILE = "Target Support Files/keccak.c/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/keccak.c/keccak.c.modulemap";
 				PRODUCT_MODULE_NAME = keccak;
 				PRODUCT_NAME = keccak;
@@ -3629,11 +3595,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-EthWallet/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-EthWallet/Pods-EthWallet.modulemap";
 				OTHER_LDFLAGS = "";
@@ -3667,11 +3629,7 @@
 				INFOPLIST_FILE = "Target Support Files/JXFoundation/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/JXFoundation/JXFoundation.modulemap";
 				PRODUCT_MODULE_NAME = JXFoundation;
 				PRODUCT_NAME = JXFoundation;
@@ -3702,11 +3660,7 @@
 				INFOPLIST_FILE = "Target Support Files/AFNetworking/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/AFNetworking/AFNetworking.modulemap";
 				PRODUCT_MODULE_NAME = AFNetworking;
 				PRODUCT_NAME = AFNetworking;
@@ -3737,11 +3691,7 @@
 				INFOPLIST_FILE = "Target Support Files/secp256k1.c/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/secp256k1.c/secp256k1.c.modulemap";
 				PRODUCT_MODULE_NAME = secp256k1;
 				PRODUCT_NAME = secp256k1;
@@ -3772,11 +3722,7 @@
 				INFOPLIST_FILE = "Target Support Files/web3swift.pod/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/web3swift.pod/web3swift.pod.modulemap";
 				PRODUCT_MODULE_NAME = web3swift;
 				PRODUCT_NAME = web3swift;
@@ -3807,11 +3753,7 @@
 				INFOPLIST_FILE = "Target Support Files/SipHash/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SipHash/SipHash.modulemap";
 				PRODUCT_MODULE_NAME = SipHash;
 				PRODUCT_NAME = SipHash;
@@ -3843,11 +3785,7 @@
 				INFOPLIST_FILE = "Target Support Files/MBProgressHUD/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/MBProgressHUD/MBProgressHUD.modulemap";
 				PRODUCT_MODULE_NAME = MBProgressHUD;
 				PRODUCT_NAME = MBProgressHUD;
@@ -3879,11 +3817,7 @@
 				INFOPLIST_FILE = "Target Support Files/scrypt.c/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/scrypt.c/scrypt.c.modulemap";
 				PRODUCT_MODULE_NAME = scrypt;
 				PRODUCT_NAME = scrypt;
@@ -3953,8 +3887,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -3977,11 +3910,7 @@
 				INFOPLIST_FILE = "Target Support Files/MBProgressHUD/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/MBProgressHUD/MBProgressHUD.modulemap";
 				PRODUCT_MODULE_NAME = MBProgressHUD;
 				PRODUCT_NAME = MBProgressHUD;
@@ -4012,18 +3941,14 @@
 				INFOPLIST_FILE = "Target Support Files/JX_AFNetworking/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/JX_AFNetworking/JX_AFNetworking.modulemap";
 				PRODUCT_MODULE_NAME = JX_AFNetworking;
 				PRODUCT_NAME = JX_AFNetworking;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -4047,11 +3972,7 @@
 				INFOPLIST_FILE = "Target Support Files/SipHash/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SipHash/SipHash.modulemap";
 				PRODUCT_MODULE_NAME = SipHash;
 				PRODUCT_NAME = SipHash;
@@ -4148,11 +4069,7 @@
 				INFOPLIST_FILE = "Target Support Files/web3swift.pod/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/web3swift.pod/web3swift.pod.modulemap";
 				PRODUCT_MODULE_NAME = web3swift;
 				PRODUCT_NAME = web3swift;
@@ -4184,11 +4101,7 @@
 				INFOPLIST_FILE = "Target Support Files/FMDB/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/FMDB/FMDB.modulemap";
 				PRODUCT_MODULE_NAME = FMDB;
 				PRODUCT_NAME = FMDB;
@@ -4220,11 +4133,7 @@
 				INFOPLIST_FILE = "Target Support Files/PromiseKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/PromiseKit/PromiseKit.modulemap";
 				PRODUCT_MODULE_NAME = PromiseKit;
 				PRODUCT_NAME = PromiseKit;
@@ -4256,11 +4165,7 @@
 				INFOPLIST_FILE = "Target Support Files/PromiseKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/PromiseKit/PromiseKit.modulemap";
 				PRODUCT_MODULE_NAME = PromiseKit;
 				PRODUCT_NAME = PromiseKit;
@@ -4291,11 +4196,7 @@
 				INFOPLIST_FILE = "Target Support Files/BigInt/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/BigInt/BigInt.modulemap";
 				PRODUCT_MODULE_NAME = BigInt;
 				PRODUCT_NAME = BigInt;
@@ -4326,11 +4227,7 @@
 				INFOPLIST_FILE = "Target Support Files/AFNetworking/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/AFNetworking/AFNetworking.modulemap";
 				PRODUCT_MODULE_NAME = AFNetworking;
 				PRODUCT_NAME = AFNetworking;
@@ -4362,18 +4259,14 @@
 				INFOPLIST_FILE = "Target Support Files/JXFMDBHelper/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/JXFMDBHelper/JXFMDBHelper.modulemap";
 				PRODUCT_MODULE_NAME = JXFMDBHelper;
 				PRODUCT_NAME = JXFMDBHelper;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -4397,11 +4290,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-EthWallet/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-EthWallet/Pods-EthWallet.modulemap";
 				OTHER_LDFLAGS = "";
@@ -4434,11 +4323,7 @@
 				INFOPLIST_FILE = "Target Support Files/JXFoundation/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/JXFoundation/JXFoundation.modulemap";
 				PRODUCT_MODULE_NAME = JXFoundation;
 				PRODUCT_NAME = JXFoundation;
@@ -4470,11 +4355,7 @@
 				INFOPLIST_FILE = "Target Support Files/keccak.c/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/keccak.c/keccak.c.modulemap";
 				PRODUCT_MODULE_NAME = keccak;
 				PRODUCT_NAME = keccak;
@@ -4505,18 +4386,14 @@
 				INFOPLIST_FILE = "Target Support Files/JX_AFNetworking/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/JX_AFNetworking/JX_AFNetworking.modulemap";
 				PRODUCT_MODULE_NAME = JX_AFNetworking;
 				PRODUCT_NAME = JX_AFNetworking;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -4541,11 +4418,7 @@
 				INFOPLIST_FILE = "Target Support Files/scrypt.c/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/scrypt.c/scrypt.c.modulemap";
 				PRODUCT_MODULE_NAME = scrypt;
 				PRODUCT_NAME = scrypt;
