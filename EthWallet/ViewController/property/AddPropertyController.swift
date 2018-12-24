@@ -9,7 +9,7 @@
 import UIKit
 import web3swift
 
-class AddPropertyController: JXTableViewController {
+class AddPropertyController: MyTableViewController {
 
     var tokenArray = Array<TokenEntity>()
     var tokenResultArray = Array<TokenEntity>()

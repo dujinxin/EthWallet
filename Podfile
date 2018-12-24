@@ -8,7 +8,7 @@ target 'EthWallet' do
 
     pod 'web3swift.pod'
     pod 'JXFMDBHelper'
-    pod 'JXFoundation'
+    pod 'JXFoundation', '~> 1.3.1'
     pod 'MBProgressHUD'
     pod 'JX_AFNetworking' 
     pod 'MJRefresh'

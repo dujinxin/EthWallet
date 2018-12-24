@@ -10,13 +10,10 @@
 		351DD43421C4A275007E94FA /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DD42721C4A274007E94FA /* BaseViewModel.swift */; };
 		351DD43521C4A275007E94FA /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DD42921C4A275007E94FA /* BaseModel.swift */; };
 		351DD43621C4A275007E94FA /* JXDefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DD42B21C4A275007E94FA /* JXDefaultView.swift */; };
-		351DD43721C4A275007E94FA /* JXCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DD42D21C4A275007E94FA /* JXCollectionViewController.swift */; };
-		351DD43821C4A275007E94FA /* JXNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DD42E21C4A275007E94FA /* JXNavigationController.swift */; };
-		351DD43921C4A275007E94FA /* JXBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DD42F21C4A275007E94FA /* JXBaseViewController.swift */; };
-		351DD43A21C4A275007E94FA /* ZPCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DD43021C4A275007E94FA /* ZPCollectionViewController.swift */; };
-		351DD43B21C4A275007E94FA /* JXWkWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DD43121C4A275007E94FA /* JXWkWebViewController.swift */; };
-		351DD43C21C4A275007E94FA /* JSTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DD43221C4A275007E94FA /* JSTableViewController.swift */; };
-		351DD43D21C4A275007E94FA /* JXTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DD43321C4A275007E94FA /* JXTableViewController.swift */; };
+		351DD43721C4A275007E94FA /* MyCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DD42D21C4A275007E94FA /* MyCollectionViewController.swift */; };
+		351DD43821C4A275007E94FA /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DD42E21C4A275007E94FA /* MyNavigationController.swift */; };
+		351DD43921C4A275007E94FA /* MyBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DD42F21C4A275007E94FA /* MyBaseViewController.swift */; };
+		351DD43D21C4A275007E94FA /* MyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DD43321C4A275007E94FA /* MyTableViewController.swift */; };
 		351DD44021C4A325007E94FA /* JXNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DD43F21C4A325007E94FA /* JXNavigationBar.swift */; };
 		351DD44221C4A84E007E94FA /* ConstantHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DD44121C4A84E007E94FA /* ConstantHeader.swift */; };
 		351DD44421C4B3DB007E94FA /* JXRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351DD44321C4B3DB007E94FA /* JXRequest.swift */; };
@@ -40,6 +37,7 @@
 		35249D5520C1558E001C1140 /* WalletHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35249D5320C1558E001C1140 /* WalletHeadCell.swift */; };
 		35249D5620C1558E001C1140 /* WalletHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35249D5420C1558E001C1140 /* WalletHeadCell.xib */; };
 		35249D5C20C2433D001C1140 /* TransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35249D5B20C2433D001C1140 /* TransferViewController.swift */; };
+		3524FCE821D0FB6C005813A3 /* MyWkWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524FCE721D0FB6C005813A3 /* MyWkWebViewController.swift */; };
 		3598764F20DA25E70027F982 /* ImportWalletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598764E20DA25E70027F982 /* ImportWalletController.swift */; };
 		3598765120DA260C0027F982 /* PrivateKeyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598765020DA260C0027F982 /* PrivateKeyController.swift */; };
 		3598765320DA26220027F982 /* KeyStoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3598765220DA26220027F982 /* KeyStoreController.swift */; };
@@ -88,13 +86,10 @@
 		351DD42721C4A274007E94FA /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		351DD42921C4A275007E94FA /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		351DD42B21C4A275007E94FA /* JXDefaultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXDefaultView.swift; sourceTree = "<group>"; };
-		351DD42D21C4A275007E94FA /* JXCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXCollectionViewController.swift; sourceTree = "<group>"; };
-		351DD42E21C4A275007E94FA /* JXNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXNavigationController.swift; sourceTree = "<group>"; };
-		351DD42F21C4A275007E94FA /* JXBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXBaseViewController.swift; sourceTree = "<group>"; };
-		351DD43021C4A275007E94FA /* ZPCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZPCollectionViewController.swift; sourceTree = "<group>"; };
-		351DD43121C4A275007E94FA /* JXWkWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXWkWebViewController.swift; sourceTree = "<group>"; };
-		351DD43221C4A275007E94FA /* JSTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSTableViewController.swift; sourceTree = "<group>"; };
-		351DD43321C4A275007E94FA /* JXTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXTableViewController.swift; sourceTree = "<group>"; };
+		351DD42D21C4A275007E94FA /* MyCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionViewController.swift; sourceTree = "<group>"; };
+		351DD42E21C4A275007E94FA /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
+		351DD42F21C4A275007E94FA /* MyBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBaseViewController.swift; sourceTree = "<group>"; };
+		351DD43321C4A275007E94FA /* MyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTableViewController.swift; sourceTree = "<group>"; };
 		351DD43F21C4A325007E94FA /* JXNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXNavigationBar.swift; sourceTree = "<group>"; };
 		351DD44121C4A84E007E94FA /* ConstantHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantHeader.swift; sourceTree = "<group>"; };
 		351DD44321C4B3DB007E94FA /* JXRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXRequest.swift; sourceTree = "<group>"; };
@@ -118,6 +113,7 @@
 		35249D5320C1558E001C1140 /* WalletHeadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletHeadCell.swift; sourceTree = "<group>"; };
 		35249D5420C1558E001C1140 /* WalletHeadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletHeadCell.xib; sourceTree = "<group>"; };
 		35249D5B20C2433D001C1140 /* TransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferViewController.swift; sourceTree = "<group>"; };
+		3524FCE721D0FB6C005813A3 /* MyWkWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWkWebViewController.swift; sourceTree = "<group>"; };
 		3598764E20DA25E70027F982 /* ImportWalletController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletController.swift; sourceTree = "<group>"; };
 		3598765020DA260C0027F982 /* PrivateKeyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKeyController.swift; sourceTree = "<group>"; };
 		3598765220DA26220027F982 /* KeyStoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyStoreController.swift; sourceTree = "<group>"; };
@@ -204,13 +200,11 @@
 		351DD42C21C4A275007E94FA /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				351DD42D21C4A275007E94FA /* JXCollectionViewController.swift */,
-				351DD42E21C4A275007E94FA /* JXNavigationController.swift */,
-				351DD42F21C4A275007E94FA /* JXBaseViewController.swift */,
-				351DD43021C4A275007E94FA /* ZPCollectionViewController.swift */,
-				351DD43121C4A275007E94FA /* JXWkWebViewController.swift */,
-				351DD43221C4A275007E94FA /* JSTableViewController.swift */,
-				351DD43321C4A275007E94FA /* JXTableViewController.swift */,
+				351DD42D21C4A275007E94FA /* MyCollectionViewController.swift */,
+				351DD42E21C4A275007E94FA /* MyNavigationController.swift */,
+				351DD42F21C4A275007E94FA /* MyBaseViewController.swift */,
+				351DD43321C4A275007E94FA /* MyTableViewController.swift */,
+				3524FCE721D0FB6C005813A3 /* MyWkWebViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -557,12 +551,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				351DD43721C4A275007E94FA /* JXCollectionViewController.swift in Sources */,
+				351DD43721C4A275007E94FA /* MyCollectionViewController.swift in Sources */,
 				35249D5C20C2433D001C1140 /* TransferViewController.swift in Sources */,
-				351DD43921C4A275007E94FA /* JXBaseViewController.swift in Sources */,
+				351DD43921C4A275007E94FA /* MyBaseViewController.swift in Sources */,
 				3598767E20DE42980027F982 /* PropertyModel.swift in Sources */,
 				351DD45A21C5436D007E94FA /* ImageTitleCell.swift in Sources */,
-				351DD43A21C4A275007E94FA /* ZPCollectionViewController.swift in Sources */,
+				3524FCE821D0FB6C005813A3 /* MyWkWebViewController.swift in Sources */,
 				3598766220DBA2250027F982 /* String+Extension.swift in Sources */,
 				3598767420DE1F5F0027F982 /* EthUnit.swift in Sources */,
 				35A0F35021C7CA3C006B2F65 /* VerifyMnemonicController.swift in Sources */,
@@ -573,14 +567,13 @@
 				35A0F34621C661C4006B2F65 /* CreateSuccessController.swift in Sources */,
 				35A0F34421C63ECF006B2F65 /* WalletAddressController.swift in Sources */,
 				351DD45521C4F8DA007E94FA /* JXSelectView.swift in Sources */,
-				351DD43D21C4A275007E94FA /* JXTableViewController.swift in Sources */,
+				351DD43D21C4A275007E94FA /* MyTableViewController.swift in Sources */,
 				3598768020E0D5BC0027F982 /* Web3VM.swift in Sources */,
-				351DD43B21C4A275007E94FA /* JXWkWebViewController.swift in Sources */,
 				3598765720DA37200027F982 /* SettingViewController.swift in Sources */,
 				351DD45721C520EB007E94FA /* ReceiptViewController.swift in Sources */,
 				3598766E20DC927E0027F982 /* ExportPKViewController.swift in Sources */,
 				351DD44021C4A325007E94FA /* JXNavigationBar.swift in Sources */,
-				351DD43821C4A275007E94FA /* JXNavigationController.swift in Sources */,
+				351DD43821C4A275007E94FA /* MyNavigationController.swift in Sources */,
 				351DD44A21C4C918007E94FA /* JXActionCell.swift in Sources */,
 				351DD46121C61FC6007E94FA /* ExportPKCodeController.swift in Sources */,
 				351DD45121C4F5D6007E94FA /* ViewManager.swift in Sources */,
@@ -602,7 +595,6 @@
 				3598767A20DE3E430027F982 /* AddPropertyCell.swift in Sources */,
 				3522819020BA96CD001A0CA8 /* CreateWalletController.swift in Sources */,
 				351DD44221C4A84E007E94FA /* ConstantHeader.swift in Sources */,
-				351DD43C21C4A275007E94FA /* JSTableViewController.swift in Sources */,
 				351DD45F21C61FAC007E94FA /* ExportPKTextController.swift in Sources */,
 				351DD46321C6230F007E94FA /* JXShadowButton.swift in Sources */,
 				3598765120DA260C0027F982 /* PrivateKeyController.swift in Sources */,

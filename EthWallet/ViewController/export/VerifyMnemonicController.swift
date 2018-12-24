@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VerifyMnemonicController: JXBaseViewController {
+class VerifyMnemonicController: MyBaseViewController {
     
     var unInputMnemonics = [String]()
     var inputMnemonics = [String]()

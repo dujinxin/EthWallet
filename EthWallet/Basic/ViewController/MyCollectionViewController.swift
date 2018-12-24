@@ -12,7 +12,7 @@ import JXFoundation
 private let reuseIdentifier = "reuseIdentifier"
 private let reuseIndentifierHeader = "reuseIndentifierHeader"
 
-class JXCollectionViewController: JXBaseViewController {
+class JXCollectionViewController: MyBaseViewController {
 
     //collectionView
     lazy var collectionView : UICollectionView = {

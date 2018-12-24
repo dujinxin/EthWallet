@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WalletListController: JXTableViewController {
+class WalletListController: MyTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

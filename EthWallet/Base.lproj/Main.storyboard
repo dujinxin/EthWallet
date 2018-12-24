@@ -93,10 +93,10 @@
             </objects>
             <point key="canvasLocation" x="1233" y="273"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--My Navigation Controller-->
         <scene sceneID="fVM-wv-712">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="oI9-xb-uEM" customClass="JXNavigationController" customModule="EthWallet" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="oI9-xb-uEM" customClass="MyNavigationController" customModule="EthWallet" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vIE-QF-6uS">
                         <autoresizingMask key="autoresizingMask"/>

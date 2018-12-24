@@ -12,7 +12,7 @@ import BigInt
 import JXFoundation
 import MJRefresh
 
-class WalletViewController: JXBaseViewController {
+class WalletViewController: MyBaseViewController {
     
     //MARK:wallet headerView
     
@@ -209,6 +209,7 @@ class WalletViewController: JXBaseViewController {
     @objc func walletChange(notify: Notification) {
         self.requestData()
     }
+    
     override func requestData() {
         
         self.showMBProgressHUD()

@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import JXFoundation
 
-class JXNavigationController: UINavigationController {
+open class JXNavigationController: UINavigationController {
     
-    lazy var backItem: UIBarButtonItem = {
+    public lazy var backItem: UIBarButtonItem = {
         let leftButton = UIButton()
         leftButton.frame = CGRect(x: 10, y: 7, width: 30, height: 30)
         leftButton.setImage(UIImage(named: "icon-back")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -23,7 +22,7 @@ class JXNavigationController: UINavigationController {
         return item
     }()
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -37,7 +36,7 @@ class JXNavigationController: UINavigationController {
         self.navigationBar.isHidden = false
     }
 
-    override func didReceiveMemoryWarning() {
+    override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -51,7 +50,7 @@ extension JXNavigationController {
     /// - Parameters:
     ///   - viewController: 将要push的viewController
     ///   - animated: 是否使用动画
-    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+    override open func pushViewController(_ viewController: UIViewController, animated: Bool) {
         super.pushViewController(viewController, animated: true)
         
         guard viewControllers.count > 0 else { return }
@@ -65,10 +64,7 @@ extension JXNavigationController {
             vc.hidesBottomBarWhenPushed = true
             vc.customNavigationItem.leftBarButtonItem = self.backItem
             //vc.customNavigationItem.leftBarButtonItem = UIBarButtonItem.init(title: titleName, imageName: "imgBack", target: self, action: #selector(pop))
-        } else if let vc = viewController as? JSTableViewController {
-            vc.hidesBottomBarWhenPushed = true
-            vc.customNavigationItem.leftBarButtonItem = self.backItem
-        }
+        } 
         
     }
     

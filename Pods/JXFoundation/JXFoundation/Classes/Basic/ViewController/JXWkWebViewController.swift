@@ -8,11 +8,10 @@
 
 import UIKit
 import WebKit
-import JXFoundation
 
-class JXWkWebViewController: JXBaseViewController {
+open class JXWkWebViewController: JXBaseViewController {
 
-    lazy var webView: WKWebView = {
+    public lazy var webView: WKWebView = {
         let config = WKWebViewConfiguration()
         //初始化偏好设置属性：preferences
         let preferences = WKPreferences()
@@ -34,13 +33,13 @@ class JXWkWebViewController: JXBaseViewController {
         
         return web
     }()
-    lazy var processView: UIProgressView = {
+    public lazy var processView: UIProgressView = {
         let process = UIProgressView()
         process.progressTintColor = UIColor.blue
         process.progress = 0.0
         return process
     }()
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         if #available(iOS 11.0, *) {
             self.webView.scrollView.contentInsetAdjustmentBehavior = .never
@@ -49,19 +48,19 @@ class JXWkWebViewController: JXBaseViewController {
         }
     }
 
-    override func setUpMainView() {
+    override open func setUpMainView() {
         let y = self.isCustomNavigationBarUsed() ? kNavStatusHeight : 0
         let height = self.isCustomNavigationBarUsed() ? (view.bounds.height - kNavStatusHeight) : view.bounds.height
         
         self.webView.frame = CGRect(x: 0, y: y, width: view.bounds.width, height: height)
         view.addSubview(self.webView)
         
-        self.processView.frame = CGRect(x: 0, y: y, width: kScreenWidth, height: 2)
+        self.processView.frame = CGRect(x: 0, y: y, width: UIScreen.main.screenWidth, height: 2)
         view.addSubview(self.processView)
         
         self.webView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
     }
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
 
         if
             let change = change,
@@ -99,11 +98,11 @@ extension JXWkWebViewController:WKUIDelegate{
 //    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
 //        return self.wkWebView
 //    }
-    func webViewDidClose(_ webView: WKWebView) {
+    open func webViewDidClose(_ webView: WKWebView) {
         print("close")
     }
     //只包含确定的提示框
-    func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
+    open func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
         
         print("alert")
 
@@ -116,7 +115,7 @@ extension JXWkWebViewController:WKUIDelegate{
         
     }
     //带有确认和取消的提示框，确定true,取消false
-    func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
+    open func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
         print("confirm")
         let alert = UIAlertController(title: "提示", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "确定", style: .destructive, handler: { (action) in
@@ -130,7 +129,7 @@ extension JXWkWebViewController:WKUIDelegate{
         self.present(alert, animated: true, completion: nil)
     }
     //输入框，可以有多个输入框，但是最后回传时，要拼接成一个字符串
-    func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
+    open func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
         
         print("textInput")
         let alert = UIAlertController(title: "提示", message: prompt, preferredStyle: .alert)
@@ -145,61 +144,61 @@ extension JXWkWebViewController:WKUIDelegate{
     }
     //实现该方法，可以弹出自定义视图
     @available(iOS 10.0, *)
-    func webView(_ webView: WKWebView, shouldPreviewElement elementInfo: WKPreviewElementInfo) -> Bool {
+    open func webView(_ webView: WKWebView, shouldPreviewElement elementInfo: WKPreviewElementInfo) -> Bool {
         return true
     }
     //实现该方法，可以弹出自定义视图控制器
     @available(iOS 10.0, *)
-    func webView(_ webView: WKWebView, previewingViewControllerForElement elementInfo: WKPreviewElementInfo, defaultActions previewActions: [WKPreviewActionItem]) -> UIViewController? {
+    open func webView(_ webView: WKWebView, previewingViewControllerForElement elementInfo: WKPreviewElementInfo, defaultActions previewActions: [WKPreviewActionItem]) -> UIViewController? {
         return nil
     }
     //实现该方法，关闭自定义视图控制器
-    func webView(_ webView: WKWebView, commitPreviewingViewController previewingViewController: UIViewController) {
+    open func webView(_ webView: WKWebView, commitPreviewingViewController previewingViewController: UIViewController) {
         
     }
 }
 extension JXWkWebViewController:WKNavigationDelegate{
     
-    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+    open func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         print("start")
     }
-    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+    open func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
         print("commit")
     }
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("finish")
     }
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+    open func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         print("fail:\(error.localizedDescription)")
     }
     
     //当webView的web内容进程被终止时调用。(iOS 9.0之后)
-    func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
+    open func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
         
     }
     //监听页面跳转的代理方法，分为：收到跳转与决定是否跳转两种
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+    open func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         decisionHandler(.allow)
     }
-    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+    open func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         decisionHandler(.allow)
     }
     //收到服务器重定向时调用
-    func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
+    open func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
         
     }
     //当webView需要响应身份验证时调用(如需验证服务器证书)
-    func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+    open func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         completionHandler(.performDefaultHandling, nil)
     }
     ////加载错误时调用
-    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+    open func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         
     }
     
 }
 extension JXWkWebViewController :WKScriptMessageHandler{
-    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+    open func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         print("message:",message)
     }
 }

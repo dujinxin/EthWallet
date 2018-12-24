@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateSuccessController: JXBaseViewController {
+class CreateSuccessController: MyBaseViewController {
     @IBOutlet weak var defaultBackView: UIView!
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
@@ -47,9 +47,6 @@ class CreateSuccessController: JXBaseViewController {
     override func updateViewConstraints() {
         super.updateViewConstraints()
         self.topConstraint.constant = kNavStatusHeight + 41
-    }
-    override func isCustomNavigationBarUsed() -> Bool {
-        return true
     }
     @IBAction func copyPrivacyStr(_ sender: Any) {
         

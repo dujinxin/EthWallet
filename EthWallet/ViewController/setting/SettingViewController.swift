@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingViewController: JXTableViewController {
+class SettingViewController: MyTableViewController {
 
     var defaultArray = [
         [

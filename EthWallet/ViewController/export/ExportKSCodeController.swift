@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExportKSCodeController: JXBaseViewController {
+class ExportKSCodeController: MyBaseViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     

@@ -9,7 +9,7 @@
 import UIKit
 import JXFoundation
 
-class ImportWalletController: JXBaseViewController,JXBarViewDelegate,JXHorizontalViewDelegate {
+class ImportWalletController: MyBaseViewController,JXBarViewDelegate,JXHorizontalViewDelegate {
 
     var topBar : JXBarView!
     var horizontalView : JXHorizontalView?

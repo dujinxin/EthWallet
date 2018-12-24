@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TransferSuccessController: JXBaseViewController {
+class TransferSuccessController: MyBaseViewController {
 
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var addressLabel: UILabel!
@@ -56,9 +56,6 @@ class TransferSuccessController: JXBaseViewController {
     override func updateViewConstraints() {
         super.updateViewConstraints()
         self.topConstraint.constant = kNavStatusHeight + 84
-    }
-    override func isCustomNavigationBarUsed() -> Bool {
-        return true
     }
     @IBAction func complete(_ sender: Any) {
         if

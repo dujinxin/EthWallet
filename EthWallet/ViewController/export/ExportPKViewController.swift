@@ -9,7 +9,7 @@
 import UIKit
 import JXFoundation
 
-class ExportPKViewController: JXBaseViewController,JXTopBarViewDelegate,JXHorizontalViewDelegate {
+class ExportPKViewController: MyBaseViewController,JXTopBarViewDelegate,JXHorizontalViewDelegate {
     
     var topBar : JXTopBarView?
     var horizontalView : JXHorizontalView?

@@ -7,16 +7,14 @@
 //
 
 import UIKit
-import MBProgressHUD
-import JXFoundation
 
 open class JXBaseViewController: UIViewController {
     
-    var backBlock : (()->())?
+    open var backBlock : (()->())?
     
     //MARK: - custom NavigationBar
     //自定义导航栏
-    lazy var customNavigationBar : JXNavigationBar = {
+    public lazy var customNavigationBar : JXNavigationBar = {
         let navigationBar = JXNavigationBar(frame:CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: kNavStatusHeight))
         navigationBar.barTintColor = UIColor.clear//导航条颜色,透明色不起作用
         navigationBar.isTranslucent = true
@@ -24,10 +22,21 @@ open class JXBaseViewController: UIViewController {
         navigationBar.tintColor = UIColor.rgbColor(rgbValue: 0x000000) //item图片文字颜色
         navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.rgbColor(rgbValue: 0x000000),NSAttributedString.Key.font:UIFont.systemFont(ofSize: 17)]//标题设置
         navigationBar.setBackgroundImage(navigationBar.imageWithColor(UIColor.clear), for: UIBarMetrics.default)
+        //大标题
+        if #available(iOS 11.0, *) {
+            navigationBar.prefersLargeTitles = false
+            //navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.rgbColor(rgbValue: 0x000000),NSAttributedString.Key.font:UIFont.systemFont(ofSize: 17)]
+        }
+        
         return navigationBar
     }()
-    lazy var customNavigationItem: UINavigationItem = {
+    public lazy var customNavigationItem: UINavigationItem = {
         let item = UINavigationItem(title: "")
+        if #available(iOS 11.0, *) {
+            item.largeTitleDisplayMode = .automatic
+        } else {
+            // Fallback on earlier versions
+        }
         return item
     }()
     //子类重写title的setter方法
@@ -40,21 +49,21 @@ open class JXBaseViewController: UIViewController {
     //MARK: - default view info
     
     /// default view
-    lazy var defaultView: JXDefaultView = {
+    public lazy var defaultView: JXDefaultView = {
         let v = JXDefaultView()
         v.backgroundColor = UIColor.randomColor
         return v
     }()
     
-    var defaultInfo : [String: String]?
+    public var defaultInfo : [String: String]?
     
     //log state
-    var isLogin: Bool = true
+    public var isLogin: Bool = true
     
     override open func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = JXFfffffColor
+        self.view.backgroundColor = UIColor.white
         
         self.isCustomNavigationBarUsed() ? setupCustomNavigationBar() : setupNavigationBarConfig()
     }
@@ -89,7 +98,8 @@ open class JXBaseViewController: UIViewController {
 }
 
 extension JXBaseViewController {
-    func setupCustomNavigationBar() {
+    /// 设置自定义导航栏
+    open func setupCustomNavigationBar() {
         //隐藏navigationBar
         self.navigationController?.navigationBar.isHidden = true
         //1.自定义view代替NavigationBar,需要自己实现手势返回;
@@ -97,7 +107,8 @@ extension JXBaseViewController {
         self.view.addSubview(self.customNavigationBar)
         self.customNavigationBar.items = [self.customNavigationItem]
     }
-    func setupNavigationBarConfig() {
+    /// 设置系统导航栏，子类可重新设置
+    open func setupNavigationBarConfig() {
         let image = UIImage(named: "icon-back")
         self.navigationController?.navigationBar.backIndicatorImage = image
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = image?.withRenderingMode(.alwaysOriginal)
@@ -105,26 +116,19 @@ extension JXBaseViewController {
         let backBarButtonItem = UIBarButtonItem.init(title:"", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backBarButtonItem
         
-        self.navigationController?.navigationBar.tintColor = JX333333Color //item图片文字颜色
+        self.navigationController?.navigationBar.tintColor = UIColor.darkText //item图片文字颜色
 //        self.navigationController?.navigationBar.barTintColor = UIColor.rgbColor(rgbValue: 0x046ac9)//导航条颜色
 //        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white,NSAttributedStringKey.font:UIFont.systemFont(ofSize: 19)]//标题设置
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+            self.navigationItem.largeTitleDisplayMode = .automatic
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }
 
 extension JXBaseViewController {
     
-}
-
-extension JXBaseViewController {
-    open func showMBProgressHUD() {
-        let _ = MBProgressHUD.showAdded(to: self.view, animated: true)
-//        hud.backgroundView.color = UIColor.black
-//        hud.contentColor = UIColor.black
-//        hud.bezelView.backgroundColor = UIColor.black
-//        hud.label.text = "加载中..."
-    }
-    open func hideMBProgressHUD() {
-        MBProgressHUD.hide(for: self.view, animated: true)
-    }
 }
 

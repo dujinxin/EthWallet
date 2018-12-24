@@ -18,7 +18,7 @@ enum ExportType {
 }
 
 
-class WalletDetailController: JXTableViewController {
+class WalletDetailController: MyTableViewController {
     //导出类型
     var exportType: ExportType = .keyStore
     

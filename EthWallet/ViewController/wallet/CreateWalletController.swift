@@ -10,7 +10,7 @@ import UIKit
 import web3swift
 import JXFoundation
 
-class CreateWalletController : JXBaseViewController{
+class CreateWalletController : MyBaseViewController{
     
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var walletNameTextField: UITextField!
@@ -48,9 +48,6 @@ class CreateWalletController : JXBaseViewController{
     override func updateViewConstraints() {
         super.updateViewConstraints()
         self.topConstraint.constant = kNavStatusHeight
-    }
-    override func isCustomNavigationBarUsed() -> Bool {
-        return true
     }
     
     @IBAction func createWallet(_ sender: Any) {

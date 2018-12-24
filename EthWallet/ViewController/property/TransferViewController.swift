@@ -16,7 +16,7 @@ enum Type : Int{
     case erc20
 }
 
-class TransferViewController: JXBaseViewController {
+class TransferViewController: MyBaseViewController {
     @IBOutlet weak var topConstraint: NSLayoutConstraint!{
         didSet{
             topConstraint.constant = kNavStatusHeight

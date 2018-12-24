@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WalletAddressController: JXBaseViewController {
+class WalletAddressController: MyBaseViewController {
     
     @IBOutlet weak internal var topConstraint: NSLayoutConstraint!
     
@@ -51,9 +51,6 @@ class WalletAddressController: JXBaseViewController {
     override func updateViewConstraints() {
         super.updateViewConstraints()
         self.topConstraint.constant = kNavStatusHeight + 44
-    }
-    override func isCustomNavigationBarUsed() -> Bool {
-        return true
     }
     @IBAction func copyAddress(_ sender: Any) {
         let pals = UIPasteboard.general

@@ -10,15 +10,15 @@ import UIKit
 
 let reuseIdentifierNormal = "reuseIdentifierNormal"
 
-class JXTableViewController: JXBaseViewController{
+open class JXTableViewController: JXBaseViewController{
 
     //tableview
-    lazy var tableView : UITableView = {
+    public lazy var tableView : UITableView = {
         let table = UITableView(frame: CGRect())
         
         table.backgroundColor = UIColor.clear
-        table.separatorStyle = .none
-        table.separatorColor = JXSeparatorColor
+        table.separatorStyle = .singleLine
+        //table.separatorColor = JXSeparatorColor
         table.delegate = self
         table.dataSource = self
         table.estimatedSectionHeaderHeight = 0
@@ -31,13 +31,13 @@ class JXTableViewController: JXBaseViewController{
         return table
     }()
     //refreshControl
-    var refreshControl : UIRefreshControl?
+    public var refreshControl : UIRefreshControl?
     //data array
-    var dataArray : Array<Any>!
-    var page : Int = 1
+    public var dataArray : Array<Any>!
+    public var page : Int = 1
     
     
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         
         if #available(iOS 11.0, *) {
@@ -47,11 +47,11 @@ class JXTableViewController: JXBaseViewController{
         }
     }
     
-    @objc override func setUpMainView() {
+    @objc override open func setUpMainView() {
         setUpTableView()
     }
     
-    func setUpTableView(){
+    open func setUpTableView(){
         let y = self.isCustomNavigationBarUsed() ? kNavStatusHeight : 0
         let height = self.isCustomNavigationBarUsed() ? (view.bounds.height - kNavStatusHeight) : view.bounds.height
         
@@ -65,20 +65,20 @@ class JXTableViewController: JXBaseViewController{
     /// request data
     ///
     /// - Parameter page: load data for page,
-    func request(page:Int) {}
+    open func request(page:Int) {}
 }
 extension JXTableViewController : UITableViewDelegate,UITableViewDataSource{
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
     }
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
     }
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    open func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.1
     }
 }

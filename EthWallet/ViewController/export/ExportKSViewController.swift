@@ -9,7 +9,7 @@
 import UIKit
 import JXFoundation
 
-class ExportKSViewController: JXBaseViewController,JXTopBarViewDelegate,JXHorizontalViewDelegate {
+class ExportKSViewController: MyBaseViewController,JXTopBarViewDelegate,JXHorizontalViewDelegate {
     
     var topBar : JXTopBarView?
     var horizontalView : JXHorizontalView?

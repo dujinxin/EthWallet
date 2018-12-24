@@ -10,7 +10,7 @@ import UIKit
 import web3swift
 import JXFoundation
 
-class PrivateKeyController: JXBaseViewController {
+class PrivateKeyController: MyBaseViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var textView: JXPlaceHolderTextView!{

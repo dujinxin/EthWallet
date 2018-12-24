@@ -9,7 +9,7 @@
 import UIKit
 import JXFoundation
 
-class ExportKSTextController: JXBaseViewController {
+class ExportKSTextController: MyBaseViewController {
 
     
     @IBOutlet weak var scrollView: UIScrollView!
