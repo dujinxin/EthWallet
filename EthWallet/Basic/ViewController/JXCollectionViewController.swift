@@ -14,8 +14,27 @@ private let reuseIndentifierHeader = "reuseIndentifierHeader"
 
 class JXCollectionViewController: JXBaseViewController {
 
-    //tableview
-    var collectionView : UICollectionView?
+    //collectionView
+    lazy var collectionView : UICollectionView = {
+        let layout = UICollectionViewFlowLayout.init()
+        layout.sectionInset = UIEdgeInsets.init(top: 0.5, left: 0, bottom: 0, right: 0)
+        layout.minimumLineSpacing = 0.5
+        layout.minimumInteritemSpacing = 0.5
+        
+        layout.itemSize = UICollectionViewFlowLayout.automaticSize
+        layout.estimatedItemSize = CGSize(width: kScreenWidth / 3, height: kScreenWidth / 3)
+        
+        //        layout.headerReferenceSize = CGSize(width: 0, height: 0)
+        //        layout.headerReferenceSize = UICollectionViewFlowLayoutAutomaticSize
+        //        layout.footerReferenceSize = UICollectionViewFlowLayoutAutomaticSize
+        
+        let collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: layout)
+        collectionView.backgroundColor = UIColor.clear
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        return collectionView
+    }()
     //refreshControl
     var refreshControl : UIRefreshControl?
     //data array
@@ -26,17 +45,12 @@ class JXCollectionViewController: JXBaseViewController {
         super.viewDidLoad()
         
         if #available(iOS 11.0, *) {
-            self.collectionView?.contentInsetAdjustmentBehavior = .never
+            self.collectionView.contentInsetAdjustmentBehavior = .never
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+   
     @objc override func setUpMainView() {
         setUpTableView()
     }
@@ -45,26 +59,8 @@ class JXCollectionViewController: JXBaseViewController {
         let y = self.isCustomNavigationBarUsed() ? kNavStatusHeight : 0
         let height = self.isCustomNavigationBarUsed() ? (view.bounds.height - kNavStatusHeight) : view.bounds.height
         
-        
-        let layout = UICollectionViewFlowLayout.init()
-        layout.sectionInset = UIEdgeInsets.init(top: 0.5, left: 0, bottom: 0, right: 0)
-        layout.minimumLineSpacing = 0.5
-        layout.minimumInteritemSpacing = 0.5
-        
-        layout.itemSize = UICollectionViewFlowLayout.automaticSize
-        layout.estimatedItemSize = CGSize(width: kScreenWidth / 3, height: kScreenWidth / 3)
-        
-//        layout.headerReferenceSize = CGSize(width: 0, height: 0)
-//        layout.headerReferenceSize = UICollectionViewFlowLayoutAutomaticSize
-//        layout.footerReferenceSize = UICollectionViewFlowLayoutAutomaticSize
-    
-        self.collectionView = UICollectionView(frame: CGRect(x: 0, y: y, width: view.bounds.width, height: height), collectionViewLayout: layout)
-        self.collectionView?.backgroundColor = UIColor.clear
-        
-        self.collectionView?.delegate = self
-        self.collectionView?.dataSource = self
-        self.view.addSubview(self.collectionView!)
-
+        self.collectionView.frame = CGRect(x: 0, y: y, width: view.bounds.width, height: height)
+        self.view.addSubview(self.collectionView)
     }
     /// request data
     ///

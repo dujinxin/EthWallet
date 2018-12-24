@@ -260,15 +260,15 @@ class WalletViewController: JXBaseViewController {
                 print("\(index)-\(index)")
             }
         } else { // token
-            let contractAddress = Address("0x8553de7f3ce4993adbf02b0d676e4be4c5333398") // BKX token on Ethereum mainnet
+            let contractAddress = Address("0x8553de7f3ce4993adbf02b0d676e4be4c5333398") // token on Ethereum mainnet
 
             DispatchQueue.global().async {
                 guard
                     let contract = try? WalletManager.shared.vm.web3.contract(Web3.Utils.erc20ABI, at: contractAddress), // utilize precompiled ERC20 ABI for your concenience
-                    let bkxBalanceResult = try? contract.method("balanceOf", parameters: [walletAddress] as [AnyObject], options: Web3Options.default).call(options: nil) else { return } // encode parameters for transaction
-                guard let bal = bkxBalanceResult["0"] as? BigUInt else {return} // bkxBalance is [String: Any], and parameters are enumerated as "0", "1", etc in order of being returned. If returned parameter has a name in ABI, it is also duplicated
-                print(bkxBalanceResult)
-                print("BKX token balance = " + String(bal))
+                    let tokenBalanceResult = try? contract.method("balanceOf", parameters: [walletAddress] as [AnyObject], options: Web3Options.default).call(options: nil) else { return } // encode parameters for transaction
+                guard let bal = tokenBalanceResult["0"] as? BigUInt else {return} // token Balance is [String: Any], and parameters are enumerated as "0", "1", etc in order of being returned. If returned parameter has a name in ABI, it is also duplicated
+                print(tokenBalanceResult)
+                print("token balance = " + String(bal))
                 
                 DispatchQueue.main.async {
                     

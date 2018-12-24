@@ -14,8 +14,6 @@ open class JXBaseViewController: UIViewController {
     
     var backBlock : (()->())?
     
-    var isUseGradientColor : Bool = true
-    
     //MARK: - custom NavigationBar
     //自定义导航栏
     lazy var customNavigationBar : JXNavigationBar = {
@@ -52,9 +50,7 @@ open class JXBaseViewController: UIViewController {
     
     //log state
     var isLogin: Bool = true
-    //var isCustomNavigationBarUsed = false
     
-
     override open func viewDidLoad() {
         super.viewDidLoad()
         
@@ -131,3 +127,4 @@ extension JXBaseViewController {
         MBProgressHUD.hide(for: self.view, animated: true)
     }
 }
+
